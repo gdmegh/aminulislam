@@ -289,72 +289,74 @@ const CaseStudyPage = () => {
                             <p className="text-muted-foreground leading-relaxed mb-6 text-center">
                             To ensure security and proper functionality, we designed a user access matrix that defined the permissions and capabilities for each user persona. This matrix guided the development of role-based access control within the system.
                             </p>
-                            <table className="w-full text-sm text-left text-foreground">
-                                <thead className="text-xs text-muted-foreground uppercase bg-secondary">
-                                    <tr>
-                                        <th scope="col" className="px-6 py-3 rounded-tl-lg">Feature</th>
-                                        <th scope="col" className="px-6 py-3">Web</th>
-                                        <th scope="col" className="px-6 py-3">Mobile</th>
-                                        <th scope="col" className="px-6 py-3">Voice Assistant</th>
-                                        <th scope="col" className="px-6 py-3 rounded-tr-lg">Call Center</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr className="bg-card border-b border-border">
-                                        <td colSpan={5} className="px-6 py-2 font-bold text-primary">Service Recipient</td>
-                                    </tr>
-                                    <tr className="bg-card border-b border-border">
-                                        <td className="px-6 py-4">View Services</td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                    </tr>
-                                    <tr className="bg-card border-b border-border">
-                                        <td className="px-6 py-4">Apply for Services</td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center">-</td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                    </tr>
-                                    <tr className="bg-card border-b border-border">
-                                        <td className="px-6 py-4">Track Application Status</td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                    </tr>
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-sm text-left text-foreground">
+                                    <thead className="text-xs text-muted-foreground uppercase bg-secondary">
+                                        <tr>
+                                            <th scope="col" className="px-6 py-3 rounded-tl-lg whitespace-nowrap">Feature</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Web</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Mobile</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Voice Assistant</th>
+                                            <th scope="col" className="px-6 py-3 rounded-tr-lg whitespace-nowrap">Call Center</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className="bg-card border-b border-border">
+                                            <td colSpan={5} className="px-6 py-2 font-bold text-primary">Service Recipient</td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">View Services</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">Apply for Services</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center">-</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">Track Application Status</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        </tr>
 
-                                    <tr className="bg-card border-b border-border">
-                                        <td colSpan={5} className="px-6 py-2 font-bold text-primary">Service Provider Admin</td>
-                                    </tr>
-                                    <tr className="bg-card border-b border-border">
-                                        <td className="px-6 py-4">Manage Services</td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center">-</td>
-                                        <td className="px-6 py-4 text-center">-</td>
-                                    </tr>
-                                    <tr className="bg-card border-b border-border">
-                                        <td className="px-6 py-4">View Dashboard</td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center">-</td>
-                                        <td className="px-6 py-4 text-center">-</td>
-                                    </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td colSpan={5} className="px-6 py-2 font-bold text-primary">Service Provider Admin</td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">Manage Services</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center">-</td>
+                                            <td className="px-6 py-4 text-center">-</td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">View Dashboard</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center">-</td>
+                                            <td className="px-6 py-4 text-center">-</td>
+                                        </tr>
 
-                                    <tr className="bg-card border-b border-border">
-                                        <td colSpan={5} className="px-6 py-2 font-bold text-primary">Ministry Admin</td>
-                                    </tr>
-                                    <tr className="bg-card">
-                                        <td className="px-6 py-4 rounded-bl-lg">System Oversight</td>
-                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                        <td className="px-6 py-4 text-center">-</td>
-                                        <td className="px-6 py-4 text-center">-</td>
-                                        <td className="px-6 py-4 text-center rounded-br-lg">-</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                        <tr className="bg-card border-b border-border">
+                                            <td colSpan={5} className="px-6 py-2 font-bold text-primary">Ministry Admin</td>
+                                        </tr>
+                                        <tr className="bg-card">
+                                            <td className="px-6 py-4 rounded-bl-lg whitespace-nowrap">System Oversight</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center">-</td>
+                                            <td className="px-6 py-4 text-center">-</td>
+                                            <td className="px-6 py-4 text-center rounded-br-lg">-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
