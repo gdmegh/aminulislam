@@ -31,7 +31,7 @@ const caseStudies = [
 
 export default function FeaturedProjects() {
   return (
-    <section id="portfolio" className="py-20 sm:py-32 bg-card">
+    <section id="portfolio" className="py-16 sm:py-24 bg-card">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-headline text-4xl sm:text-5xl font-bold">Case Studies</h2>

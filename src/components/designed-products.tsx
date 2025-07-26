@@ -56,7 +56,7 @@ const products = [
 
 export default function DesignedProducts() {
   return (
-    <section id="products" className="py-20 sm:py-32">
+    <section id="products" className="py-16 sm:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-headline text-4xl sm:text-5xl font-bold">Products I've Designed</h2>
