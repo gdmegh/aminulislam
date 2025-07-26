@@ -17,7 +17,7 @@ export default function Hero() {
             Aminul Islam<br /><DynamicText />
           </h1>
           <Button size="lg" className="mt-8 px-10 py-6 text-lg">
-            Let's Talk Your Idea
+            Let's Talk
             <BotMessageSquare className="ml-2 h-5 w-5" />
           </Button>
         </div>

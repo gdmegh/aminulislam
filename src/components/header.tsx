@@ -52,7 +52,7 @@ export default function Header() {
             <div className="hidden md:block">
             {showStickyButton && (
                 <Button>
-                Let's Talk Your Idea
+                Let's Talk
                 <BotMessageSquare className="ml-2 h-5 w-5" />
                 </Button>
             )}
@@ -80,7 +80,7 @@ export default function Header() {
                 ))}
                  {showStickyButton && (
                     <Button className="mt-4">
-                        Let's Talk Your Idea
+                        Let's Talk
                         <BotMessageSquare className="ml-2 h-5 w-5" />
                     </Button>
                  )}
