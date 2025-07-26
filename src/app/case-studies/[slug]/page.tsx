@@ -105,11 +105,37 @@ const caseStudies = [
     image: "/images/placeholder-1200x800.png",
     hint: "design system components",
     content: `
-      <p>As the company grew, its product suite became fragmented, with inconsistent user interfaces and duplicated design efforts. The goal was to create a single source of truth for design that would bring consistency to the user experience and accelerate the product development lifecycle.</p>
-      <h3 class="font-headline text-2xl font-bold mt-8 mb-4">The Process</h3>
-      <p>The project started with a comprehensive audit of all existing interfaces to identify common patterns and inconsistencies. From there, we established a set of core design principles and developed a robust library of reusable components, complete with accessibility guidelines. We created detailed documentation and conducted workshops to train designers and developers on how to effectively use the new system.</p>
-      <h3 class="font-headline text-2xl font-bold mt-8 mb-4">The Outcome</h3>
-      <p>The new design system successfully unified the look and feel of all products, creating a cohesive brand experience. It dramatically improved efficiency, reducing design and development time on new features by over 60%. The system is now the foundation for all new product development and continues to evolve with the company's needs.</p>
+      <div class="space-y-16">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div class="order-2 md:order-1">
+            <h3 class="font-headline text-2xl font-bold mb-4">The Challenge: Fragmentation</h3>
+            <p>As the company grew, its product suite became fragmented, with inconsistent user interfaces and duplicated design efforts. The goal was to create a single source of truth for design that would bring consistency to the user experience and accelerate the product development lifecycle.</p>
+          </div>
+          <div class="order-1 md:order-2 rounded-lg shadow-xl overflow-hidden">
+            <Image src="https://placehold.co/800x600.png" alt="Fragmented UI examples" width={800} height={600} data-ai-hint="fragmented ui" class="w-full h-auto object-cover" />
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div class="order-1">
+             <h3 class="font-headline text-2xl font-bold mb-4">The Process: Audit & Unify</h3>
+            <p>The project started with a comprehensive audit of all existing interfaces to identify common patterns and inconsistencies. From there, we established a set of core design principles and developed a robust library of reusable components, complete with accessibility guidelines. We created detailed documentation and conducted workshops to train designers and developers on how to effectively use the new system.</p>
+          </div>
+          <div class="order-2 rounded-lg shadow-xl overflow-hidden">
+            <Image src="https://placehold.co/800x600.png" alt="Unified design components" width={800} height={600} data-ai-hint="design components" class="w-full h-auto object-cover" />
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+           <div class="order-2 md:order-1">
+            <h3 class="font-headline text-2xl font-bold mb-4">The Outcome: Efficiency & Cohesion</h3>
+            <p>The new design system successfully unified the look and feel of all products, creating a cohesive brand experience. It dramatically improved efficiency, reducing design and development time on new features by over 60%. The system is now the foundation for all new product development and continues to evolve with the company's needs.</p>
+          </div>
+          <div class="order-1 md:order-2 rounded-lg shadow-xl overflow-hidden">
+            <Image src="https://placehold.co/800x600.png" alt="Cohesive brand experience" width={800} height={600} data-ai-hint="cohesive dashboard" class="w-full h-auto object-cover" />
+          </div>
+        </div>
+      </div>
     `
   },
   {
@@ -154,16 +180,18 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 <h1 className="font-headline text-4xl sm:text-5xl font-bold">{study.title}</h1>
               </div>
 
-              <div className="rounded-lg shadow-xl overflow-hidden mb-12">
-                <Image
-                  src={study.image}
-                  alt={study.title}
-                  width={1200}
-                  height={800}
-                  data-ai-hint={study.hint}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
+              {study.slug !== 'scalable-design-system' && (
+                <div className="rounded-lg shadow-xl overflow-hidden mb-12">
+                  <Image
+                    src={study.image}
+                    alt={study.title}
+                    width={1200}
+                    height={800}
+                    data-ai-hint={study.hint}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              )}
 
               <div className="prose prose-lg dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: study.content }}>
               </div>
@@ -181,5 +209,3 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     </div>
   );
 }
-
-    
