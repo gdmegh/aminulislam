@@ -11,17 +11,7 @@ export default function Hero() {
       </div>
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-primary/50 shadow-lg mb-6">
-            <Image
-              src="https://placehold.co/200x200.png"
-              alt="Portrait of the designer"
-              width={200}
-              height={200}
-              data-ai-hint="portrait designer"
-              className="w-full h-full object-cover"
-              priority
-            />
-          </div>
+          
           <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance">
             Designing Experiences, <br/>
             <span className="text-primary">Engineering Emotions.</span>
@@ -29,14 +19,7 @@ export default function Hero() {
           <p className="mt-6 text-xl text-muted-foreground h-8">
             I am a <DynamicText />
           </p>
-          <div className="mt-10 flex gap-4">
-            <Button size="lg" asChild>
-              <a href="#portfolio">View My Work</a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="#contact">Get In Touch</a>
-            </Button>
-          </div>
+          
         </div>
       </div>
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
