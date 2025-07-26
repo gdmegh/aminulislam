@@ -96,24 +96,3 @@ export default function Header() {
     </header>
   );
 }
-
-// NOTE: DropdownMenu and DropdownMenuContent seem to be missing from imports.
-// This might be intentional if they are globally available.
-// If not, they should be imported from "@/components/ui/dropdown-menu"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-function MegaMenuItem({href, title, description, image, hint}: {href:string, title: string, description: string, image: string, hint:string}) {
-    return (
-      <Link href={href} className="flex items-center gap-4 p-2 rounded-md hover:bg-accent/50">
-        <Image src={image} alt={title} width={80} height={60} className="rounded-md" data-ai-hint={hint} />
-        <div>
-          <p className="font-semibold">{title}</p>
-          <p className="text-sm text-muted-foreground">{description}</p>
-        </div>
-      </Link>
-    )
-  }
