@@ -252,7 +252,7 @@ const CaseStudyPage = () => {
                         </p>
                         <div className="rounded-lg shadow-lg overflow-hidden">
                           <Image 
-                              src="https://placehold.co/1200x400.png"
+                              src="/images/User-Journey-Map-Template-2.jpg"
                               alt="User Journey Map" 
                               width={1200} 
                               height={400} 
