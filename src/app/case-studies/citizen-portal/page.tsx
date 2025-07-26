@@ -153,6 +153,20 @@ const CaseStudyPage = () => {
                       user challenges and guiding the project's direction.
                     </p>
                   </div>
+
+                  <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                    <div className="rounded-lg shadow-lg overflow-hidden">
+                      <Image 
+                          src="/images/MoCHTA-UX-Diagrams-2-2.jpg"
+                          alt="Research collaboration" 
+                          width={1200} 
+                          height={800} 
+                          data-ai-hint="research collaboration"
+                          className="w-full h-auto object-cover" 
+                      />
+                    </div>
+                  </div>
+
                 </div>
               </section>
 
