@@ -13,17 +13,4 @@ export const caseStudies = [
         "Responsive Web & Mobile Design"
     ],
   },
-  {
-    title: "New Portfolio Project",
-    slug: "new-project",
-    description: "This is a placeholder for your new project. Provide me with the details and I will update it.",
-    image: "https://placehold.co/800x600.png",
-    hint: "new project placeholder",
-    highlights: [
-        "Feature 1",
-        "Feature 2",
-        "Feature 3",
-        "Feature 4"
-    ],
-  },
 ];
