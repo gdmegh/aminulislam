@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Briefcase, BotMessageSquare } from "lucide-react";
+import { Menu, BotMessageSquare } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -39,26 +39,33 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" />
-          <span className={`font-headline text-xl font-bold transition-opacity duration-300 ${showStickyButton ? 'opacity-100' : 'opacity-0'}`}>Aminul Islam</span>
-        </Link>
-        <nav className="hidden md:flex items-center gap-1">
+      <div className="container mx-auto px-4 flex h-16 items-center justify-between relative">
+        <div className="flex-1 flex justify-start">
+            <Link href="/" className="flex items-center gap-2">
+                <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" />
+                <span className={`font-headline text-xl font-bold transition-opacity duration-300 ${showStickyButton ? 'opacity-100' : 'opacity-0'}`}>Aminul Islam</span>
+            </Link>
+        </div>
+        
+        <nav className="hidden md:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {menuItems.map((item) =>
             <Button key={item.label} variant="ghost" asChild className="text-base">
                 <Link href={item.href}>{item.label}</Link>
             </Button>
           )}
         </nav>
-        <div className="hidden md:block">
-          {showStickyButton && (
-            <Button>
-              Let's Talk Your Idea
-              <BotMessageSquare className="ml-2 h-5 w-5" />
-            </Button>
-          )}
+
+        <div className="flex-1 flex justify-end">
+            <div className="hidden md:block">
+            {showStickyButton && (
+                <Button>
+                Let's Talk Your Idea
+                <BotMessageSquare className="ml-2 h-5 w-5" />
+                </Button>
+            )}
+            </div>
         </div>
+
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
