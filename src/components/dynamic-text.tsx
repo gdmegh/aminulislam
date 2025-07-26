@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const roles = ["Product Designer", "UX Leader", "Design System Architect"];
+const roles = ["Product Designer", "UX<br />Leader", "Design System Architect"];
 
 export default function DynamicText() {
   const [index, setIndex] = useState(0);
@@ -25,8 +25,7 @@ export default function DynamicText() {
       className={`transition-opacity duration-500 ease-in-out text-primary ${
         fade ? "opacity-100" : "opacity-0"
       }`}
-    >
-      {roles[index]}
-    </span>
+      dangerouslySetInnerHTML={{ __html: roles[index] }}
+    />
   );
 }
