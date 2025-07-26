@@ -238,7 +238,7 @@ const CaseStudyPage = () => {
                         </p>
                         <div className="rounded-lg shadow-lg overflow-hidden">
                           <Image 
-                              src="https://placehold.co/1200x400.png"
+                              src="/images/User-Journey-Map-Template-2.jpg"
                               alt="User Journey Map" 
                               width={1200} 
                               height={400} 
@@ -257,7 +257,7 @@ const CaseStudyPage = () => {
                         </p>
                         <div className="rounded-lg shadow-lg overflow-hidden">
                           <Image 
-                              src="https://placehold.co/1200x800.png"
+                              src="/images/MoCHTA-UX-Diagrams-4-1.png"
                               alt="Information Architecture Diagram" 
                               width={1200} 
                               height={800} 
@@ -270,21 +270,77 @@ const CaseStudyPage = () => {
 
                     <div className="mt-12">
                       <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
-                      <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                        <p className="text-muted-foreground leading-relaxed mb-6 text-center">
-                         To ensure security and proper functionality, we designed a user access matrix that defined the permissions and capabilities for each user persona. This matrix guided the development of role-based access control within the system.
-                        </p>
-                        <div className="rounded-lg shadow-lg overflow-hidden">
-                          <Image 
-                              src="https://placehold.co/1200x600.png"
-                              alt="User Access Matrix" 
-                              width={1200} 
-                              height={600} 
-                              data-ai-hint="access matrix chart"
-                              className="w-full h-auto object-cover" 
-                          />
+                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border overflow-x-auto">
+                            <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                            To ensure security and proper functionality, we designed a user access matrix that defined the permissions and capabilities for each user persona. This matrix guided the development of role-based access control within the system.
+                            </p>
+                            <table className="w-full text-sm text-left text-foreground">
+                                <thead className="text-xs text-muted-foreground uppercase bg-secondary">
+                                    <tr>
+                                        <th scope="col" className="px-6 py-3 rounded-tl-lg">Feature</th>
+                                        <th scope="col" className="px-6 py-3">Web</th>
+                                        <th scope="col" className="px-6 py-3">Mobile</th>
+                                        <th scope="col" className="px-6 py-3">Voice Assistant</th>
+                                        <th scope="col" className="px-6 py-3 rounded-tr-lg">Call Center</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className="bg-card border-b border-border">
+                                        <td colSpan={5} className="px-6 py-2 font-bold text-primary">Service Recipient</td>
+                                    </tr>
+                                    <tr className="bg-card border-b border-border">
+                                        <td className="px-6 py-4">View Services</td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                    </tr>
+                                    <tr className="bg-card border-b border-border">
+                                        <td className="px-6 py-4">Apply for Services</td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center">-</td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                    </tr>
+                                    <tr className="bg-card border-b border-border">
+                                        <td className="px-6 py-4">Track Application Status</td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                    </tr>
+
+                                    <tr className="bg-card border-b border-border">
+                                        <td colSpan={5} className="px-6 py-2 font-bold text-primary">Service Provider Admin</td>
+                                    </tr>
+                                    <tr className="bg-card border-b border-border">
+                                        <td className="px-6 py-4">Manage Services</td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center">-</td>
+                                        <td className="px-6 py-4 text-center">-</td>
+                                    </tr>
+                                    <tr className="bg-card border-b border-border">
+                                        <td className="px-6 py-4">View Dashboard</td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center">-</td>
+                                        <td className="px-6 py-4 text-center">-</td>
+                                    </tr>
+
+                                    <tr className="bg-card border-b border-border">
+                                        <td colSpan={5} className="px-6 py-2 font-bold text-primary">Ministry Admin</td>
+                                    </tr>
+                                    <tr className="bg-card">
+                                        <td className="px-6 py-4 rounded-bl-lg">System Oversight</td>
+                                        <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                        <td className="px-6 py-4 text-center">-</td>
+                                        <td className="px-6 py-4 text-center">-</td>
+                                        <td className="px-6 py-4 text-center rounded-br-lg">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                      </div>
                     </div>
                 </div>
               </section>
