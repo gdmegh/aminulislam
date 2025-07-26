@@ -225,12 +225,22 @@ const CaseStudyPage = () => {
                   </div>
 
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                    <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">User Persona: Lokkhi Chandro</h3>
-                    <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
-                      <p className="text-foreground italic text-center">
-                        "Lokkhi Chandro is a service recipient who needs easy and user-friendly online software for applying 
-                        and tracking government schemes and services because he is socially welfare-aware."
-                      </p>
+                    <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">User Personas</h3>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
+                            <h4 className="font-bold text-foreground mb-2 text-center">Service Recipient</h4>
+                            <p className="text-foreground italic text-center text-sm">
+                                "Lokkhi Chandro is a service recipient who needs easy and user-friendly online software for applying 
+                                and tracking government schemes and services because he is socially welfare-aware."
+                            </p>
+                        </div>
+                        <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
+                            <h4 className="font-bold text-foreground mb-2 text-center">Government Administrator</h4>
+                            <p className="text-foreground italic text-center text-sm">
+                                "An admin needs a centralized dashboard to efficiently process applications, manage user data, and 
+                                communicate with citizens to reduce manual workloads and improve service delivery speed."
+                            </p>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -421,19 +431,6 @@ const CaseStudyPage = () => {
                   ))}
                 </div>
               </section>
-
-              {/* Contact Section */}
-              <section className="bg-card rounded-2xl p-12 text-center border border-primary/20">
-                <h2 className="text-3xl font-bold mb-4 font-headline">Let's Connect!</h2>
-                <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  I'm eager to connect, share insights, and explore collaborations. Whether you have questions or ideas, 
-                  feel free to reach out.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                   <Button>Contact Me</Button>
-                   <Button variant="outline">View My Portfolio</Button>
-                </div>
-              </section>
         </div>
       </div>
       </main>
@@ -443,3 +440,5 @@ const CaseStudyPage = () => {
 };
 
 export default CaseStudyPage;
+
+    
