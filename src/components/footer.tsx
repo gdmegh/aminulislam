@@ -35,7 +35,7 @@ export default function Footer() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Apex Portfolio. All Rights Reserved.
+            © {new Date().getFullYear()} Aminul Islam. All Rights Reserved.
           </p>
         </div>
       </div>
