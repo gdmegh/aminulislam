@@ -1,6 +1,5 @@
 
 import About from '@/components/about';
-import Blog from '@/components/blog';
 import DesignedProducts from '@/components/designed-products';
 import FeaturedProjects from '@/components/featured-projects';
 import Footer from '@/components/footer';
@@ -16,7 +15,6 @@ export default function Home() {
         <FeaturedProjects />
         <DesignedProducts />
         <About />
-        <Blog />
       </main>
       <Footer />
     </div>
