@@ -13,12 +13,8 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           
           <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance">
-            Designing Experiences, <br/>
-            <span className="text-primary">Engineering Emotions.</span>
-          </h1>
-          <p className="mt-6 text-2xl text-muted-foreground h-8">
             I am a <DynamicText />
-          </p>
+          </h1>
           
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function DynamicText() {
 
   return (
     <span
-      className={`transition-opacity duration-500 ease-in-out ${
+      className={`transition-opacity duration-500 ease-in-out text-primary ${
         fade ? "opacity-100" : "opacity-0"
       }`}
     >
