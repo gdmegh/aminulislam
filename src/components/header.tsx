@@ -9,11 +9,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const menuItems = [
-  {
-    label: "Portfolio",
-    href: "#portfolio",
-  },
-  { label: "Case Studies", href: "/case-studies" },
+  { label: "Portfolio", href: "/case-studies" },
   { label: "About", href: "#about" },
 ];
 
