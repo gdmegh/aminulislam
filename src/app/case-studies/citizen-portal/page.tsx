@@ -1,10 +1,11 @@
 "use client"
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, ChevronRight, Users, Clock, Target, Smartphone, Monitor, CheckCircle, ExternalLink, TrendingUp } from 'lucide-react';
+import React, { useState } from 'react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import Image from 'next/image';
 
 const chartData = [
   { name: 'Processing Time', 'Reduction': 40 },
@@ -14,63 +15,6 @@ const chartData = [
 ];
 
 const CaseStudyPage = () => {
-  const [activeSection, setActiveSection] = useState('overview');
-  const [expandedSections, setExpandedSections] = useState({
-    research: true,
-    design: true,
-    prototype: true
-  });
-
-  const sections = {
-    overview: 'Overview',
-    research: 'User Research & Insights',
-    design: 'Design Process',
-    accessibility: 'Accessibility',
-    impact: 'Impact & Results',
-    next: 'Next Steps',
-  };
-
-  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
-
-  useEffect(() => {
-    sectionRefs.current = Object.keys(sections).map(id => document.getElementById(id));
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-20% 0px -80% 0px', threshold: 0 }
-    );
-
-    sectionRefs.current.forEach(section => {
-      if (section) observer.observe(section);
-    });
-
-    return () => {
-      sectionRefs.current.forEach(section => {
-        if (section) observer.unobserve(section);
-      });
-    };
-  }, [sections]);
-
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const toggleSection = (section: 'research' | 'design' | 'prototype') => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }));
-  };
 
   const painPoints = [
     {
@@ -137,8 +81,8 @@ const CaseStudyPage = () => {
       <Header />
       <main className="flex-grow">
       {/* Hero Section */}
-      <div className="bg-card text-foreground">
-        <div className="container mx-auto px-4 py-20">
+      <section className="bg-card text-foreground py-20">
+        <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-primary/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 text-primary">
@@ -166,51 +110,23 @@ const CaseStudyPage = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-primary/10 backdrop-blur-sm rounded-2xl p-8 border border-primary/20">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <Smartphone className="w-12 h-12 mx-auto mb-3 text-primary" />
-                    <p className="text-sm">Mobile App</p>
-                  </div>
-                  <div className="text-center">
-                    <Monitor className="w-12 h-12 mx-auto mb-3 text-primary" />
-                    <p className="text-sm">Web Platform</p>
-                  </div>
-                </div>
-              </div>
+                <Image 
+                    src="/images/placeholder-800x600.png"
+                    alt="Citizen Portal Mockup"
+                    width={800}
+                    height={600}
+                    data-ai-hint="citizen portal app"
+                    className="rounded-lg shadow-xl"
+                />
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-12 gap-12">
-           {/* Sticky Sidebar */}
-           <aside className="lg:col-span-3 lg:sticky top-24 self-start">
-             <div className="bg-card rounded-xl p-4 shadow-lg border border-border">
-              <h3 className="font-headline font-bold text-lg mb-4">Case Study Sections</h3>
-              <nav>
-                <ul className="space-y-2">
-                  {Object.entries(sections).map(([id, label]) => (
-                    <li key={id}>
-                       <Button
-                        variant={activeSection === id ? "secondary" : "ghost"}
-                        onClick={() => scrollToSection(id)}
-                        className="w-full justify-start"
-                      >
-                        {label}
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-             </div>
-           </aside>
-
-           {/* Main Content */}
-           <div className="lg:col-span-9">
+        <div className="max-w-4xl mx-auto">
               {/* Overview Section */}
-              <section id="overview" className="mb-20 pt-16 -mt-16">
+              <section id="overview" className="mb-20">
                 <div className="grid lg:grid-cols-3 gap-12">
                   <div className="lg:col-span-2">
                     <h2 className="text-3xl font-bold text-foreground mb-6 font-headline">The Challenge</h2>
@@ -253,15 +169,15 @@ const CaseStudyPage = () => {
               </section>
 
               {/* Research Section */}
-              <section id="research" className="mb-20 pt-16 -mt-16">
-                <div className="flex items-center gap-4 mb-8">
+              <section id="research" className="mb-20">
+                <div className="text-center mb-8">
                   <h2 className="text-2xl font-bold text-foreground font-headline">User Research & Insights</h2>
                 </div>
                 
                 <div className="space-y-12">
                   <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4 font-headline">Research Methodology</h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Methodology</h3>
+                    <p className="text-muted-foreground leading-relaxed text-center">
                       Through 50-60 Qualitative and Quantitative Interviews, our user research aimed to uncover behavior, needs, 
                       pain-points, and motivations. Initial assumptions were challenged, revealing unexpected pain-points and diverse 
                       user motivations. Quantitative data validated certain assumptions, guiding feature prioritization.
@@ -269,7 +185,7 @@ const CaseStudyPage = () => {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-8 font-headline">Key Pain Points</h3>
+                    <h3 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Key Pain Points</h3>
                     <div className="grid md:grid-cols-2 gap-6">
                       {painPoints.map((point, index) => (
                         <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border hover:shadow-xl hover:border-primary/20 transition-all">
@@ -288,9 +204,9 @@ const CaseStudyPage = () => {
                   </div>
 
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                    <h3 className="text-xl font-bold text-foreground mb-6 font-headline">User Persona: Lokkhi Chandro</h3>
+                    <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">User Persona: Lokkhi Chandro</h3>
                     <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
-                      <p className="text-foreground italic">
+                      <p className="text-foreground italic text-center">
                         "Lokkhi Chandro is a service recipient who needs easy and user-friendly online software for applying 
                         and tracking government schemes and services because he is socially welfare-aware."
                       </p>
@@ -300,13 +216,13 @@ const CaseStudyPage = () => {
               </section>
 
               {/* Design Process Section */}
-              <section id="design" className="mb-20 pt-16 -mt-16">
-                 <div className="flex items-center gap-4 mb-8">
+              <section id="design" className="mb-20">
+                 <div className="text-center mb-8">
                    <h2 className="text-2xl font-bold text-foreground font-headline">Design Process</h2>
                  </div>
 
                 <div className="space-y-12">
-                  <div className="grid lg:grid-cols-2 gap-12">
+                  <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Wireframing Approach</h3>
                       <p className="text-muted-foreground leading-relaxed mb-6">
@@ -344,7 +260,7 @@ const CaseStudyPage = () => {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-8 font-headline">Usability Study Results</h3>
+                    <h3 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Usability Study Results</h3>
                     <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                       <div className="grid md:grid-cols-2 gap-8">
                         {usabilityFindings.map((round, index) => (
@@ -367,25 +283,25 @@ const CaseStudyPage = () => {
               </section>
 
               {/* Accessibility Section */}
-              <section id="accessibility" className="mb-20 pt-16 -mt-16">
-                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline">Accessibility Considerations</h2>
+              <section id="accessibility" className="mb-20">
+                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Accessibility Considerations</h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {accessibilityFeatures.map((feature, index) => (
                     <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border hover:shadow-xl hover:border-primary/20 transition-all">
-                      <div className="bg-primary text-primary-foreground rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4">
+                      <div className="bg-primary text-primary-foreground rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4 mx-auto">
                         {feature.icon}
                       </div>
-                      <h3 className="font-bold text-foreground mb-3">{feature.title}</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+                      <h3 className="font-bold text-foreground mb-3 text-center">{feature.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed text-center">{feature.description}</p>
                     </div>
                   ))}
                 </div>
               </section>
 
               {/* Impact & Results */}
-              <section id="impact" className="mb-20 pt-16 -mt-16">
-                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline">Impact & Results</h2>
-                <div className="grid lg:grid-cols-2 gap-12 mb-12">
+              <section id="impact" className="mb-20">
+                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Impact & Results</h2>
+                <div className="grid lg:grid-cols-2 gap-12 mb-12 items-center">
                   <div className="bg-green-500/10 rounded-2xl p-8 border border-green-500/20">
                     <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Project Impact</h3>
                     <p className="text-muted-foreground leading-relaxed">
@@ -405,7 +321,7 @@ const CaseStudyPage = () => {
                 </div>
 
                  <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                    <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2"><TrendingUp className="w-6 h-6 text-primary"/> Key Metrics &amp; Impact</h3>
+                    <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2 justify-center"><TrendingUp className="w-6 h-6 text-primary"/> Key Metrics &amp; Impact</h3>
                     <div style={{ width: '100%', height: 300 }}>
                       <ResponsiveContainer>
                           <BarChart data={chartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
@@ -428,8 +344,8 @@ const CaseStudyPage = () => {
               </section>
 
               {/* Next Steps */}
-              <section id="next" className="mb-20 pt-16 -mt-16">
-                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline">Next Steps</h2>
+              <section id="next" className="mb-20">
+                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Next Steps</h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {[
                     {
@@ -448,8 +364,8 @@ const CaseStudyPage = () => {
                       description: "Perform comprehensive accessibility testing to ensure compliance with standards and inclusive user experience."
                     }
                   ].map((item, index) => (
-                    <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border">
-                      <div className="bg-primary text-primary-foreground rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm mb-4">
+                    <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border text-center">
+                      <div className="bg-primary text-primary-foreground rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm mb-4 mx-auto">
                         {item.step}
                       </div>
                       <h3 className="font-bold text-foreground mb-3">{item.title}</h3>
@@ -471,7 +387,6 @@ const CaseStudyPage = () => {
                    <Button variant="outline">View My Portfolio</Button>
                 </div>
               </section>
-           </div>
         </div>
       </div>
       </main>
