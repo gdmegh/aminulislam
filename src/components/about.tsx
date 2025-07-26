@@ -40,6 +40,19 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="lg:sticky lg:top-24">
+            <div className="rounded-lg shadow-xl overflow-hidden">
+                <Image 
+                    src="https://placehold.co/600x750.png"
+                    alt="Designer at work"
+                    width={600}
+                    height={750}
+                    data-ai-hint="designer working"
+                    className="w-full h-auto object-cover"
+                />
+            </div>
+          </div>
+          
           <div className="relative">
             <div className="absolute left-4 top-0 h-full w-0.5 bg-border" aria-hidden="true"></div>
             {timelineData.map((item, index) => (
@@ -56,19 +69,6 @@ export default function About() {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="lg:sticky lg:top-24">
-            <div className="rounded-lg shadow-xl overflow-hidden">
-                <Image 
-                    src="https://placehold.co/600x750.png"
-                    alt="Designer at work"
-                    width={600}
-                    height={750}
-                    data-ai-hint="designer working"
-                    className="w-full h-auto object-cover"
-                />
-            </div>
           </div>
         </div>
       </div>
