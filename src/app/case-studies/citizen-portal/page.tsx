@@ -93,7 +93,7 @@ const CaseStudyPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-primary/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 text-primary">
-                Government Digital Transformation
+                UX Design
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight font-headline">
                 {study.title}
@@ -133,6 +133,29 @@ const CaseStudyPage = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
               
+              {/* Empathize Stage */}
+              <section id="empathize" className="mb-20">
+                <div className="text-center mb-12">
+                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
+                    <Users2 className="w-5 h-5"/>
+                    <span>EMPATHIZE</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-foreground font-headline">Understanding the User</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">As a UX Researcher and Designer, my first step was to deeply understand the people I was designing for through comprehensive research.</p>
+                </div>
+                
+                <div className="space-y-12">
+                  <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
+                    <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Methodology</h3>
+                    <p className="text-muted-foreground leading-relaxed text-center">
+                      Through 50-60 Qualitative and Quantitative Interviews, my user research aimed to uncover behaviors, needs, 
+                      pain-points, and motivations. This foundational research challenged initial assumptions, revealing unexpected 
+                      user challenges and guiding the project's direction.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
               {/* Define Stage */}
               <section id="define" className="mb-20">
                 <div className="text-center mb-12">
@@ -140,11 +163,11 @@ const CaseStudyPage = () => {
                     <Pencil className="w-5 h-5"/>
                     <span>DEFINE</span>
                   </div>
-                  <h2 className="text-3xl font-bold text-foreground font-headline">The Problem & Project Vision</h2>
-                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Clarifying the core challenge and establishing the project's goals and scope.</p>
+                  <h2 className="text-3xl font-bold text-foreground font-headline">Defining the Problem & Users</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Based on the research, I clarified the core challenges and defined the key user groups and their specific pain points.</p>
                 </div>
 
-                <div className="space-y-8">
+                <div className="space-y-12">
                     <h3 className="text-2xl font-bold text-foreground font-headline">Project Overview</h3>
                     <p className="text-lg text-muted-foreground leading-relaxed">
                       The Ministry of Chittagong Hill Tracts Affairs in Bangladesh was struggling with inefficient paper-based processes, 
@@ -157,78 +180,55 @@ const CaseStudyPage = () => {
                     <p className="text-lg text-muted-foreground leading-relaxed">
                       The core problem was the lack of a centralized, user-friendly digital system for citizens to access and manage government services. This resulted in significant administrative inefficiencies, long processing times, and a frustrating experience for the public, ultimately creating a barrier to accessing essential welfare and development schemes.
                     </p>
-                </div>
-              </section>
-
-              {/* Empathize Stage */}
-              <section id="empathize" className="mb-20">
-                <div className="text-center mb-12">
-                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
-                    <Users2 className="w-5 h-5"/>
-                    <span>EMPATHIZE</span>
-                  </div>
-                  <h2 className="text-3xl font-bold text-foreground font-headline">Understanding the User</h2>
-                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Gaining deep insights into user behaviors, needs, and motivations through comprehensive research.</p>
-                </div>
-                
-                <div className="space-y-12">
-                  <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Methodology</h3>
-                    <p className="text-muted-foreground leading-relaxed text-center">
-                      Through 50-60 Qualitative and Quantitative Interviews, our user research aimed to uncover behavior, needs, 
-                      pain-points, and motivations. Initial assumptions were challenged, revealing unexpected pain-points and diverse 
-                      user motivations. Quantitative data validated certain assumptions, guiding feature prioritization.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Key Pain Points</h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {painPoints.map((point, index) => (
-                        <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border hover:shadow-xl hover:border-primary/20 transition-all">
-                          <div className="flex items-start gap-4">
-                            <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm flex-shrink-0">
-                              {point.number}
+                    
+                    <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                        <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">User Personas</h3>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
+                                <h4 className="font-bold text-foreground mb-2 text-center">Service Recipient</h4>
+                                <p className="text-foreground italic text-center text-sm">
+                                    "A citizen who needs easy, transparent access to government schemes and services without bureaucratic hurdles."
+                                </p>
                             </div>
-                            <div>
-                              <h4 className="font-bold text-foreground mb-2">{point.title}</h4>
-                              <p className="text-muted-foreground text-sm leading-relaxed">{point.description}</p>
+                            <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
+                                <h4 className="font-bold text-foreground mb-2 text-center">Service Provider Admin</h4>
+                                <p className="text-foreground italic text-center text-sm">
+                                    "An administrator from a service-providing organization who needs to manage and deliver services efficiently through the platform."
+                                </p>
+                            </div>
+                            <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
+                                <h4 className="font-bold text-foreground mb-2 text-center">Service Specific Operator</h4>
+                                <p className="text-foreground italic text-center text-sm">
+                                    "An operator responsible for a specific service, needing tools to process applications and manage workflows effectively."
+                                </p>
+                            </div>
+                            <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
+                                <h4 className="font-bold text-foreground mb-2 text-center">Ministry Admin</h4>
+                                <p className="text-foreground italic text-center text-sm">
+                                    "A high-level ministry official requiring a dashboard for oversight, performance tracking, and data-driven decision-making."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Key Pain Points</h3>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        {painPoints.map((point, index) => (
+                          <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border hover:shadow-xl hover:border-primary/20 transition-all">
+                            <div className="flex items-start gap-4">
+                              <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                {point.number}
+                              </div>
+                              <div>
+                                <h4 className="font-bold text-foreground mb-2">{point.title}</h4>
+                                <p className="text-muted-foreground text-sm leading-relaxed">{point.description}</p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                    <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">User Personas</h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
-                          <h4 className="font-bold text-foreground mb-2 text-center">Service Recipient</h4>
-                          <p className="text-foreground italic text-center text-sm">
-                              "A citizen who needs easy, transparent access to government schemes and services without bureaucratic hurdles."
-                          </p>
-                      </div>
-                      <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
-                          <h4 className="font-bold text-foreground mb-2 text-center">Service Provider Admin</h4>
-                          <p className="text-foreground italic text-center text-sm">
-                              "An administrator from a service-providing organization who needs to manage and deliver services efficiently through the platform."
-                          </p>
-                      </div>
-                      <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
-                          <h4 className="font-bold text-foreground mb-2 text-center">Service Specific Operator</h4>
-                          <p className="text-foreground italic text-center text-sm">
-                              "An operator responsible for a specific service, needing tools to process applications and manage workflows effectively."
-                          </p>
-                      </div>
-                      <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
-                          <h4 className="font-bold text-foreground mb-2 text-center">Ministry Admin</h4>
-                          <p className="text-foreground italic text-center text-sm">
-                              "A high-level ministry official requiring a dashboard for oversight, performance tracking, and data-driven decision-making."
-                          </p>
+                        ))}
                       </div>
                     </div>
-                  </div>
                 </div>
               </section>
 
