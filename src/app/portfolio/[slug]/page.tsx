@@ -92,7 +92,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           
           <div className="text-center my-16">
             <Button asChild>
-                <Link href="/case-studies">← Back to Case Studies</Link>
+                <Link href="/portfolio">← Back to Portfolio</Link>
             </Button>
           </div>
         </article>
@@ -101,5 +101,3 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     </div>
   );
 }
-
-    

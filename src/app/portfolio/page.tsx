@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies';
 
 
-export default function CaseStudiesPage() {
+export default function PortfolioPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
@@ -15,7 +15,7 @@ export default function CaseStudiesPage() {
         <section id="portfolio" className="py-12 sm:py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h1 className="font-headline text-5xl sm:text-6xl font-bold">Case Studies</h1>
+              <h1 className="font-headline text-5xl sm:text-6xl font-bold">My Portfolio</h1>
               <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
                 Explore a collection of projects that showcase my design process and impact.
               </p>
@@ -59,7 +59,7 @@ export default function CaseStudiesPage() {
 
                     <div className="flex">
                         <Button asChild className="w-full" variant="outline">
-                           <Link href={`/case-studies/${study.slug}`}>View Case Study</Link>
+                           <Link href={`/portfolio/${study.slug}`}>View Case Study</Link>
                         </Button>
                     </div>
                   </div>
@@ -73,5 +73,3 @@ export default function CaseStudiesPage() {
     </div>
   );
 }
-
-    

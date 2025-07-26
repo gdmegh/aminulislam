@@ -99,7 +99,7 @@ export default function FeaturedProjects() {
 
                 <div className="flex">
                   <Button asChild className="w-full" variant="outline">
-                    <Link href={`/case-studies/${study.slug}`}>View Case Study</Link>
+                    <Link href={`/portfolio/${study.slug}`}>View Case Study</Link>
                   </Button>
                 </div>
               </div>
