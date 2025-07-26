@@ -6,7 +6,6 @@ import FeaturedProjects from '@/components/featured-projects';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import Hero from '@/components/hero';
-import Testimonials from '@/components/testimonials';
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <FeaturedProjects />
         <DesignedProducts />
         <About />
-        <Testimonials />
         <Blog />
         <Contact />
       </main>
