@@ -136,18 +136,18 @@ const CaseStudyPage = () => {
               <section id="overview" className="mb-20">
                 <div className="grid lg:grid-cols-3 gap-12">
                   <div className="lg:col-span-2">
-                    <h2 className="text-3xl font-bold text-foreground mb-6 font-headline">The Challenge</h2>
+                    <h2 className="text-3xl font-bold text-foreground mb-6 font-headline">Project Overview</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                       The Ministry of Chittagong Hill Tracts Affairs in Bangladesh was struggling with inefficient paper-based processes, 
                       scheduling delays, and approval backlogs. The absence of a streamlined digital platform was creating communication 
-                      gaps and hindering the ministry's ability to serve citizens effectively.
-                    </p>
-                    
-                    <h2 className="text-3xl font-bold text-foreground mb-6 font-headline">The Solution</h2>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      We designed a comprehensive Integrated Digital Service Delivery Platform that modernizes government services 
+                      gaps and hindering the ministry's ability to serve citizens effectively. We designed a comprehensive Integrated Digital Service Delivery Platform that modernizes government services 
                       through web and mobile applications. The platform centralizes all service provider organizations and recipients 
                       within a unified digital ecosystem, featuring scheme management, registrations, and streamlined communication.
+                    </p>
+                    
+                    <h2 className="text-3xl font-bold text-foreground mb-6 font-headline">Problem Statement</h2>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      The core problem was the lack of a centralized, user-friendly digital system for citizens to access and manage government services. This resulted in significant administrative inefficiencies, long processing times, and a frustrating experience for the public, ultimately creating a barrier to accessing essential welfare and development schemes.
                     </p>
                   </div>
                   
