@@ -52,7 +52,7 @@ export default function PortfolioHighlight() {
 
             <div className="flex">
                 <Button asChild className="w-full" variant="outline">
-                   <Link href={`/portfolio/${study.slug}`}>View Case Study</Link>
+                   <Link href={`/portfolio/citizen-portal`}>View Case Study</Link>
                 </Button>
             </div>
           </div>

@@ -9,7 +9,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const menuItems = [
-  { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "#about" },
 ];
 

@@ -1,103 +1,63 @@
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import { Button } from '@/components/ui/button';
-import { Download } from 'lucide-react';
-import Image from 'next/image';
+import Image from "next/image";
+import { Button } from "./ui/button";
+import { CheckCircle2 } from "lucide-react";
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import { caseStudies } from '@/lib/case-studies';
 
-
-export async function generateStaticParams() {
-  return caseStudies.map((study) => ({
-    slug: study.slug,
-  }))
-}
-
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const study = caseStudies.find(cs => cs.slug === params.slug);
+export default function PortfolioHighlight() {
+  const study = caseStudies[0];
 
   if (!study) {
-    notFound();
-  }
-
-  if (study.slug === 'citizen-portal') {
-    // This slug is now handled by its own dedicated page.
-    // We redirect or can handle it differently if needed.
-    // For now, let's just say it's not found here to avoid conflict.
-    notFound();
+    return null;
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <Header />
-      <main className="flex-grow">
-        <article>
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center py-12 sm:py-16">
-               <p className="text-primary font-semibold mb-2">Case Study</p>
-              <h1 className="font-headline text-4xl sm:text-5xl font-bold">{study.title}</h1>
-            </div>
+    <section id="portfolio" className="py-12 sm:py-16">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="font-headline text-4xl sm:text-5xl font-bold">My Portfolio</h2>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Here is a project that showcases my design process and impact.
+          </p>
+        </div>
+        <div
+          className={`group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center`}
+        >
+          <div
+            className={`overflow-hidden rounded-lg shadow-xl md:order-1`}
+          >
+            <Image
+              src={study.image}
+              alt={study.title}
+              width={800}
+              height={600}
+              data-ai-hint={study.hint}
+              className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+            />
           </div>
-
-          {study.slug === 'scalable-design-system' && study.sections ? (
-             <div>
-                {study.sections.map((section, index) => (
-                    <section key={index} className="min-h-screen flex items-center py-16">
-                        <div className="container mx-auto px-4">
-                            <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
-                                <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
-                                    <h2 className="font-headline text-3xl font-bold mb-4">{section.title}</h2>
-                                    <p className="text-lg text-muted-foreground">{section.content}</p>
-                                </div>
-                                <div className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}>
-                                    <div className="rounded-lg shadow-xl overflow-hidden">
-                                        <Image 
-                                            src={section.image as string} 
-                                            alt={section.title} 
-                                            width={800} 
-                                            height={600} 
-                                            data-ai-hint={section.hint}
-                                            className="w-full h-auto object-cover" 
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                ))}
-             </div>
-          ) : (
-            <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto">
-                    {study.image && (
-                         <div className="rounded-lg shadow-xl overflow-hidden mb-12">
-                            <Image
-                                src={study.image}
-                                alt={study.title}
-                                width={1200}
-                                height={800}
-                                data-ai-hint={study.hint}
-                                className="w-full h-auto object-cover"
-                            />
-                        </div>
-                    )}
-                    {study.content && (
-                        <div className="prose prose-lg dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: study.content }}>
-                        </div>
-                    )}
+          <div
+            className={`flex flex-col md:order-2`}
+          >
+            <h3 className="font-headline text-3xl font-bold">{study.title}</h3>
+            <p className="text-muted-foreground text-lg my-6">{study.description}</p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-6">
+              {study.highlights && study.highlights.map((highlight, hIndex) => (
+                <div key={hIndex} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-muted-foreground">{highlight}</p>
                 </div>
+              ))}
             </div>
-          )}
-          
-          <div className="text-center my-16">
-            <Button asChild>
-                <Link href="/portfolio">← Back to Portfolio</Link>
-            </Button>
+
+            <div className="flex">
+                <Button asChild className="w-full" variant="outline">
+                   <Link href={`/portfolio/citizen-portal`}>View Case Study</Link>
+                </Button>
+            </div>
           </div>
-        </article>
-      </main>
-      <Footer />
-    </div>
+        </div>
+      </div>
+    </section>
   );
 }
