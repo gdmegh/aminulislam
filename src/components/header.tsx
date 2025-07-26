@@ -1,9 +1,10 @@
+
 "use client";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Briefcase } from "lucide-react";
+import { Menu, Briefcase, BotMessageSquare } from "lucide-react";
 import Image from "next/image";
 
 const menuItems = [
@@ -52,7 +53,7 @@ function MegaMenuItem({href, title, description, image, hint}: {href:string, tit
   )
 }
 
-export default function Header() {
+export default function Header({ showStickyButton }: { showStickyButton?: boolean }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
@@ -79,7 +80,12 @@ export default function Header() {
           )}
         </nav>
         <div className="hidden md:block">
-          <Button>Hire Me</Button>
+          {showStickyButton && (
+            <Button>
+              Let's Talk Your Idea
+              <BotMessageSquare className="ml-2 h-5 w-5" />
+            </Button>
+          )}
         </div>
         <div className="md:hidden">
           <Sheet>
@@ -100,7 +106,12 @@ export default function Header() {
                     {item.label}
                   </Link>
                 ))}
-                <Button className="mt-4">Hire Me</Button>
+                 {showStickyButton && (
+                    <Button className="mt-4">
+                        Let's Talk Your Idea
+                        <BotMessageSquare className="ml-2 h-5 w-5" />
+                    </Button>
+                 )}
               </nav>
             </SheetContent>
           </Sheet>
@@ -118,3 +129,4 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
