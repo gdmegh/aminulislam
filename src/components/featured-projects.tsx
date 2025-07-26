@@ -1,37 +1,31 @@
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 
-const projects = [
+const caseStudies = [
   {
-    title: "Enterprise Design System",
-    description: "A scalable design system for a suite of enterprise applications.",
+    title: "Project Phoenix: Redefining E-Commerce",
+    description: "A complete overhaul of a major e-commerce platform's user experience, resulting in a 40% increase in conversion rates.",
     image: "https://placehold.co/800x600.png",
-    hint: "design system"
+    hint: "ecommerce website",
+    tags: ["UX Research", "UI Design", "Design System"],
+    link: "#",
   },
   {
-    title: "Fintech Mobile App",
-    description: "Crafting an intuitive mobile banking experience for millennials.",
+    title: "Innovate OS: A New Mobile Frontier",
+    description: "Led the design of a next-generation mobile operating system focused on productivity and seamless cross-device integration.",
     image: "https://placehold.co/800x600.png",
-    hint: "mobile banking"
+    hint: "mobile interface",
+    tags: ["Product Design", "Prototyping", "User Testing"],
+    link: "#",
   },
   {
-    title: "AI-Powered Analytics Dashboard",
-    description: "Visualizing complex data to provide actionable insights.",
+    title: "DataViz Pro: Empowering Analysts",
+    description: "Designed a powerful data visualization tool that simplifies complex datasets and empowers analysts to uncover insights faster.",
     image: "https://placehold.co/800x600.png",
-    hint: "analytics dashboard"
-  },
-  {
-    title: "Healthcare Platform Redesign",
-    description: "Improving patient-doctor communication through better UX.",
-    image: "https://placehold.co/800x600.png",
-    hint: "healthcare platform"
+    hint: "dashboard analytics",
+    tags: ["Data Visualization", "SaaS", "UX Design"],
+    link: "#",
   },
 ];
 
@@ -40,43 +34,54 @@ export default function FeaturedProjects() {
     <section id="portfolio" className="py-20 sm:py-32 bg-card">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-4xl sm:text-5xl font-bold">Featured Projects</h2>
-          <p className="mt-4 text-lg text-muted-foreground">A glimpse into my recent work and design explorations.</p>
+          <h2 className="font-headline text-4xl sm:text-5xl font-bold">Case Studies</h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            A selection of projects that showcase my approach to problem-solving and my commitment to creating user-centric designs.
+          </p>
         </div>
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full max-w-6xl mx-auto"
-        >
-          <CarouselContent>
-            {projects.map((project, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card className="overflow-hidden group">
-                    <CardHeader className="p-0">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={800}
-                        height={600}
-                        data-ai-hint={project.hint}
-                        className="aspect-[4/3] object-cover w-full transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </CardHeader>
-                    <CardContent className="p-6">
-                      <CardTitle className="font-headline text-2xl">{project.title}</CardTitle>
-                      <p className="mt-2 text-muted-foreground">{project.description}</p>
-                    </CardContent>
-                  </Card>
+        <div className="space-y-24">
+          {caseStudies.map((study, index) => (
+            <div
+              key={index}
+              className={`group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center`}
+            >
+              <div
+                className={`overflow-hidden rounded-lg shadow-xl ${
+                  index % 2 === 0 ? "md:order-1" : "md:order-2"
+                }`}
+              >
+                <Image
+                  src={study.image}
+                  alt={study.title}
+                  width={800}
+                  height={600}
+                  data-ai-hint={study.hint}
+                  className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                />
+              </div>
+              <div
+                className={`flex flex-col ${
+                  index % 2 === 0 ? "md:order-2" : "md:order-1"
+                }`}
+              >
+                <h3 className="font-headline text-3xl font-bold">{study.title}</h3>
+                <div className="flex flex-wrap gap-2 mt-4 mb-4">
+                  {study.tags.map((tag) => (
+                    <Badge key={tag} variant="secondary">
+                      {tag}
+                    </Badge>
+                  ))}
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex"/>
-        </Carousel>
+                <p className="text-muted-foreground text-lg mb-6">{study.description}</p>
+                <div className="flex">
+                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                    View Case Study
+                    </Button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

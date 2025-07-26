@@ -1,5 +1,4 @@
 import About from '@/components/about';
-import CaseStudies from '@/components/case-studies';
 import Contact from '@/components/contact';
 import FeaturedProjects from '@/components/featured-projects';
 import Footer from '@/components/footer';
@@ -15,7 +14,6 @@ export default function Home() {
         <Hero />
         <FeaturedProjects />
         <About />
-        <CaseStudies />
         <Testimonials />
         <Contact />
       </main>
