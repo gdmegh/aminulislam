@@ -31,13 +31,13 @@ const timelineData = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-24">
+    <section id="about" className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="lg:sticky lg:top-24">
             <div className="rounded-lg shadow-xl overflow-hidden">
                 <Image 
-                    src="https://placehold.co/600x750.png"
+                    src="/images/placeholder-600x750.png"
                     alt="Designer at work"
                     width={600}
                     height={750}

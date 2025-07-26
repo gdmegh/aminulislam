@@ -14,7 +14,7 @@ const blogPosts = [
     {
       title: "The Art of Simplicity in Design",
       description: "Exploring how minimalism and focus can lead to more intuitive and powerful user experiences.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "minimalist design",
       link: "#",
       category: "UX Principles",
@@ -23,7 +23,7 @@ const blogPosts = [
     {
       title: "Building Scalable Design Systems",
       description: "A deep dive into the architecture and strategy behind creating design systems that grow with your products.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "design system",
       link: "#",
       category: "Design Systems",
@@ -32,7 +32,7 @@ const blogPosts = [
     {
       title: "AI's Role in the Future of UX",
       description: "How artificial intelligence is shaping the next generation of user interfaces and interactions.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "ai interface",
       link: "#",
       category: "Future Tech",
@@ -41,7 +41,7 @@ const blogPosts = [
     {
       title: "User Research That Drives Results",
       description: "Methods and techniques for conducting user research that provides actionable insights for your team.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "user research",
       link: "#",
       category: "Methodology",
@@ -50,7 +50,7 @@ const blogPosts = [
     {
       title: "The Psychology of Color in UI",
       description: "Understanding how color impacts user emotion, perception, and decision-making in digital products.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "color psychology",
       link: "#",
       category: "UI Design",
@@ -60,7 +60,7 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="py-16 sm:py-24">
+    <section id="blog" className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-headline text-4xl sm:text-5xl font-bold">My Thoughts</h2>

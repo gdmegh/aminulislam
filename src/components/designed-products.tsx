@@ -13,42 +13,42 @@ const products = [
     {
       title: "SaaS Platform",
       description: "A comprehensive SaaS solution for project management.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "saas dashboard",
       link: "#",
     },
     {
       title: "Mobile Banking App",
       description: "Secure and intuitive mobile banking for a new generation.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "mobile banking",
       link: "#",
     },
     {
       title: "AI-Powered CRM",
       description: "Customer relationship management enhanced with AI.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "crm analytics",
       link: "#",
     },
     {
       title: "Healthcare Portal",
       description: "A patient-centric portal for managing health records.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "healthcare dashboard",
       link: "#",
     },
     {
       title: "E-Learning Platform",
       description: "Interactive and engaging online learning for all ages.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "elearning website",
       link: "#",
     },
     {
       title: "Travel Booking Site",
       description: "Seamlessly book your next adventure with our travel platform.",
-      image: "https://placehold.co/600x400.png",
+      image: "/images/placeholder-600x400.png",
       hint: "travel booking",
       link: "#",
     },
@@ -56,7 +56,7 @@ const products = [
 
 export default function DesignedProducts() {
   return (
-    <section id="products" className="py-16 sm:py-24">
+    <section id="products" className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-headline text-4xl sm:text-5xl font-bold">Products I've Designed</h2>

@@ -6,7 +6,7 @@ const caseStudies = [
   {
     title: "Project Phoenix: Redefining E-Commerce",
     description: "A complete overhaul of a major e-commerce platform's user experience, resulting in a 40% increase in conversion rates.",
-    image: "https://placehold.co/800x600.png",
+    image: "/images/placeholder-800x600.png",
     hint: "ecommerce website",
     tags: ["UX Research", "UI Design", "Design System"],
     link: "#",
@@ -14,7 +14,7 @@ const caseStudies = [
   {
     title: "Innovate OS: A New Mobile Frontier",
     description: "Led the design of a next-generation mobile operating system focused on productivity and seamless cross-device integration.",
-    image: "https://placehold.co/800x600.png",
+    image: "/images/placeholder-800x600.png",
     hint: "mobile interface",
     tags: ["Product Design", "Prototyping", "User Testing"],
     link: "#",
@@ -22,7 +22,7 @@ const caseStudies = [
   {
     title: "DataViz Pro: Empowering Analysts",
     description: "Designed a powerful data visualization tool that simplifies complex datasets and empowers analysts to uncover insights faster.",
-    image: "https://placehold.co/800x600.png",
+    image: "/images/placeholder-800x600.png",
     hint: "dashboard analytics",
     tags: ["Data Visualization", "SaaS", "UX Design"],
     link: "#",
@@ -31,7 +31,7 @@ const caseStudies = [
 
 export default function FeaturedProjects() {
   return (
-    <section id="portfolio" className="py-16 sm:py-24 bg-card">
+    <section id="portfolio" className="py-12 sm:py-16 bg-card">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-headline text-4xl sm:text-5xl font-bold">Case Studies</h2>

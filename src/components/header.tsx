@@ -3,16 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, CaseSensitive, Briefcase, BotMessageSquare, PenTool, BookOpen } from "lucide-react";
-import { Logo } from "./icons";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Menu, Briefcase } from "lucide-react";
 import Image from "next/image";
 
 const menuItems = [
@@ -24,9 +15,9 @@ const menuItems = [
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
         <div>
           <h3 className="font-headline text-lg text-primary mb-2">Case Studies</h3>
-          <MegaMenuItem href="#" title="Project Phoenix" description="Redefining e-commerce." image="https://placehold.co/100x75.png" hint="ecommerce" />
-          <MegaMenuItem href="#" title="Innovate OS" description="A new mobile frontier." image="https://placehold.co/100x75.png" hint="mobile" />
-          <MegaMenuItem href="#" title="DataViz Pro" description="Empowering data analysts." image="https://placehold.co/100x75.png" hint="dashboard" />
+          <MegaMenuItem href="#" title="Project Phoenix" description="Redefining e-commerce." image="/images/placeholder-100x75.png" hint="ecommerce" />
+          <MegaMenuItem href="#" title="Innovate OS" description="A new mobile frontier." image="/images/placeholder-100x75.png" hint="mobile" />
+          <MegaMenuItem href="#" title="DataViz Pro" description="Empowering data analysts." image="/images/placeholder-100x75.png" hint="dashboard" />
         </div>
         <div>
           <h3 className="font-headline text-lg text-primary mb-2">Featured Work</h3>
@@ -66,7 +57,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-8 w-8 text-primary" />
+          <Image src="/images/profile.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" />
           <span className="font-headline text-xl font-bold">Apex Portfolio</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
@@ -118,3 +109,12 @@ export default function Header() {
     </header>
   );
 }
+
+// NOTE: DropdownMenu and DropdownMenuContent seem to be missing from imports.
+// This might be intentional if they are globally available.
+// If not, they should be imported from "@/components/ui/dropdown-menu"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
