@@ -8,9 +8,7 @@ import { Menu, BotMessageSquare } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const menuItems = [
-  { label: "About", href: "#about" },
-];
+const menuItems: { label: string, href: string }[] = [];
 
 
 export default function Header() {
