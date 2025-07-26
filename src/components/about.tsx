@@ -32,13 +32,6 @@ export default function About() {
   return (
     <section id="about" className="py-20 sm:py-32">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="font-headline text-4xl sm:text-5xl font-bold text-primary">About Me</h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            A passionate designer with a decade of experience crafting intuitive, beautiful, and impactful digital experiences. Here is a brief overview of my journey.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="lg:sticky lg:top-24">
             <div className="rounded-lg shadow-xl overflow-hidden">
@@ -54,7 +47,14 @@ export default function About() {
           </div>
           
           <div className="relative">
-            <div className="absolute left-4 top-0 h-full w-0.5 bg-border" aria-hidden="true"></div>
+            <div className="max-w-4xl mb-16">
+              <h2 className="font-headline text-4xl sm:text-5xl font-bold text-primary">About Me</h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
+                A passionate designer with a decade of experience crafting intuitive, beautiful, and impactful digital experiences. Here is a brief overview of my journey.
+              </p>
+            </div>
+
+            <div className="absolute left-4 top-0 h-full w-0.5 bg-border -z-10" aria-hidden="true"></div>
             {timelineData.map((item, index) => (
               <div key={index} className="relative pl-12 pb-12">
                 <div className="absolute left-0 top-0">
