@@ -3,6 +3,7 @@ import Image from "next/image";
 import DynamicText from "./dynamic-text";
 import { Button } from "./ui/button";
 import { ArrowDown, BotMessageSquare } from "lucide-react";
+import ContactModal from "./contact-modal";
 
 export default function Hero() {
   return (
@@ -16,10 +17,12 @@ export default function Hero() {
           <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance">
             Aminul Islam<br /><DynamicText />
           </h1>
-          <Button size="lg" className="mt-8 px-10 py-6 text-lg">
-            Let's Talk
-            <BotMessageSquare className="ml-2 h-5 w-5" />
-          </Button>
+          <ContactModal>
+            <Button size="lg" className="mt-8 px-10 py-6 text-lg">
+              Let's Talk
+              <BotMessageSquare className="ml-2 h-5 w-5" />
+            </Button>
+          </ContactModal>
         </div>
       </div>
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2">

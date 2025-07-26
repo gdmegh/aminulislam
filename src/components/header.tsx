@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, BotMessageSquare } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import ContactModal from "./contact-modal";
 
 const menuItems: { label: string, href: string }[] = [];
 
@@ -16,7 +17,6 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Assuming hero section is about 90vh
       if (window.scrollY > window.innerHeight * 0.9) {
         setShowStickyButton(true);
       } else {
@@ -51,10 +51,12 @@ export default function Header() {
         <div className="flex-1 flex justify-end">
             <div className="hidden md:block">
             {showStickyButton && (
-                <Button>
-                Let's Talk
-                <BotMessageSquare className="ml-2 h-5 w-5" />
-                </Button>
+                <ContactModal>
+                    <Button>
+                        Let's Talk
+                        <BotMessageSquare className="ml-2 h-5 w-5" />
+                    </Button>
+                </ContactModal>
             )}
             </div>
         </div>
@@ -79,10 +81,12 @@ export default function Header() {
                   </Link>
                 ))}
                  {showStickyButton && (
-                    <Button className="mt-4">
-                        Let's Talk
-                        <BotMessageSquare className="ml-2 h-5 w-5" />
-                    </Button>
+                     <ContactModal>
+                        <Button className="mt-4">
+                            Let's Talk
+                            <BotMessageSquare className="ml-2 h-5 w-5" />
+                        </Button>
+                    </ContactModal>
                  )}
               </nav>
             </SheetContent>
