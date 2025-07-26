@@ -47,7 +47,6 @@ const menuItems = [
   },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
 ];
 
 function MegaMenuItem({href, title, description, image, hint}: {href:string, title: string, description: string, image: string, hint:string}) {

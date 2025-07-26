@@ -1,6 +1,5 @@
 import About from '@/components/about';
 import Blog from '@/components/blog';
-import Contact from '@/components/contact';
 import DesignedProducts from '@/components/designed-products';
 import FeaturedProjects from '@/components/featured-projects';
 import Footer from '@/components/footer';
@@ -17,7 +16,6 @@ export default function Home() {
         <DesignedProducts />
         <About />
         <Blog />
-        <Contact />
       </main>
       <Footer />
     </div>
