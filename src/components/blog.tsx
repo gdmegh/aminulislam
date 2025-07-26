@@ -9,56 +9,21 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import { Badge } from "./ui/badge";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
-const blogPosts = [
-    {
-      title: "The Art of Simplicity in Design",
-      description: "Exploring how minimalism and focus can lead to more intuitive and powerful user experiences.",
-      image: "/images/placeholder-600x400.png",
-      hint: "minimalist design",
-      link: "#",
-      category: "UX Principles",
-      date: "May 15, 2024"
-    },
-    {
-      title: "Building Scalable Design Systems",
-      description: "A deep dive into the architecture and strategy behind creating design systems that grow with your products.",
-      image: "/images/placeholder-600x400.png",
-      hint: "design system",
-      link: "#",
-      category: "Design Systems",
-      date: "April 22, 2024"
-    },
-    {
-      title: "AI's Role in the Future of UX",
-      description: "How artificial intelligence is shaping the next generation of user interfaces and interactions.",
-      image: "/images/placeholder-600x400.png",
-      hint: "ai interface",
-      link: "#",
-      category: "Future Tech",
-      date: "March 10, 2024"
-    },
-    {
-      title: "User Research That Drives Results",
-      description: "Methods and techniques for conducting user research that provides actionable insights for your team.",
-      image: "/images/placeholder-600x400.png",
-      hint: "user research",
-      link: "#",
-      category: "Methodology",
-      date: "February 28, 2024"
-    },
-    {
-      title: "The Psychology of Color in UI",
-      description: "Understanding how color impacts user emotion, perception, and decision-making in digital products.",
-      image: "/images/placeholder-600x400.png",
-      hint: "color psychology",
-      link: "#",
-      category: "UI Design",
-      date: "January 19, 2024"
-    },
-  ];
+async function getBlogPosts() {
+    const querySnapshot = await getDocs(collection(db, "blogPosts"));
+    const posts: any[] = [];
+    querySnapshot.forEach((doc) => {
+        posts.push({ id: doc.id, ...doc.data() });
+    });
+    return posts;
+}
 
-export default function Blog() {
+export default async function Blog() {
+  const blogPosts = await getBlogPosts();
+
   return (
     <section id="blog" className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
@@ -82,7 +47,7 @@ export default function Blog() {
                   <Card className="h-full flex flex-col overflow-hidden group border-primary/20 hover:border-primary/50 transition-all duration-300">
                     <div className="overflow-hidden">
                         <Image
-                        src={post.image}
+                        src={post.image || "/images/placeholder-600x400.png"}
                         alt={post.title}
                         width={600}
                         height={400}
