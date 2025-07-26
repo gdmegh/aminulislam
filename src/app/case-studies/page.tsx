@@ -7,6 +7,19 @@ import Link from 'next/link';
 
 const caseStudies = [
   {
+    title: "Citizen Portal for Ministry of Chittagong Hill Tracts Affairs",
+    slug: "citizen-portal",
+    description: "Designed a comprehensive Integrated Digital Service Delivery Platform to modernize government services through web and mobile applications, centralizing all services within a unified digital ecosystem.",
+    image: "/images/placeholder-800x600.png",
+    hint: "government citizen portal",
+    highlights: [
+        "User Research & Analysis",
+        "Wireframing & Prototyping",
+        "Usability Testing",
+        "Responsive Web & Mobile Design"
+    ],
+  },
+  {
     title: "Redesigning a Government Licensing Portal for Seamless Public Access",
     slug: "government-licensing-portal",
     description: "Led the complete UX/UI redesign of a complex licensing and NOC management platform for a government department. Transformed a paper-based, confusing system into a user-friendly digital service, improving public accessibility and reducing processing time by 40%.",
