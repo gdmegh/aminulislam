@@ -1,6 +1,5 @@
 
 import About from '@/components/about';
-import Blog from '@/components/blog';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import Hero from '@/components/hero';
@@ -14,7 +13,6 @@ export default function Home() {
         <Hero />
         <About />
         <PortfolioHighlight />
-        <Blog />
       </main>
       <Footer />
     </div>
