@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, ShieldCheck } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -248,6 +248,44 @@ const CaseStudyPage = () => {
                         </div>
                       </div>
                     </div>
+
+                    <div className="mt-12">
+                      <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">Information Architecture</h3>
+                      <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                        <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                         A well-defined information architecture was crucial for creating an intuitive and scalable platform. It organized the content and services logically, ensuring users could easily navigate the system and find what they need.
+                        </p>
+                        <div className="rounded-lg shadow-lg overflow-hidden">
+                          <Image 
+                              src="https://placehold.co/1200x800.png"
+                              alt="Information Architecture Diagram" 
+                              width={1200} 
+                              height={800} 
+                              data-ai-hint="information architecture diagram"
+                              className="w-full h-auto object-cover" 
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-12">
+                      <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
+                      <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                        <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                         To ensure security and proper functionality, we designed a user access matrix that defined the permissions and capabilities for each user persona. This matrix guided the development of role-based access control within the system.
+                        </p>
+                        <div className="rounded-lg shadow-lg overflow-hidden">
+                          <Image 
+                              src="https://placehold.co/1200x600.png"
+                              alt="User Access Matrix" 
+                              width={1200} 
+                              height={600} 
+                              data-ai-hint="access matrix chart"
+                              className="w-full h-auto object-cover" 
+                          />
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </section>
 
@@ -383,7 +421,7 @@ const CaseStudyPage = () => {
                 </div>
 
                  <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                    <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2 justify-center"><TrendingUp className="w-6 h-6 text-primary"/> Key Metrics &amp; Impact</h3>
+                    <h3 className="text-xl font-bold text-foreground mb-6 flex items-center justify-center gap-2"><TrendingUp className="w-6 h-6 text-primary"/> Key Metrics &amp; Impact</h3>
                     <div style={{ width: '100%', height: 300 }}>
                       <ResponsiveContainer>
                           <BarChart data={chartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
@@ -445,3 +483,5 @@ const CaseStudyPage = () => {
 };
 
 export default CaseStudyPage;
+
+    
