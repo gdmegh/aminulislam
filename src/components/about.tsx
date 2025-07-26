@@ -36,19 +36,6 @@ export default function About() {
     <section id="about" className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div className="lg:sticky lg:top-24">
-            <div className="rounded-lg shadow-xl overflow-hidden">
-                <Image 
-                    src="/images/gd.JPEG"
-                    alt="Designer at work"
-                    width={600}
-                    height={750}
-                    data-ai-hint="designer working"
-                    className="w-full h-auto object-cover"
-                />
-            </div>
-          </div>
-          
           <div>
             <div className="max-w-4xl mb-16">
               <h2 className="font-headline text-4xl sm:text-5xl font-bold text-primary">My Career Journey</h2>
@@ -99,6 +86,18 @@ export default function About() {
                         Download Resume
                     </a>
                 </Button>
+            </div>
+          </div>
+          <div className="lg:sticky lg:top-24">
+            <div className="rounded-lg shadow-xl overflow-hidden">
+                <Image 
+                    src="/images/gd.JPEG"
+                    alt="Designer at work"
+                    width={600}
+                    height={750}
+                    data-ai-hint="designer working"
+                    className="w-full h-auto object-cover"
+                />
             </div>
           </div>
         </div>
