@@ -3,10 +3,12 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 const caseStudies = [
   {
     title: "Redesigning a Government Licensing Portal for Seamless Public Access",
+    slug: "government-licensing-portal",
     description: "Led the complete UX/UI redesign of a complex licensing and NOC management platform for a government department. Transformed a paper-based, confusing system into a user-friendly digital service, improving public accessibility and reducing processing time by 40%.",
     image: "/images/placeholder-800x600.png",
     hint: "government portal",
@@ -20,6 +22,7 @@ const caseStudies = [
   },
   {
     title: "Building a Scalable Design System for a Growing Software Company",
+    slug: "scalable-design-system",
     description: "Created a flexible and reusable design system from scratch to unify product interfaces across multiple platforms. Standardized UI components and interaction patterns, reducing design time by 60% and improving developer handoff efficiency.",
     image: "/images/placeholder-800x600.png",
     hint: "design system",
@@ -33,6 +36,7 @@ const caseStudies = [
   },
   {
     title: "Optimizing the Onboarding Experience for a B2B SaaS Platform",
+    slug: "saas-onboarding-experience",
     description: "Improved the onboarding flow of a complex B2B SaaS platform to reduce user drop-off and increase activation. By simplifying the UX, guiding users contextually, and introducing a progress-driven dashboard, conversion rates increased by 35%.",
     image: "/images/placeholder-800x600.png",
     hint: "saas onboarding",
@@ -94,9 +98,9 @@ export default function FeaturedProjects() {
                 </div>
 
                 <div className="flex">
-                    <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                    View Case Study
-                    </Button>
+                  <Button asChild className="w-full" variant="outline">
+                    <Link href={`/case-studies/${study.slug}`}>View Case Study</Link>
+                  </Button>
                 </div>
               </div>
             </div>
