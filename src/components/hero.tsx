@@ -2,7 +2,7 @@
 import Image from "next/image";
 import DynamicText from "./dynamic-text";
 import { Button } from "./ui/button";
-import { ArrowDown, Send } from "lucide-react";
+import { ArrowDown, BotMessageSquare } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -17,7 +17,7 @@ export default function Hero() {
             Aminul Islam<br /><DynamicText />
           </h1>
           <Button size="lg" className="mt-8">
-            <Send className="mr-2 h-4 w-4" />
+            <BotMessageSquare className="mr-2 h-4 w-4" />
             Let's Talk Your Idea
           </Button>
         </div>
