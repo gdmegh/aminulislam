@@ -16,7 +16,7 @@ export default function Hero() {
             Designing Experiences, <br/>
             <span className="text-primary">Engineering Emotions.</span>
           </h1>
-          <p className="mt-6 text-xl text-muted-foreground h-8">
+          <p className="mt-6 text-2xl text-muted-foreground h-8">
             I am a <DynamicText />
           </p>
           
