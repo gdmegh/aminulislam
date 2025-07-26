@@ -157,7 +157,7 @@ const CaseStudyPage = () => {
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                     <div className="rounded-lg shadow-lg overflow-hidden">
                       <Image 
-                          src="/images/MoCHTA-UX-Diagrams-2-2.jpg"
+                          src="/images/UX-Research.png"
                           alt="Research collaboration" 
                           width={1200} 
                           height={800} 
