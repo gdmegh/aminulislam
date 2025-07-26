@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const roles = ["Product Designer", "UX<br />Leader", "Design System Architect"];
+const roles = ["Product Designer", "UX Leader", "Design System Architect"];
 
 export default function DynamicText() {
   const [index, setIndex] = useState(0);
