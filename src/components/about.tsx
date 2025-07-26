@@ -33,11 +33,11 @@ const certificationData = [
 
 export default function About() {
   return (
-    <section id="about" className="py-12 sm:py-16">
+    <section id="about" className="py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="lg:col-span-1">
-            <div className="max-w-4xl mb-16">
+            <div className="max-w-4xl mb-12">
               <h2 className="font-headline text-4xl sm:text-5xl font-bold text-primary">My Career Journey</h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
                 A passionate designer with a decade of experience crafting intuitive, beautiful, and impactful digital experiences. Here is a brief overview of my journey.
@@ -47,7 +47,7 @@ export default function About() {
             <div className="relative">
                 <div className="absolute left-4 top-12 h-[calc(100%-3rem)] w-0.5 bg-border -z-10" aria-hidden="true"></div>
                 {timelineData.map((item, index) => (
-                <div key={index} className="relative pl-12 pb-12">
+                <div key={index} className="relative pl-12 pb-8">
                     <div className="absolute left-0 top-0">
                     <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 border border-primary/20">
                         <item.icon className="w-4 h-4 text-primary" />
