@@ -78,7 +78,7 @@ export default function Header() {
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" />
-          <span className="font-headline text-xl font-bold"></span>
+          <span className={`font-headline text-xl font-bold transition-all duration-300 ${showStickyButton ? 'opacity-100 max-w-full' : 'opacity-0 max-w-0'}`}>Aminul Islam</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1">
           {menuItems.map((item) =>
