@@ -144,43 +144,19 @@ const CaseStudyPage = () => {
                   <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Clarifying the core challenge and establishing the project's goals and scope.</p>
                 </div>
 
-                <div className="grid lg:grid-cols-3 gap-12">
-                  <div className="lg:col-span-2">
-                    <h3 className="text-2xl font-bold text-foreground mb-4 font-headline">Project Overview</h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                <div className="space-y-8">
+                    <h3 className="text-2xl font-bold text-foreground font-headline">Project Overview</h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
                       The Ministry of Chittagong Hill Tracts Affairs in Bangladesh was struggling with inefficient paper-based processes, 
                       scheduling delays, and approval backlogs. We designed a comprehensive Integrated Digital Service Delivery Platform that modernizes government services 
                       through web and mobile applications, centralizing all service provider organizations and recipients 
                       within a unified digital ecosystem.
                     </p>
                     
-                    <h3 className="text-2xl font-bold text-foreground mb-4 font-headline">Problem Statement</h3>
+                    <h3 className="text-2xl font-bold text-foreground font-headline">Problem Statement</h3>
                     <p className="text-lg text-muted-foreground leading-relaxed">
                       The core problem was the lack of a centralized, user-friendly digital system for citizens to access and manage government services. This resulted in significant administrative inefficiencies, long processing times, and a frustrating experience for the public, ultimately creating a barrier to accessing essential welfare and development schemes.
                     </p>
-                  </div>
-                  
-                  <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                    <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Project Details</h3>
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Role</p>
-                        <p className="font-semibold">Sr. UX/UI Designer</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Duration</p>
-                        <p className="font-semibold">4 months</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Responsibilities</p>
-                        <ul className="text-sm space-y-1">
-                          <li>• User Research & Ideation</li>
-                          <li>• Wireframing & Prototyping</li>
-                          <li>• Usability Testing</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </section>
 
@@ -226,21 +202,31 @@ const CaseStudyPage = () => {
 
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                     <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">User Personas</h3>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
-                            <h4 className="font-bold text-foreground mb-2 text-center">Service Recipient</h4>
-                            <p className="text-foreground italic text-center text-sm">
-                                "Lokkhi Chandro is a service recipient who needs easy and user-friendly online software for applying 
-                                and tracking government schemes and services because he is socially welfare-aware."
-                            </p>
-                        </div>
-                        <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
-                            <h4 className="font-bold text-foreground mb-2 text-center">Government Administrator</h4>
-                            <p className="text-foreground italic text-center text-sm">
-                                "An admin needs a centralized dashboard to efficiently process applications, manage user data, and 
-                                communicate with citizens to reduce manual workloads and improve service delivery speed."
-                            </p>
-                        </div>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
+                          <h4 className="font-bold text-foreground mb-2 text-center">Service Recipient</h4>
+                          <p className="text-foreground italic text-center text-sm">
+                              "A citizen who needs easy, transparent access to government schemes and services without bureaucratic hurdles."
+                          </p>
+                      </div>
+                      <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
+                          <h4 className="font-bold text-foreground mb-2 text-center">Service Provider Admin</h4>
+                          <p className="text-foreground italic text-center text-sm">
+                              "An administrator from a service-providing organization who needs to manage and deliver services efficiently through the platform."
+                          </p>
+                      </div>
+                      <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
+                          <h4 className="font-bold text-foreground mb-2 text-center">Service Specific Operator</h4>
+                          <p className="text-foreground italic text-center text-sm">
+                              "An operator responsible for a specific service, needing tools to process applications and manage workflows effectively."
+                          </p>
+                      </div>
+                      <div className="bg-accent/10 rounded-lg p-6 border border-accent/20">
+                          <h4 className="font-bold text-foreground mb-2 text-center">Ministry Admin</h4>
+                          <p className="text-foreground italic text-center text-sm">
+                              "A high-level ministry official requiring a dashboard for oversight, performance tracking, and data-driven decision-making."
+                          </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -440,5 +426,3 @@ const CaseStudyPage = () => {
 };
 
 export default CaseStudyPage;
-
-    
