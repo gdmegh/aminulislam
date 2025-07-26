@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Apex Portfolio | Senior Product Designer',
+  title: 'Aminul Islam | Senior Product Designer',
   description: 'The premium portfolio of a senior product designer, showcasing elegant and impactful user experiences.',
 };
 
