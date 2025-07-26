@@ -4,61 +4,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import Link from 'next/link';
+import { caseStudies } from '@/lib/case-studies';
 
-const caseStudies = [
-  {
-    title: "Citizen Portal for Ministry of Chittagong Hill Tracts Affairs",
-    slug: "citizen-portal",
-    description: "Designed a comprehensive Integrated Digital Service Delivery Platform to modernize government services through web and mobile applications, centralizing all services within a unified digital ecosystem.",
-    image: "/images/placeholder-800x600.png",
-    hint: "government citizen portal",
-    highlights: [
-        "User Research & Analysis",
-        "Wireframing & Prototyping",
-        "Usability Testing",
-        "Responsive Web & Mobile Design"
-    ],
-  },
-  {
-    title: "Redesigning a Government Licensing Portal for Seamless Public Access",
-    slug: "government-licensing-portal",
-    description: "Led the complete UX/UI redesign of a complex licensing and NOC management platform for a government department. Transformed a paper-based, confusing system into a user-friendly digital service, improving public accessibility and reducing processing time by 40%.",
-    image: "/images/placeholder-800x600.png",
-    hint: "government portal",
-    highlights: [
-      "Conducted stakeholder interviews and user journey mapping",
-      "Developed personas and information architecture",
-      "Designed and tested high-fidelity prototypes",
-      "Delivered a design system for long-term scalability",
-    ],
-  },
-  {
-    title: "Building a Scalable Design System for a Growing Software Company",
-    slug: "scalable-design-system",
-    description: "Created a flexible and reusable design system from scratch to unify product interfaces across multiple platforms. Standardized UI components and interaction patterns, reducing design time by 60% and improving developer handoff efficiency.",
-    image: "/images/placeholder-800x600.png",
-    hint: "design system",
-    highlights: [
-        "Conducted interface audits across all products",
-        "Defined design principles, components, and accessibility standards",
-        "Created documentation and trained cross-functional teams",
-        "Scaled the system across web and mobile apps"
-    ],
-  },
-  {
-    title: "Optimizing the Onboarding Experience for a B2B SaaS Platform",
-    slug: "saas-onboarding-experience",
-    description: "Improved the onboarding flow of a complex B2B SaaS platform to reduce user drop-off and increase activation. By simplifying the UX, guiding users contextually, and introducing a progress-driven dashboard, conversion rates increased by 35%.",
-    image: "/images/placeholder-800x600.png",
-    hint: "saas onboarding",
-    highlights: [
-        "Analyzed funnel drop-offs and user feedback",
-        "Simplified form interactions and added micro-copy",
-        "Prototyped and A/B tested onboarding variations",
-        "Collaborated closely with product and dev teams for implementation"
-    ],
-  },
-];
 
 export default function CaseStudiesPage() {
   return (
@@ -102,7 +49,7 @@ export default function CaseStudiesPage() {
                     <p className="text-muted-foreground text-lg my-6">{study.description}</p>
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-6">
-                      {study.highlights.map((highlight, hIndex) => (
+                      {study.highlights && study.highlights.map((highlight, hIndex) => (
                         <div key={hIndex} className="flex items-start gap-3">
                           <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                           <p className="text-muted-foreground">{highlight}</p>
@@ -126,3 +73,5 @@ export default function CaseStudiesPage() {
     </div>
   );
 }
+
+    

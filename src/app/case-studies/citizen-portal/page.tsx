@@ -1,11 +1,13 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Image from 'next/image';
+import { caseStudies } from '@/lib/case-studies';
+import { notFound } from 'next/navigation';
 
 const chartData = [
   { name: 'Processing Time', 'Reduction': 40 },
@@ -15,6 +17,11 @@ const chartData = [
 ];
 
 const CaseStudyPage = () => {
+  const study = caseStudies.find(cs => cs.slug === 'citizen-portal');
+
+  if (!study) {
+    notFound();
+  }
 
   const painPoints = [
     {
@@ -89,10 +96,10 @@ const CaseStudyPage = () => {
                 Government Digital Transformation
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight font-headline">
-                Citizen Portal
+                {study.title}
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Integrated Digital Service Delivery Platform for Ministry of Chittagong Hill Tracts Affairs
+                {study.description}
               </p>
               <div className="flex flex-wrap gap-6 text-sm">
                 <div className="flex items-center gap-2">
@@ -111,11 +118,11 @@ const CaseStudyPage = () => {
             </div>
             <div className="relative">
                 <Image 
-                    src="/images/placeholder-800x600.png"
-                    alt="Citizen Portal Mockup"
+                    src={study.image}
+                    alt={study.title}
                     width={800}
                     height={600}
-                    data-ai-hint="citizen portal app"
+                    data-ai-hint={study.hint}
                     className="rounded-lg shadow-xl"
                 />
             </div>
@@ -396,3 +403,5 @@ const CaseStudyPage = () => {
 };
 
 export default CaseStudyPage;
+
+    
