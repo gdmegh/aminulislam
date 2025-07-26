@@ -1,6 +1,7 @@
+
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { Github, Linkedin, Twitter, Dribbble } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -14,23 +15,8 @@ export default function Footer() {
           </div>
           <div className="flex gap-2">
             <Button variant="ghost" size="icon" asChild>
-              <Link href="#" aria-label="Twitter">
-                <Twitter className="h-5 w-5" />
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="#" aria-label="GitHub">
-                <Github className="h-5 w-5" />
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="#" aria-label="LinkedIn">
+              <Link href="https://www.linkedin.com/in/gdmegh/" target="_blank" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="#" aria-label="Dribbble">
-                <Dribbble className="h-5 w-5" />
               </Link>
             </Button>
           </div>
