@@ -229,6 +229,25 @@ const CaseStudyPage = () => {
                         ))}
                       </div>
                     </div>
+
+                    <div>
+                      <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Journey Map</h3>
+                      <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                        <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                          Mapping the user journey was critical to visualize the user's experience and identify key touchpoints for improvement. The journey map below illustrates the path of a service recipient, from awareness to application submission and tracking.
+                        </p>
+                        <div className="rounded-lg shadow-lg overflow-hidden">
+                          <Image 
+                              src="https://placehold.co/1200x400.png"
+                              alt="User Journey Map" 
+                              width={1200} 
+                              height={400} 
+                              data-ai-hint="user journey map"
+                              className="w-full h-auto object-cover" 
+                          />
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </section>
 
