@@ -34,9 +34,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between relative">
         <div className="flex-1 flex justify-start">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2 whitespace-nowrap">
                 <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" />
-                <span className={`font-headline text-xl font-bold transition-opacity duration-300 ${showStickyButton ? 'opacity-100' : 'opacity-0'}`}>Aminul Islam</span>
+                <span className={`font-headline text-xl font-bold transition-opacity duration-300`}>Aminul Islam</span>
             </Link>
         </div>
         
