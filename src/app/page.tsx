@@ -1,5 +1,6 @@
 import About from '@/components/about';
 import Contact from '@/components/contact';
+import DesignedProducts from '@/components/designed-products';
 import FeaturedProjects from '@/components/featured-projects';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
@@ -13,6 +14,7 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <FeaturedProjects />
+        <DesignedProducts />
         <About />
         <Testimonials />
         <Contact />

@@ -35,7 +35,7 @@ export default function FeaturedProjects() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-headline text-4xl sm:text-5xl font-bold">Case Studies</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
             A selection of projects that showcase my approach to problem-solving and my commitment to creating user-centric designs.
           </p>
         </div>
