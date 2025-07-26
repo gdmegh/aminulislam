@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -132,20 +132,29 @@ const CaseStudyPage = () => {
 
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-              {/* Overview Section */}
-              <section id="overview" className="mb-20">
+              
+              {/* Define Stage */}
+              <section id="define" className="mb-20">
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
+                    <Pencil className="w-5 h-5"/>
+                    <span>DEFINE</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-foreground font-headline">The Problem & Project Vision</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Clarifying the core challenge and establishing the project's goals and scope.</p>
+                </div>
+
                 <div className="grid lg:grid-cols-3 gap-12">
                   <div className="lg:col-span-2">
-                    <h2 className="text-3xl font-bold text-foreground mb-6 font-headline">Project Overview</h2>
+                    <h3 className="text-2xl font-bold text-foreground mb-4 font-headline">Project Overview</h3>
                     <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                       The Ministry of Chittagong Hill Tracts Affairs in Bangladesh was struggling with inefficient paper-based processes, 
-                      scheduling delays, and approval backlogs. The absence of a streamlined digital platform was creating communication 
-                      gaps and hindering the ministry's ability to serve citizens effectively. We designed a comprehensive Integrated Digital Service Delivery Platform that modernizes government services 
-                      through web and mobile applications. The platform centralizes all service provider organizations and recipients 
-                      within a unified digital ecosystem, featuring scheme management, registrations, and streamlined communication.
+                      scheduling delays, and approval backlogs. We designed a comprehensive Integrated Digital Service Delivery Platform that modernizes government services 
+                      through web and mobile applications, centralizing all service provider organizations and recipients 
+                      within a unified digital ecosystem.
                     </p>
                     
-                    <h2 className="text-3xl font-bold text-foreground mb-6 font-headline">Problem Statement</h2>
+                    <h3 className="text-2xl font-bold text-foreground mb-4 font-headline">Problem Statement</h3>
                     <p className="text-lg text-muted-foreground leading-relaxed">
                       The core problem was the lack of a centralized, user-friendly digital system for citizens to access and manage government services. This resulted in significant administrative inefficiencies, long processing times, and a frustrating experience for the public, ultimately creating a barrier to accessing essential welfare and development schemes.
                     </p>
@@ -165,9 +174,9 @@ const CaseStudyPage = () => {
                       <div>
                         <p className="text-sm text-muted-foreground mb-1">Responsibilities</p>
                         <ul className="text-sm space-y-1">
-                          <li>• User Research</li>
-                          <li>• Wireframing</li>
-                          <li>• Prototyping</li>
+                          <li>• User Research & Ideation</li>
+                          <li>• Wireframing & Prototyping</li>
+                          <li>• Usability Testing</li>
                         </ul>
                       </div>
                     </div>
@@ -175,10 +184,15 @@ const CaseStudyPage = () => {
                 </div>
               </section>
 
-              {/* Research Section */}
-              <section id="research" className="mb-20">
-                <div className="text-center mb-8">
-                  <h2 className="text-2xl font-bold text-foreground font-headline">User Research & Insights</h2>
+              {/* Empathize Stage */}
+              <section id="empathize" className="mb-20">
+                <div className="text-center mb-12">
+                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
+                    <Users2 className="w-5 h-5"/>
+                    <span>EMPATHIZE</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-foreground font-headline">Understanding the User</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Gaining deep insights into user behaviors, needs, and motivations through comprehensive research.</p>
                 </div>
                 
                 <div className="space-y-12">
@@ -222,36 +236,52 @@ const CaseStudyPage = () => {
                 </div>
               </section>
 
-              {/* Design Process Section */}
-              <section id="design" className="mb-20">
-                 <div className="text-center mb-8">
-                   <h2 className="text-2xl font-bold text-foreground font-headline">Design Process</h2>
-                 </div>
+              {/* Ideate Stage */}
+              <section id="ideate" className="mb-20">
+                 <div className="text-center mb-12">
+                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
+                    <Bot className="w-5 h-5"/>
+                    <span>IDEATE</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-foreground font-headline">Brainstorming Solutions</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Generating a wide range of creative ideas and design approaches to address the identified user needs.</p>
+                </div>
 
-                <div className="space-y-12">
-                  <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Wireframing Approach</h3>
-                      <p className="text-muted-foreground leading-relaxed mb-6">
-                        I invested time in sketching multiple versions of both mobile app and web homepage designs on paper, 
-                        ensuring that elements transitioning to digital wireframes were meticulously crafted to address user 
-                        pain points effectively.
-                      </p>
-                      <div className="bg-primary/5 rounded-lg p-6 border border-primary/10">
-                        <h4 className="font-semibold text-foreground mb-2">Key Design Decisions</h4>
-                        <ul className="text-sm text-muted-foreground space-y-2">
-                          <li>• Services menu positioned at the top for swift access</li>
-                          <li>• Left-side filtering for easy navigation</li>
-                          <li>• Sticky bar on right side for mouse-friendly interaction</li>
-                        </ul>
-                      </div>
-                    </div>
-                    
+                <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                  <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Wireframing Approach</h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    I invested time in sketching multiple versions of both mobile app and web homepage designs on paper, 
+                    ensuring that elements transitioning to digital wireframes were meticulously crafted to address user 
+                    pain points effectively. This low-fidelity approach allowed for rapid iteration and exploration of various layouts and user flows before committing to digital designs.
+                  </p>
+                  <div className="bg-primary/5 rounded-lg p-6 border border-primary/10">
+                    <h4 className="font-semibold text-foreground mb-2">Key Design Decisions from Ideation</h4>
+                    <ul className="text-sm text-muted-foreground space-y-2">
+                      <li>• A prominent services menu should be at the top for swift access to core functions.</li>
+                      <li>• A persistent left-side filtering system would be needed for easy navigation through complex service lists.</li>
+                      <li>• A sticky action bar on the right side of the screen would improve mouse-friendly interaction on larger screens.</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              {/* Prototype Stage */}
+              <section id="prototype" className="mb-20">
+                <div className="text-center mb-12">
+                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
+                    <Search className="w-5 h-5"/>
+                    <span>PROTOTYPE</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-foreground font-headline">Building the Solution</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Creating interactive, high-fidelity mockups to simulate the final product and prepare for user testing.</p>
+                </div>
+
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Prototype Development</h3>
                       <p className="text-muted-foreground leading-relaxed mb-6">
                         The prototypes were developed for both mobile and web platforms, integrating with the primary user 
-                        journey and encompassing creation and ordering processes within the citizen portal.
+                        journey and encompassing creation and ordering processes within the citizen portal. These were not just static images but interactive models that allowed for realistic user flow testing.
                       </p>
                       <div className="space-y-4">
                         <a href="#" className="flex items-center gap-2 text-primary hover:underline font-medium">
@@ -264,50 +294,60 @@ const CaseStudyPage = () => {
                         </a>
                       </div>
                     </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Usability Study Results</h3>
-                    <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                      <div className="grid md:grid-cols-2 gap-8">
-                        {usabilityFindings.map((round, index) => (
-                          <div key={index}>
-                            <h4 className="font-bold text-foreground mb-4">{round.round}</h4>
-                            <ul className="space-y-3">
-                              {round.findings.map((finding, findingIndex) => (
-                                <li key={findingIndex} className="flex items-start gap-3">
-                                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                                  <span className="text-muted-foreground text-sm">{finding}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
+                    
+                    <div>
+                        <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Accessibility Considerations</h3>
+                        <div className="space-y-4">
+                            {accessibilityFeatures.map((feature, index) => (
+                                <div key={index} className="flex items-start gap-3">
+                                    <div className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-1">
+                                        {feature.icon}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-foreground">{feature.title}</h4>
+                                        <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                  </div>
                 </div>
               </section>
 
-              {/* Accessibility Section */}
-              <section id="accessibility" className="mb-20">
-                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Accessibility Considerations</h2>
-                <div className="grid md:grid-cols-3 gap-6">
-                  {accessibilityFeatures.map((feature, index) => (
-                    <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border hover:shadow-xl hover:border-primary/20 transition-all">
-                      <div className="bg-primary text-primary-foreground rounded-full w-10 h-10 flex items-center justify-center font-bold mb-4 mx-auto">
-                        {feature.icon}
+
+              {/* Test Stage */}
+              <section id="test" className="mb-20">
+                <div className="text-center mb-12">
+                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
+                    <CheckCircle className="w-5 h-5"/>
+                    <span>TEST</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-foreground font-headline">Validating the Design</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Gathering user feedback on the prototypes to identify usability issues and areas for refinement.</p>
+                </div>
+                <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                  <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">Usability Study Results</h3>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {usabilityFindings.map((round, index) => (
+                      <div key={index}>
+                        <h4 className="font-bold text-foreground mb-4">{round.round}</h4>
+                        <ul className="space-y-3">
+                          {round.findings.map((finding, findingIndex) => (
+                            <li key={findingIndex} className="flex items-start gap-3">
+                              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                              <span className="text-muted-foreground text-sm">{finding}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <h3 className="font-bold text-foreground mb-3 text-center">{feature.title}</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed text-center">{feature.description}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </section>
 
               {/* Impact & Results */}
               <section id="impact" className="mb-20">
-                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Impact & Results</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-8 font-headline text-center">Impact & Results</h2>
                 <div className="grid lg:grid-cols-2 gap-12 mb-12 items-center">
                   <div className="bg-green-500/10 rounded-2xl p-8 border border-green-500/20">
                     <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Project Impact</h3>
@@ -352,7 +392,7 @@ const CaseStudyPage = () => {
 
               {/* Next Steps */}
               <section id="next" className="mb-20">
-                <h2 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Next Steps</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-8 font-headline text-center">Next Steps</h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {[
                     {
@@ -403,5 +443,3 @@ const CaseStudyPage = () => {
 };
 
 export default CaseStudyPage;
-
-    
