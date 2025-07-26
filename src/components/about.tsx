@@ -39,7 +39,7 @@ export default function About() {
           <div className="lg:sticky lg:top-24">
             <div className="rounded-lg shadow-xl overflow-hidden">
                 <Image 
-                    src="/images/aminulislamprofile.jpeg"
+                    src="/images/gd.JPEG"
                     alt="Designer at work"
                     width={600}
                     height={750}
@@ -51,7 +51,7 @@ export default function About() {
           
           <div>
             <div className="max-w-4xl mb-16">
-              <h2 className="font-headline text-4xl sm:text-5xl font-bold text-primary">Career Journey</h2>
+              <h2 className="font-headline text-4xl sm:text-5xl font-bold text-primary">My Career Journey</h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
                 A passionate designer with a decade of experience crafting intuitive, beautiful, and impactful digital experiences. Here is a brief overview of my journey.
               </p>
@@ -93,9 +93,11 @@ export default function About() {
             </div>
 
             <div className="mt-12">
-                 <Button className="w-full">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Resume
+                 <Button asChild className="w-full">
+                    <a href="/Islam-Resume.pdf" download>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Resume
+                    </a>
                 </Button>
             </div>
           </div>
