@@ -97,7 +97,7 @@ export default function Blog() {
                         </div>
                         <CardTitle className="font-headline text-2xl mb-2 flex-grow">{post.title}</CardTitle>
                         <CardDescription>{post.description}</CardDescription>
-                        <Button variant="link" className="p-0 h-auto mt-4 self-start">
+                        <Button variant="link" className="w-full justify-start p-0 h-auto mt-4 self-start">
                             Read More &rarr;
                         </Button>
                     </CardContent>

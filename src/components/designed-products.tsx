@@ -89,7 +89,7 @@ export default function DesignedProducts() {
                     <CardContent className="p-6 flex-grow flex flex-col">
                         <CardTitle className="font-headline text-2xl mb-2">{product.title}</CardTitle>
                         <CardDescription className="flex-grow">{product.description}</CardDescription>
-                        <Button variant="link" className="p-0 h-auto mt-4 self-start">
+                        <Button variant="link" className="w-full justify-start p-0 h-auto mt-4 self-start">
                             Learn More &rarr;
                         </Button>
                     </CardContent>

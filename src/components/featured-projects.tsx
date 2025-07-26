@@ -94,7 +94,7 @@ export default function FeaturedProjects() {
                 </div>
 
                 <div className="flex">
-                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                    <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                     View Case Study
                     </Button>
                 </div>
