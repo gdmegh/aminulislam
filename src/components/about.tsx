@@ -37,7 +37,7 @@ export default function About() {
           <div className="lg:sticky lg:top-24">
             <div className="rounded-lg shadow-xl overflow-hidden">
                 <Image 
-                    src="/images/placeholder-600x750.png"
+                    src="/images/aminulislamprofile.jpeg"
                     alt="Designer at work"
                     width={600}
                     height={750}

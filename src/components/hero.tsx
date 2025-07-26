@@ -16,9 +16,9 @@ export default function Hero() {
           <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance">
             Aminul Islam<br /><DynamicText />
           </h1>
-          <Button size="lg" className="mt-8">
+          <Button size="lg" className="mt-8 px-10 py-6 text-lg">
             Let's Talk Your Idea
-            <BotMessageSquare className="ml-2 h-4 w-4" />
+            <BotMessageSquare className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </div>

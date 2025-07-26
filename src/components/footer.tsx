@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Github, Linkedin, Twitter, Dribbble } from "lucide-react";
-import { Logo } from "./icons";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,8 +9,8 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2">
-            <Logo className="h-8 w-8 text-primary" />
-            <span className="font-headline text-xl font-bold">Apex Portfolio</span>
+            <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" />
+            <span className="font-headline text-xl font-bold">Aminul Islam</span>
           </div>
           <div className="flex gap-2">
             <Button variant="ghost" size="icon" asChild>
