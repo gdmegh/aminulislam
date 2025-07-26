@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Briefcase, BotMessageSquare } from "lucide-react";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 const menuItems = [
   {
@@ -53,7 +54,25 @@ function MegaMenuItem({href, title, description, image, hint}: {href:string, tit
   )
 }
 
-export default function Header({ showStickyButton }: { showStickyButton?: boolean }) {
+export default function Header() {
+  const [showStickyButton, setShowStickyButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Assuming hero section is about 90vh
+      if (window.scrollY > window.innerHeight * 0.9) {
+        setShowStickyButton(true);
+      } else {
+        setShowStickyButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
@@ -129,4 +148,3 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
