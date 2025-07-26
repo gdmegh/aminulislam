@@ -1,6 +1,8 @@
+
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { CheckCircle2 } from "lucide-react";
 
 const caseStudies = [
   {
@@ -8,7 +10,12 @@ const caseStudies = [
     description: "Led the complete UX/UI redesign of a complex licensing and NOC management platform for a government department. Transformed a paper-based, confusing system into a user-friendly digital service, improving public accessibility and reducing processing time by 40%.",
     image: "/images/placeholder-800x600.png",
     hint: "government portal",
-    tags: ["UX Research", "UI Design", "Prototyping", "Design System"],
+    highlights: [
+      "Conducted stakeholder interviews and user journey mapping",
+      "Developed personas and information architecture",
+      "Designed and tested high-fidelity prototypes",
+      "Delivered a design system for long-term scalability",
+    ],
     link: "#",
   },
   {
@@ -16,7 +23,12 @@ const caseStudies = [
     description: "Created a flexible and reusable design system from scratch to unify product interfaces across multiple platforms. Standardized UI components and interaction patterns, reducing design time by 60% and improving developer handoff efficiency.",
     image: "/images/placeholder-800x600.png",
     hint: "design system",
-    tags: ["Design System", "UI Components", "Documentation", "Scalability"],
+    highlights: [
+        "Conducted interface audits across all products",
+        "Defined design principles, components, and accessibility standards",
+        "Created documentation and trained cross-functional teams",
+        "Scaled the system across web and mobile apps"
+    ],
     link: "#",
   },
   {
@@ -24,7 +36,12 @@ const caseStudies = [
     description: "Improved the onboarding flow of a complex B2B SaaS platform to reduce user drop-off and increase activation. By simplifying the UX, guiding users contextually, and introducing a progress-driven dashboard, conversion rates increased by 35%.",
     image: "/images/placeholder-800x600.png",
     hint: "saas onboarding",
-    tags: ["UX Analysis", "A/B Testing", "Prototyping", "Collaboration"],
+    highlights: [
+        "Analyzed funnel drop-offs and user feedback",
+        "Simplified form interactions and added micro-copy",
+        "Prototyped and A/B tested onboarding variations",
+        "Collaborated closely with product and dev teams for implementation"
+    ],
     link: "#",
   },
 ];
@@ -65,14 +82,17 @@ export default function FeaturedProjects() {
                 }`}
               >
                 <h3 className="font-headline text-3xl font-bold">{study.title}</h3>
-                <div className="flex flex-wrap gap-2 mt-4 mb-4">
-                  {study.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary">
-                      {tag}
-                    </Badge>
+                <p className="text-muted-foreground text-lg my-6">{study.description}</p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-6">
+                  {study.highlights.map((highlight, hIndex) => (
+                    <div key={hIndex} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                      <p className="text-muted-foreground">{highlight}</p>
+                    </div>
                   ))}
                 </div>
-                <p className="text-muted-foreground text-lg mb-6">{study.description}</p>
+
                 <div className="flex">
                     <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                     View Case Study
