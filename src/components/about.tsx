@@ -1,5 +1,6 @@
-import { Award, Briefcase, Lightbulb } from "lucide-react";
+import { Award, Briefcase, Download, Lightbulb } from "lucide-react";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 const timelineData = [
   {
@@ -54,7 +55,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="absolute left-4 top-0 h-full w-0.5 bg-border -z-10" aria-hidden="true"></div>
+            <div className="absolute left-4 top-36 h-full w-0.5 bg-border -z-10" aria-hidden="true"></div>
             {timelineData.map((item, index) => (
               <div key={index} className="relative pl-12 pb-12">
                 <div className="absolute left-0 top-0">
@@ -69,6 +70,12 @@ export default function About() {
                 </div>
               </div>
             ))}
+            <div className="pl-16">
+                 <Button className="w-full mt-8">
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Resume
+                </Button>
+            </div>
           </div>
         </div>
       </div>
