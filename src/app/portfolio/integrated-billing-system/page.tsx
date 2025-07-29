@@ -9,6 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
 import { notFound } from 'next/navigation';
+import ProjectImpactChart from '@/components/project-impact-chart';
 
 const chartData = [
   { name: 'Invoicing Time', 'Reduction': 60 },
@@ -100,15 +101,9 @@ const IntegratedBillingSystemPage = () => {
               </div>
             </div>
             <div className="relative">
-                <Image 
-                    src={study.image}
-                    alt={study.title}
-                    width={800}
-                    height={600}
-                    role="img"
-                    data-ai-hint={study.hint}
-                    className="rounded-lg shadow-xl"
-                />
+                 {study.metrics && (
+                    <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                  )}
             </div>
           </div>
         </div>
@@ -398,3 +393,5 @@ const IntegratedBillingSystemPage = () => {
 };
 
 export default IntegratedBillingSystemPage;
+
+    
