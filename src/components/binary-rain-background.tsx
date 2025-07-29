@@ -12,13 +12,13 @@ const BinaryRainBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
     let drops: number[] = [];
     let columns = 0;
     const fontSize = 16;
     const binary = '01';
 
     const setup = () => {
+        if (!canvas) return;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         columns = canvas.width / fontSize;
@@ -29,6 +29,7 @@ const BinaryRainBackground: React.FC = () => {
     }
 
     const draw = () => {
+      if (!ctx || !canvas) return;
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
