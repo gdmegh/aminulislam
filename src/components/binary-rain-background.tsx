@@ -13,29 +13,26 @@ const BinaryRainBackground: React.FC = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
+    let drops: number[] = [];
+    let columns = 0;
+    const fontSize = 16;
+    const binary = '01';
 
-    const resizeCanvas = () => {
+    const setup = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-    }
-    
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    const binary = '01';
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops: number[] = [];
-
-    for (let x = 0; x < columns; x++) {
-      drops[x] = 1;
+        columns = canvas.width / fontSize;
+        drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
     }
 
     const draw = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#00ff00'; // Green text
+      ctx.fillStyle = '#FFD700'; // Golden color
       ctx.font = fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
@@ -45,25 +42,33 @@ const BinaryRainBackground: React.FC = () => {
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
-
         drops[i]++;
       }
     };
+    
+    let intervalId: NodeJS.Timeout;
 
-    const animate = () => {
-        draw();
-        animationFrameId = window.requestAnimationFrame(animate);
+    const startAnimation = () => {
+        setup();
+        intervalId = setInterval(draw, 40);
+    }
+
+    startAnimation();
+
+    const handleResize = () => {
+        clearInterval(intervalId);
+        startAnimation();
     }
     
-    animate();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resizeCanvas);
+      clearInterval(intervalId);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />;
+  return <canvas ref={canvasRef} className="absolute top-0 left-0 -z-10" />;
 };
 
 export default BinaryRainBackground;
