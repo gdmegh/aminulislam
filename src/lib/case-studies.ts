@@ -39,4 +39,17 @@ export const caseStudies = [
       "Analytics & Performance Reporting"
     ],
   },
+  {
+    title: "Court Management System",
+    slug: "court-management-system",
+    description: "A comprehensive system to digitize and streamline court proceedings, from case filing and scheduling to verdict delivery and records management.",
+    image: "https://placehold.co/800x600.png",
+    hint: "court management",
+    highlights: [
+      "Digital Case Filing & Management",
+      "Automated Scheduling & Calendaring",
+      "Secure Document & Evidence Handling",
+      "Judicial Dashboards & Analytics"
+    ],
+  },
 ];
