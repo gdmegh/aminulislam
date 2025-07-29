@@ -52,4 +52,17 @@ export const caseStudies = [
       "Judicial Dashboards & Analytics"
     ],
   },
+  {
+    title: "Integrated Billing System SaaS",
+    slug: "integrated-billing-system",
+    description: "A multi-tenant SaaS platform to automate the entire billing lifecycle, from invoicing and subscriptions to payment processing and revenue recognition.",
+    image: "https://placehold.co/800x600.png",
+    hint: "billing dashboard",
+    highlights: [
+      "Automated Recurring Billing",
+      "Subscription Management",
+      "Payment Gateway Integration",
+      "Financial Reporting & Analytics"
+    ],
+  },
 ];

@@ -16,6 +16,7 @@ import CitizenPortalPage from '../citizen-portal/page';
 import ComplaintManagementPage from '../complaint-management-system/page';
 import QueueManagementPage from '../queue-management-system/page';
 import CourtManagementPage from '../court-management-system/page';
+import IntegratedBillingSystemPage from '../integrated-billing-system/page';
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
   const study = caseStudies.find(cs => cs.slug === params.slug);
@@ -40,6 +41,10 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
   if (study.slug === 'court-management-system') {
     return <CourtManagementPage />;
+  }
+
+  if (study.slug === 'integrated-billing-system') {
+    return <IntegratedBillingSystemPage />;
   }
 
   // Generic Case Study Page Layout
