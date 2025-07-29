@@ -1,11 +1,11 @@
 
 "use client"
 import React from 'react';
-import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, DollarSign } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, DollarSign, BrainCircuit, Rocket } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend, AreaChart, Area } from 'recharts';
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
 import { notFound } from 'next/navigation';
@@ -17,6 +17,22 @@ const chartData = [
   { name: 'Billing Errors', 'Reduction': 85 },
   { name: 'Customer Retention', 'Increase': 20 },
 ];
+
+const researchOutcomeData = [
+    { name: 'Billing Errors', value: 45 },
+    { name: 'Complex Subscriptions', value: 30 },
+    { name: 'Manual Reconciliation', value: 15 },
+    { name: 'Poor Reporting', value: 10 },
+];
+
+const futureRoadmapData = [
+  { year: 'Years 1-2', 'AI & ML': 20, 'Advanced Analytics': 30, 'Global Payments': 10 },
+  { year: 'Years 3-5', 'AI & ML': 40, 'Advanced Analytics': 60, 'Global Payments': 40 },
+  { year: 'Years 6-10', 'AI & ML': 80, 'Advanced Analytics': 90, 'Global Payments': 80 },
+];
+
+const COLORS = ['hsl(var(--primary))', 'hsl(var(--accent))', 'hsl(var(--chart-3))', 'hsl(var(--chart-4))'];
+
 
 const IntegratedBillingSystemPage = () => {
   const study = caseStudies.find(cs => cs.slug === 'integrated-billing-system');
@@ -120,30 +136,44 @@ const IntegratedBillingSystemPage = () => {
                     <span>EMPATHIZE</span>
                   </div>
                   <h2 className="text-3xl font-bold text-foreground font-headline">Understanding Financial Workflows</h2>
-                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Conducted interviews with small business owners, accountants, and finance managers to map out the entire billing process, from customer acquisition to revenue reporting.</p>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">Conducted interviews with 40+ small business owners, accountants, and finance managers to map out the entire billing process, from customer acquisition to revenue reporting.</p>
                 </div>
                 
                 <div className="space-y-12">
-                  <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
-                    <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Focus</h3>
-                    <p className="text-muted-foreground leading-relaxed text-center">
-                      The research focused on identifying the most time-consuming and error-prone stages of the billing cycle. We explored challenges in subscription management, payment processing, and financial reporting to pinpoint key areas for automation and improvement.
-                    </p>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                    <div className="rounded-lg shadow-lg overflow-hidden">
-                      <Image 
-                          src="https://placehold.co/1200x800.png"
-                          alt="Finance team meeting" 
-                          width={1200} 
-                          height={800} 
-                          role="img"
-                          data-ai-hint="finance meeting"
-                          className="w-full h-auto object-cover" 
-                      />
+                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                        <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">Research Interview Outcome</h3>
+                        <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                            The qualitative interviews with 40 participants revealed that billing errors were the most significant pain point, followed closely by the complexities of managing subscriptions.
+                        </p>
+                        <div style={{ width: '100%', height: 350 }}>
+                            <ResponsiveContainer>
+                                <PieChart>
+                                    <Pie
+                                    data={researchOutcomeData}
+                                    cx="50%"
+                                    cy="50%"
+                                    labelLine={false}
+                                    outerRadius={120}
+                                    fill="#8884d8"
+                                    dataKey="value"
+                                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                                    >
+                                    {researchOutcomeData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    ))}
+                                    </Pie>
+                                    <Tooltip
+                                        contentStyle={{
+                                        backgroundColor: "hsl(var(--background))",
+                                        borderColor: "hsl(var(--border))",
+                                        color: "hsl(var(--foreground))"
+                                        }}
+                                    />
+                                    <Legend />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
-                  </div>
                 </div>
               </section>
 
@@ -353,35 +383,39 @@ const IntegratedBillingSystemPage = () => {
                 </div>
               </section>
 
-              {/* Next Steps */}
+              {/* Future Roadmap */}
               <section id="next" className="mb-20">
-                <h2 className="text-3xl font-bold text-foreground mb-8 font-headline text-center">Next Steps</h2>
-                <div className="grid md:grid-cols-3 gap-6">
-                  {[
-                    {
-                      step: "01",
-                      title: "Advanced Reporting",
-                      description: "Develop a customizable reporting engine for users to build their own financial reports and dashboards."
-                    },
-                    {
-                      step: "02", 
-                      title: "Usage-Based Billing",
-                      description: "Implement metered and usage-based billing models to support a wider range of SaaS business types."
-                    },
-                    {
-                      step: "03",
-                      title: "Marketplace & Integrations",
-                      description: "Build out a marketplace for third-party integrations with accounting, CRM, and tax software."
-                    }
-                  ].map((item, index) => (
-                    <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border text-center">
-                      <div className="bg-primary text-primary-foreground rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm mb-4 mx-auto">
-                        {item.step}
-                      </div>
-                      <h3 className="font-bold text-foreground mb-3">{item.title}</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                <div className="text-center mb-12">
+                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
+                    <Rocket className="w-5 h-5"/>
+                    <span>FUTURE ROADMAP</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-foreground font-headline">A 100-Year Vision for Billing</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">This system is built to evolve. The long-term vision is to create a fully autonomous financial OS for businesses, leveraging future technology integrations.</p>
+                </div>
+                 <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                    <h3 className="text-xl font-bold text-foreground mb-6 flex items-center justify-center gap-2"><BrainCircuit className="w-6 h-6 text-primary"/> Phased Technology Integration Plan</h3>
+                    <p className="text-muted-foreground text-center mb-8">The roadmap prioritizes key technology areas to be integrated over the next decade, laying the groundwork for a century of innovation.</p>
+                    <div style={{ width: '100%', height: 300 }}>
+                       <ResponsiveContainer>
+                          <AreaChart data={futureRoadmapData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                              <XAxis dataKey="year" stroke="hsl(var(--muted-foreground))" fontSize={12} />
+                              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} unit="%" />
+                              <Tooltip
+                                contentStyle={{
+                                  backgroundColor: "hsl(var(--background))",
+                                  borderColor: "hsl(var(--border))",
+                                  color: "hsl(var(--foreground))"
+                                }}
+                              />
+                              <Legend />
+                              <Area type="monotone" dataKey="AI & ML" stackId="1" stroke="hsl(var(--primary))" fill="hsl(var(--primary) / 0.6)" name="AI & ML Integration" />
+                              <Area type="monotone" dataKey="Advanced Analytics" stackId="1" stroke="hsl(var(--accent))" fill="hsl(var(--accent) / 0.6)" name="Advanced Analytics" />
+                              <Area type="monotone" dataKey="Global Payments" stackId="1" stroke="hsl(var(--chart-3))" fill="hsl(var(--chart-3) / 0.6)" name="Global Payment Gateways" />
+                          </AreaChart>
+                      </ResponsiveContainer>
                     </div>
-                  ))}
                 </div>
               </section>
         </div>
@@ -393,5 +427,7 @@ const IntegratedBillingSystemPage = () => {
 };
 
 export default IntegratedBillingSystemPage;
+
+    
 
     
