@@ -12,6 +12,11 @@ export const caseStudies = [
         "Usability Testing",
         "Responsive Web & Mobile Design"
     ],
+    metrics: [
+      { name: 'Processing Time', 'Reduction': 40 },
+      { name: 'User Satisfaction', 'Increase': 60 },
+      { name: 'Adoption Rate', 'Increase': 75 },
+    ],
   },
   {
     title: "Complaint Management with Case Management & Referral Stakeholders",
@@ -24,6 +29,11 @@ export const caseStudies = [
       "End-to-End Case Management",
       "UX Research & System Design",
       "Secure Data & Referral Handling"
+    ],
+    metrics: [
+      { name: 'Resolution Time', 'Reduction': 35 },
+      { name: 'Case Escalations', 'Reduction': 40 },
+      { name: 'Admin Efficiency', 'Increase': 60 },
     ],
   },
   {
@@ -38,6 +48,11 @@ export const caseStudies = [
       "User Journey Mapping for Customers & Staff",
       "Analytics & Performance Reporting"
     ],
+    metrics: [
+      { name: 'Avg. Wait Time', 'Reduction': 45 },
+      { name: 'Satisfaction', 'Increase': 65 },
+      { name: 'Throughput', 'Increase': 25 },
+    ],
   },
   {
     title: "Court Management System",
@@ -51,6 +66,11 @@ export const caseStudies = [
       "Secure Document & Evidence Handling",
       "Judicial Dashboards & Analytics"
     ],
+    metrics: [
+        { name: 'Case Processing', 'Reduction': 50 },
+        { name: 'Filing Errors', 'Reduction': 70 },
+        { name: 'Document Retrieval', 'Reduction': 80 },
+    ],
   },
   {
     title: "Integrated Billing System SaaS",
@@ -63,6 +83,11 @@ export const caseStudies = [
       "Subscription Management",
       "Payment Gateway Integration",
       "Financial Reporting & Analytics"
+    ],
+    metrics: [
+      { name: 'Invoicing Time', 'Reduction': 60 },
+      { name: 'On-time Payments', 'Increase': 40 },
+      { name: 'Billing Errors', 'Reduction': 85 },
     ],
   },
 ];

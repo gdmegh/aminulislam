@@ -1,9 +1,9 @@
 
-import Image from "next/image";
 import { Button } from "./ui/button";
 import { CheckCircle2 } from "lucide-react";
 import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies';
+import ProjectImpactChart from './project-impact-chart';
 
 export default function PortfolioHighlight() {
   if (!caseStudies || caseStudies.length === 0) {
@@ -26,19 +26,13 @@ export default function PortfolioHighlight() {
               className={`group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center`}
             >
               <div
-                className={`overflow-hidden rounded-lg shadow-xl ${
+                className={`overflow-hidden rounded-lg ${
                   index % 2 === 0 ? "md:order-1" : "md:order-2"
                 }`}
               >
-                <Image
-                  src={study.image}
-                  alt={study.title}
-                  width={800}
-                  height={600}
-                  role="img"
-                  data-ai-hint={study.hint}
-                  className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                />
+                {study.metrics ? (
+                  <ProjectImpactChart data={study.metrics} />
+                ) : null}
               </div>
               <div
                 className={`flex flex-col ${
