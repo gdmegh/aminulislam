@@ -13,4 +13,17 @@ export const caseStudies = [
         "Responsive Web & Mobile Design"
     ],
   },
+  {
+    title: "Complaint Management with Case Management & Referral Stakeholders",
+    slug: "complaint-management-system",
+    description: "A comprehensive platform for managing complaints, with features for case management and seamless integration with referral stakeholders.",
+    image: "https://placehold.co/800x600.png",
+    hint: "complaint management",
+    highlights: [
+      "Stakeholder Integration Workflows",
+      "End-to-End Case Management",
+      "UX Research & System Design",
+      "Secure Data & Referral Handling"
+    ],
+  },
 ];
