@@ -9,6 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
 import { notFound } from 'next/navigation';
+import ProjectImpactChart from '@/components/project-impact-chart';
 
 const chartData = [
   { name: 'Avg. Wait Time', 'Reduction': 45 },
@@ -118,15 +119,9 @@ const QueueManagementPage = () => {
               </div>
             </div>
             <div className="relative">
-                <Image 
-                    src={study.image}
-                    alt={study.title}
-                    width={800}
-                    height={600}
-                    role="img"
-                    data-ai-hint={study.hint}
-                    className="rounded-lg shadow-xl"
-                />
+                {study.metrics && (
+                    <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                )}
             </div>
           </div>
         </div>
@@ -156,15 +151,9 @@ const QueueManagementPage = () => {
 
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                     <div className="rounded-lg shadow-lg overflow-hidden">
-                      <Image 
-                          src="https://placehold.co/1200x800.png"
-                          alt="Observational research in a waiting room" 
-                          width={1200} 
-                          height={800} 
-                          role="img"
-                          data-ai-hint="people waiting"
-                          className="w-full h-auto object-cover" 
-                      />
+                      {study.metrics && (
+                        <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -243,15 +232,9 @@ const QueueManagementPage = () => {
                          I designed the architecture to support two primary user journeys: the customer's path from joining a queue to receiving service, and the staff's workflow for managing the queue and serving customers.
                         </p>
                         <div className="rounded-lg shadow-lg overflow-hidden">
-                          <Image 
-                              src="https://placehold.co/1200x800.png"
-                              alt="User Flow Diagram for Queue Management" 
-                              width={1200} 
-                              height={800} 
-                              role="img"
-                              data-ai-hint="user flow diagram"
-                              className="w-full h-auto object-cover" 
-                          />
+                           {study.metrics && (
+                            <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                          )}
                         </div>
                       </div>
                     </div>
@@ -416,3 +399,5 @@ const QueueManagementPage = () => {
 };
 
 export default QueueManagementPage;
+
+    

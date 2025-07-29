@@ -9,6 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
 import { notFound } from 'next/navigation';
+import ProjectImpactChart from '@/components/project-impact-chart';
 
 const chartData = [
   { name: 'Case Processing Time', 'Reduction': 50 },
@@ -118,15 +119,9 @@ const CourtManagementPage = () => {
               </div>
             </div>
             <div className="relative">
-                <Image 
-                    src={study.image}
-                    alt={study.title}
-                    width={800}
-                    height={600}
-                    role="img"
-                    data-ai-hint={study.hint}
-                    className="rounded-lg shadow-xl"
-                />
+                {study.metrics && (
+                    <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                )}
             </div>
           </div>
         </div>
@@ -156,15 +151,9 @@ const CourtManagementPage = () => {
 
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                     <div className="rounded-lg shadow-lg overflow-hidden">
-                      <Image 
-                          src="https://placehold.co/1200x800.png"
-                          alt="Courtroom observation" 
-                          width={1200} 
-                          height={800} 
-                          role="img"
-                          data-ai-hint="courtroom law"
-                          className="w-full h-auto object-cover" 
-                      />
+                       {study.metrics && (
+                        <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -243,15 +232,9 @@ const CourtManagementPage = () => {
                          I designed the system's architecture to mirror the entire lifecycle of a case, from initial filing and evidence submission to scheduling, hearings, and final verdict.
                         </p>
                         <div className="rounded-lg shadow-lg overflow-hidden">
-                          <Image 
-                              src="https://placehold.co/1200x800.png"
-                              alt="Case Flow Diagram for Court Management" 
-                              width={1200} 
-                              height={800} 
-                              role="img"
-                              data-ai-hint="system architecture diagram"
-                              className="w-full h-auto object-cover" 
-                          />
+                           {study.metrics && (
+                            <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                          )}
                         </div>
                       </div>
                     </div>
@@ -415,3 +398,5 @@ const CourtManagementPage = () => {
 };
 
 export default CourtManagementPage;
+
+    

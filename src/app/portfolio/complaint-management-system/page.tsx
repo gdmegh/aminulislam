@@ -9,6 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
 import { notFound } from 'next/navigation';
+import ProjectImpactChart from '@/components/project-impact-chart';
 
 const chartData = [
   { name: 'Resolution Time', 'Reduction': 35 },
@@ -118,15 +119,9 @@ const ComplaintManagementPage = () => {
               </div>
             </div>
             <div className="relative">
-                <Image 
-                    src={study.image}
-                    alt={study.title}
-                    width={800}
-                    height={600}
-                    role="img"
-                    data-ai-hint={study.hint}
-                    className="rounded-lg shadow-xl"
-                />
+                 {study.metrics && (
+                    <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                  )}
             </div>
           </div>
         </div>
@@ -156,15 +151,9 @@ const ComplaintManagementPage = () => {
 
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                     <div className="rounded-lg shadow-lg overflow-hidden">
-                      <Image 
-                          src="https://placehold.co/1200x800.png"
-                          alt="Workflow mapping session" 
-                          width={1200} 
-                          height={800} 
-                          role="img"
-                          data-ai-hint="workflow meeting"
-                          className="w-full h-auto object-cover" 
-                      />
+                       {study.metrics && (
+                        <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                      )}
                     </div>
                   </div>
 
@@ -244,15 +233,9 @@ const ComplaintManagementPage = () => {
                          I designed an information architecture focused on a logical case flow, from creation and assignment to investigation, referral, and resolution. This structure became the backbone of the platform.
                         </p>
                         <div className="rounded-lg shadow-lg overflow-hidden">
-                          <Image 
-                              src="https://placehold.co/1200x800.png"
-                              alt="Information Architecture Diagram" 
-                              width={1200} 
-                              height={800} 
-                              role="img"
-                              data-ai-hint="flowchart diagram"
-                              className="w-full h-auto object-cover" 
-                          />
+                           {study.metrics && (
+                            <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                          )}
                         </div>
                       </div>
                     </div>
@@ -414,3 +397,5 @@ const ComplaintManagementPage = () => {
 };
 
 export default ComplaintManagementPage;
+
+    
