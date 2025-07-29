@@ -7,10 +7,12 @@ import ContactModal from "./contact-modal";
 
 export default function Hero() {
   return (
-    <section className="relative h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] max-w-[1000px] bg-primary/30 rounded-full blur-3xl"></div>
-      </div>
+    <section 
+      className="relative h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
+      style={{
+        background: 'radial-gradient(ellipse at center, hsl(var(--primary)/0.15), transparent 60%)'
+      }}
+    >
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-2">I'm</p>
