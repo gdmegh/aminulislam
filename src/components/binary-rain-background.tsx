@@ -21,7 +21,7 @@ const BinaryRainBackground: React.FC = () => {
         if (!canvas) return;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        columns = canvas.width / fontSize;
+        columns = Math.floor(canvas.width / fontSize);
         drops = [];
         for (let x = 0; x < columns; x++) {
             drops[x] = 1;
@@ -33,7 +33,7 @@ const BinaryRainBackground: React.FC = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#FFD700'; // Golden color
+      ctx.fillStyle = 'hsl(var(--primary))';
       ctx.font = fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
@@ -47,11 +47,11 @@ const BinaryRainBackground: React.FC = () => {
       }
     };
     
-    let intervalId: NodeJS.Timeout;
+    let intervalId: number;
 
     const startAnimation = () => {
         setup();
-        intervalId = setInterval(draw, 40);
+        intervalId = window.setInterval(draw, 40);
     }
 
     startAnimation();
@@ -69,7 +69,7 @@ const BinaryRainBackground: React.FC = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute top-0 left-0 -z-10" />;
+  return <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full -z-10" />;
 };
 
 export default BinaryRainBackground;
