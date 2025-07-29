@@ -14,6 +14,7 @@ import { Clock, Users, Target } from 'lucide-react';
 // We can create specific layouts later if needed.
 import CitizenPortalPage from '../citizen-portal/page';
 import ComplaintManagementPage from '../complaint-management-system/page';
+import QueueManagementPage from '../queue-management-system/page';
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
   const study = caseStudies.find(cs => cs.slug === params.slug);
@@ -30,6 +31,10 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
   if (study.slug === 'complaint-management-system') {
     return <ComplaintManagementPage />;
+  }
+
+  if (study.slug === 'queue-management-system') {
+    return <QueueManagementPage />;
   }
 
   // Generic Case Study Page Layout

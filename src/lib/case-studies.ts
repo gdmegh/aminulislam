@@ -26,4 +26,17 @@ export const caseStudies = [
       "Secure Data & Referral Handling"
     ],
   },
+  {
+    title: "Queue Management System SaaS",
+    slug: "queue-management-system",
+    description: "A cloud-based SaaS platform designed to streamline customer flow and reduce wait times for businesses across various industries, from healthcare to retail.",
+    image: "https://placehold.co/800x600.png",
+    hint: "queue management",
+    highlights: [
+      "Real-time Queue Tracking",
+      "SaaS Multi-tenant Architecture",
+      "User Journey Mapping for Customers & Staff",
+      "Analytics & Performance Reporting"
+    ],
+  },
 ];
