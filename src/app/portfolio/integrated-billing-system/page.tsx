@@ -69,7 +69,7 @@ const IntegratedBillingSystemPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow" id="main-content">
       {/* Hero Section */}
       <section className="bg-card text-foreground py-20">
         <div className="container mx-auto px-4">
@@ -105,6 +105,7 @@ const IntegratedBillingSystemPage = () => {
                     alt={study.title}
                     width={800}
                     height={600}
+                    role="img"
                     data-ai-hint={study.hint}
                     className="rounded-lg shadow-xl"
                 />
@@ -142,6 +143,7 @@ const IntegratedBillingSystemPage = () => {
                           alt="Finance team meeting" 
                           width={1200} 
                           height={800} 
+                          role="img"
                           data-ai-hint="finance meeting"
                           className="w-full h-auto object-cover" 
                       />
@@ -228,6 +230,7 @@ const IntegratedBillingSystemPage = () => {
                               alt="Billing Lifecycle Flowchart" 
                               width={1200} 
                               height={800} 
+                              role="img"
                               data-ai-hint="flowchart diagram"
                               className="w-full h-auto object-cover" 
                           />

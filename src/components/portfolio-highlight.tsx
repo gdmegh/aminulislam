@@ -35,6 +35,7 @@ export default function PortfolioHighlight() {
                   alt={study.title}
                   width={800}
                   height={600}
+                  role="img"
                   data-ai-hint={study.hint}
                   className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                 />

@@ -87,7 +87,7 @@ const CaseStudyPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow" id="main-content">
       {/* Hero Section */}
       <section className="bg-card text-foreground py-20">
         <div className="container mx-auto px-4">
@@ -123,6 +123,7 @@ const CaseStudyPage = () => {
                     alt={study.title}
                     width={800}
                     height={600}
+                    role="img"
                     data-ai-hint={study.hint}
                     className="rounded-lg shadow-xl"
                 />
@@ -162,6 +163,7 @@ const CaseStudyPage = () => {
                           alt="Research collaboration" 
                           width={1200} 
                           height={800} 
+                          role="img"
                           data-ai-hint="research collaboration"
                           className="w-full h-auto object-cover" 
                       />
@@ -257,6 +259,7 @@ const CaseStudyPage = () => {
                               alt="User Journey Map" 
                               width={1200} 
                               height={400} 
+                              role="img"
                               data-ai-hint="user journey map"
                               className="w-full h-auto object-cover" 
                           />
@@ -276,6 +279,7 @@ const CaseStudyPage = () => {
                               alt="Information Architecture Diagram" 
                               width={1200} 
                               height={800} 
+                              role="img"
                               data-ai-hint="information architecture diagram"
                               className="w-full h-auto object-cover" 
                           />
@@ -284,7 +288,7 @@ const CaseStudyPage = () => {
                     </div>
 
                     <div className="mt-12">
-                      <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
+                        <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
                         <div className="bg-card rounded-2xl p-8 shadow-xl border border-border overflow-x-auto">
                             <p className="text-muted-foreground leading-relaxed mb-6 text-center">
                             To ensure security and proper functionality, we designed a user access matrix that defined the permissions and capabilities for each user persona. This matrix guided the development of role-based access control within the system.
@@ -306,24 +310,24 @@ const CaseStudyPage = () => {
                                         </tr>
                                         <tr className="bg-card border-b border-border">
                                             <td className="px-6 py-4 whitespace-nowrap">View Services</td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
                                         </tr>
                                         <tr className="bg-card border-b border-border">
                                             <td className="px-6 py-4 whitespace-nowrap">Apply for Services</td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center">-</td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
                                         </tr>
                                         <tr className="bg-card border-b border-border">
                                             <td className="px-6 py-4 whitespace-nowrap">Track Application Status</td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
                                         </tr>
 
                                         <tr className="bg-card border-b border-border">
@@ -331,17 +335,17 @@ const CaseStudyPage = () => {
                                         </tr>
                                         <tr className="bg-card border-b border-border">
                                             <td className="px-6 py-4 whitespace-nowrap">Manage Services</td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center">-</td>
-                                            <td className="px-6 py-4 text-center">-</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
                                         </tr>
                                         <tr className="bg-card border-b border-border">
                                             <td className="px-6 py-4 whitespace-nowrap">View Dashboard</td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center">-</td>
-                                            <td className="px-6 py-4 text-center">-</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
                                         </tr>
 
                                         <tr className="bg-card border-b border-border">
@@ -349,10 +353,10 @@ const CaseStudyPage = () => {
                                         </tr>
                                         <tr className="bg-card">
                                             <td className="px-6 py-4 rounded-bl-lg whitespace-nowrap">System Oversight</td>
-                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block"/></td>
-                                            <td className="px-6 py-4 text-center">-</td>
-                                            <td className="px-6 py-4 text-center">-</td>
-                                            <td className="px-6 py-4 text-center rounded-br-lg">-</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center rounded-br-lg"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
                                         </tr>
                                     </tbody>
                                 </table>

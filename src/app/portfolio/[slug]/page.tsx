@@ -51,7 +51,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow" id="main-content">
       <section className="bg-card text-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -86,6 +86,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     alt={study.title}
                     width={800}
                     height={600}
+                    role="img"
                     data-ai-hint={study.hint}
                     className="rounded-lg shadow-xl"
                 />

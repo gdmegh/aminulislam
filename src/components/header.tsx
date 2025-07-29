@@ -9,8 +9,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import ContactModal from "./contact-modal";
 
-const menuItems: { label: string, href: string }[] = [];
-
+const menuItems = [
+  { label: 'Portfolio', href: '/portfolio' }
+];
 
 export default function Header() {
   const [showStickyButton, setShowStickyButton] = useState(false);
@@ -35,7 +36,7 @@ export default function Header() {
       <div className="container mx-auto px-4 flex h-16 items-center justify-between relative">
         <div className="flex-1 flex justify-start">
             <Link href="/" className="flex items-center gap-2 whitespace-nowrap">
-                <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" />
+                <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" role="img" />
                 <span className={`font-headline text-xl font-bold transition-opacity duration-300`}>Aminul Islam</span>
             </Link>
         </div>

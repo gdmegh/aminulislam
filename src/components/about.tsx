@@ -95,6 +95,7 @@ export default function About() {
                     alt="Designer at work"
                     width={600}
                     height={750}
+                    role="img"
                     data-ai-hint="designer working"
                     className="w-full h-auto object-cover"
                 />

@@ -87,7 +87,7 @@ const CourtManagementPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow" id="main-content">
       {/* Hero Section */}
       <section className="bg-card text-foreground py-20">
         <div className="container mx-auto px-4">
@@ -123,6 +123,7 @@ const CourtManagementPage = () => {
                     alt={study.title}
                     width={800}
                     height={600}
+                    role="img"
                     data-ai-hint={study.hint}
                     className="rounded-lg shadow-xl"
                 />
@@ -160,6 +161,7 @@ const CourtManagementPage = () => {
                           alt="Courtroom observation" 
                           width={1200} 
                           height={800} 
+                          role="img"
                           data-ai-hint="courtroom law"
                           className="w-full h-auto object-cover" 
                       />
@@ -246,6 +248,7 @@ const CourtManagementPage = () => {
                               alt="Case Flow Diagram for Court Management" 
                               width={1200} 
                               height={800} 
+                              role="img"
                               data-ai-hint="system architecture diagram"
                               className="w-full h-auto object-cover" 
                           />
