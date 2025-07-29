@@ -18,7 +18,7 @@ export const caseStudies = [
     slug: "complaint-management-system",
     description: "A comprehensive platform for managing complaints, with features for case management and seamless integration with referral stakeholders.",
     image: "https://placehold.co/800x600.png",
-    hint: "complaint management",
+    hint: "dashboard analytics",
     highlights: [
       "Stakeholder Integration Workflows",
       "End-to-End Case Management",
