@@ -4,6 +4,7 @@ import { CheckCircle2 } from "lucide-react";
 import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies';
 import ProjectImpactChart from './project-impact-chart';
+import Image from "next/image";
 
 export default function PortfolioHighlight() {
   if (!caseStudies || caseStudies.length === 0) {
@@ -30,7 +31,17 @@ export default function PortfolioHighlight() {
                   index % 2 === 0 ? "md:order-1" : "md:order-2"
                 }`}
               >
-                {study.metrics ? (
+                {study.slug === 'citizen-portal' ? (
+                   <Image 
+                    src={study.image}
+                    alt={study.title}
+                    width={800}
+                    height={600}
+                    role="img"
+                    data-ai-hint={study.hint}
+                    className="rounded-lg shadow-xl"
+                  />
+                ) : study.metrics ? (
                   <ProjectImpactChart data={study.metrics} />
                 ) : null}
               </div>
