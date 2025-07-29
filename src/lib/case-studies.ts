@@ -17,6 +17,7 @@ export const caseStudies = [
       { name: 'User Satisfaction', 'Increase': 60 },
       { name: 'Adoption Rate', 'Increase': 75 },
     ],
+    chartType: 'bar',
   },
   {
     title: "Complaint Management with Case Management & Referral Stakeholders",
@@ -31,10 +32,11 @@ export const caseStudies = [
       "Secure Data & Referral Handling"
     ],
     metrics: [
-      { name: 'Resolution Time', 'Reduction': 35 },
-      { name: 'Case Escalations', 'Reduction': 40 },
-      { name: 'Admin Efficiency', 'Increase': 60 },
+      { name: 'Resolution Time', value: 35 },
+      { name: 'Case Escalations', value: 40 },
+      { name: 'Admin Efficiency', value: 60 },
     ],
+    chartType: 'pie',
   },
   {
     title: "Queue Management System SaaS",
@@ -49,10 +51,14 @@ export const caseStudies = [
       "Analytics & Performance Reporting"
     ],
     metrics: [
-      { name: 'Avg. Wait Time', 'Reduction': 45 },
-      { name: 'Satisfaction', 'Increase': 65 },
-      { name: 'Throughput', 'Increase': 25 },
+      { month: 'Jan', waitTime: 60 },
+      { month: 'Feb', waitTime: 55 },
+      { month: 'Mar', waitTime: 50 },
+      { month: 'Apr', waitTime: 45 },
+      { month: 'May', waitTime: 40 },
+      { month: 'Jun', waitTime: 35 },
     ],
+    chartType: 'line',
   },
   {
     title: "Court Management System",
@@ -67,10 +73,11 @@ export const caseStudies = [
       "Judicial Dashboards & Analytics"
     ],
     metrics: [
-        { name: 'Case Processing', 'Reduction': 50 },
-        { name: 'Filing Errors', 'Reduction': 70 },
-        { name: 'Document Retrieval', 'Reduction': 80 },
+        { name: 'Case Processing', value: 50 },
+        { name: 'Filing Errors', value: 70 },
+        { name: 'Doc Retrieval', value: 80 },
     ],
+    chartType: 'bar',
   },
   {
     title: "Integrated Billing System SaaS",
@@ -85,9 +92,11 @@ export const caseStudies = [
       "Financial Reporting & Analytics"
     ],
     metrics: [
-      { name: 'Invoicing Time', 'Reduction': 60 },
-      { name: 'On-time Payments', 'Increase': 40 },
-      { name: 'Billing Errors', 'Reduction': 85 },
+      { quarter: 'Q1', revenue: 2000 },
+      { quarter: 'Q2', revenue: 2500 },
+      { quarter: 'Q3', revenue: 3200 },
+      { quarter: 'Q4', revenue: 4100 },
     ],
+    chartType: 'area',
   },
 ];

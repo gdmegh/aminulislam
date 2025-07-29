@@ -42,7 +42,7 @@ export default function PortfolioHighlight() {
                     className="rounded-lg shadow-xl"
                   />
                 ) : study.metrics ? (
-                  <ProjectImpactChart data={study.metrics} />
+                  <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
                 ) : null}
               </div>
               <div
