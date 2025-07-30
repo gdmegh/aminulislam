@@ -586,7 +586,3 @@ const QueueManagementPage = () => {
 };
 
 export default QueueManagementPage;
-
-    
-
-    
