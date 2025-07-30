@@ -42,7 +42,7 @@ export const caseStudies = [
     title: "Queue Management System SaaS",
     slug: "queue-management-system",
     description: "A cloud-based SaaS platform designed to streamline customer flow and reduce wait times for businesses across various industries, from healthcare to retail.",
-    image: "https://placehold.co/800x600.png",
+    image: "/images/queue-management-system.jpeg",
     hint: "queue management",
     highlights: [
       { title: "Real-time Queue Tracking", description: "Allowed customers to monitor their position in line remotely via a mobile app." },
