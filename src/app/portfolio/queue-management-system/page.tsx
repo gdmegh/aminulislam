@@ -5,7 +5,7 @@ import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pe
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
 import { notFound } from 'next/navigation';
@@ -17,6 +17,15 @@ const chartData = [
   { name: 'Staff Idle Time', 'Reduction': 30 },
   { name: 'Service Throughput', 'Increase': 25 },
 ];
+
+const researchFindingsData = [
+  { name: 'Long Wait Times', value: 45 },
+  { name: 'Inefficient Staffing', value: 25 },
+  { name: 'Required Physical Presence', value: 20 },
+  { name: 'Lack of Analytics', value: 10 },
+];
+const COLORS = ['hsl(var(--primary))', 'hsl(var(--accent))', 'hsl(var(--chart-3))', 'hsl(var(--chart-4))'];
+
 
 const QueueManagementPage = () => {
   const study = caseStudies.find(cs => cs.slug === 'queue-management-system');
@@ -145,15 +154,39 @@ const QueueManagementPage = () => {
                   <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
                     <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Methodology</h3>
                     <p className="text-muted-foreground leading-relaxed text-center">
-                      Conducted observational studies, contextual interviews with over 40 staff and customers, and competitive analysis of existing queueing solutions. The goal was to map the emotional and logistical journey of waiting.
+                      Conducted observational studies and contextual interviews with over 40 staff and customers. The key qualitative findings, visualized below, helped map the emotional and logistical journey of waiting.
                     </p>
                   </div>
 
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                    <div className="rounded-lg shadow-lg overflow-hidden">
-                      {study.metrics && (
-                        <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
-                      )}
+                    <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">Interview Pain Point Distribution</h3>
+                    <div className="w-full h-[350px]">
+                      <ResponsiveContainer>
+                          <PieChart>
+                              <Pie
+                              data={researchFindingsData}
+                              cx="50%"
+                              cy="50%"
+                              labelLine={false}
+                              outerRadius={120}
+                              fill="#8884d8"
+                              dataKey="value"
+                              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                              >
+                              {researchFindingsData.map((entry, index) => (
+                                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                              ))}
+                              </Pie>
+                              <Tooltip
+                                  contentStyle={{
+                                  backgroundColor: "hsl(var(--background))",
+                                  borderColor: "hsl(var(--border))",
+                                  color: "hsl(var(--foreground))"
+                                  }}
+                              />
+                              <Legend />
+                          </PieChart>
+                      </ResponsiveContainer>
                     </div>
                   </div>
                 </div>
