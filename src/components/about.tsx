@@ -81,7 +81,7 @@ export default function About() {
 
             <div className="mt-12">
                  <Button asChild className="w-full">
-                    <a href="/Islam-Resume.pdf" download>
+                    <a href="/images/Aminul Islam-Resume.pdf" download>
                         <Download className="mr-2 h-4 w-4" />
                         Download Resume
                     </a>
@@ -91,7 +91,7 @@ export default function About() {
           <div className="lg:col-span-1 lg:sticky lg:top-24">
             <div className="rounded-lg shadow-xl overflow-hidden max-w-md mx-auto">
                 <Image 
-                    src="/images/Aminul Islam-Resume.pdf"
+                    src="/images/gd.JPEG"
                     alt="Designer at work"
                     width={600}
                     height={750}
