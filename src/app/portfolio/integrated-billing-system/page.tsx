@@ -1,7 +1,7 @@
 
 "use client"
 import React from 'react';
-import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, DollarSign, BrainCircuit, Rocket } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, DollarSign, BrainCircuit, Rocket, FilePlus, Repeat, Send, CreditCard, BarChart2 } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -82,6 +82,15 @@ const IntegratedBillingSystemPage = () => {
       ]
     }
   ];
+  
+  const diagramSteps = [
+    { icon: FilePlus, title: 'Plan Creation', description: 'Define products, services, and pricing tiers.' },
+    { icon: Repeat, title: 'Subscriptions', description: 'Customers subscribe to plans.' },
+    { icon: Send, title: 'Automated Invoicing', description: 'System generates and sends invoices based on cycles.' },
+    { icon: CreditCard, title: 'Payment Processing', description: 'Securely handle payments via integrated gateways.' },
+    { icon: BarChart2, title: 'Revenue Analytics', description: 'Track MRR, churn, and other key financial metrics.' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -249,16 +258,25 @@ const IntegratedBillingSystemPage = () => {
                         <p className="text-muted-foreground leading-relaxed mb-6 text-center">
                          The system architecture was designed around the end-to-end billing lifecycle, from product and plan creation to automated invoicing, dunning management for failed payments, and finally, revenue analytics.
                         </p>
-                        <div className="rounded-lg shadow-lg overflow-hidden">
-                          <Image 
-                              src="https://placehold.co/1200x800.png"
-                              alt="Billing Lifecycle Flowchart" 
-                              width={1200} 
-                              height={800} 
-                              role="img"
-                              data-ai-hint="flowchart diagram"
-                              className="w-full h-auto object-cover" 
-                          />
+                        <div className="relative p-8 overflow-hidden">
+                          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+                            {diagramSteps.map((step, index) => (
+                              <React.Fragment key={index}>
+                                <div className="flex flex-col items-center text-center max-w-[120px]">
+                                  <div className="bg-primary/10 border border-primary/20 rounded-full w-16 h-16 flex items-center justify-center mb-2">
+                                    <step.icon className="w-8 h-8 text-primary" />
+                                  </div>
+                                  <h4 className="text-sm font-semibold text-foreground">{step.title}</h4>
+                                </div>
+                                {index < diagramSteps.length - 1 && (
+                                   <div className="hidden md:block h-px w-16 bg-border mx-4"></div>
+                                )}
+                                 {index < diagramSteps.length - 1 && (
+                                   <div className="md:hidden w-px h-12 bg-border my-4"></div>
+                                )}
+                              </React.Fragment>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -427,7 +445,5 @@ const IntegratedBillingSystemPage = () => {
 };
 
 export default IntegratedBillingSystemPage;
-
-    
 
     
