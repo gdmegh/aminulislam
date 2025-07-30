@@ -51,8 +51,8 @@ export default function PortfolioPage() {
                     >
                         {study.slug === 'citizen-portal' || study.slug === 'queue-management-system' ? (
                           <Image 
-                              src={study.image}
-                              alt={study.title}
+                          src="/images/quefeatures.jpeg"
+                          alt={study.title}
                               width={800}
                               height={600}
                               role="img"
