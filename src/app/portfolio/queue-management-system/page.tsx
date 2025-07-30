@@ -370,7 +370,7 @@ const QueueManagementPage = () => {
                         Prototypes focused on the core loop: a customer joining a queue, receiving updates, and being called for service by a staff member using the dashboard.
                       </p>
                       <div className="space-y-4">
-                        <a href="#" className="flex items-center gap-2 text-primary hover:underline font-medium">
+                        <a href="https://queue.meghcreations.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline font-medium">
                           <ExternalLink className="w-4 h-4" />
                           View Customer App Prototype
                         </a>
@@ -484,7 +484,3 @@ const QueueManagementPage = () => {
 };
 
 export default QueueManagementPage;
-
-    
-
-    
