@@ -145,7 +145,7 @@ const QueueManagementPage = () => {
                   <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
                     <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Methodology</h3>
                     <p className="text-muted-foreground leading-relaxed text-center">
-                      Conducted observational studies, contextual interviews with staff and customers, and competitive analysis of existing queueing solutions. The goal was to map the emotional and logistical journey of waiting.
+                      Conducted observational studies, contextual interviews with over 40 staff and customers, and competitive analysis of existing queueing solutions. The goal was to map the emotional and logistical journey of waiting.
                     </p>
                   </div>
 
