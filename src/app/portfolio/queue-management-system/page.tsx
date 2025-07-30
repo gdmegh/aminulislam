@@ -1,7 +1,7 @@
 
 "use client"
 import React from 'react';
-import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, User, LogIn, Clock4, Bell, Coffee, Monitor, UserCheck, UserPlus, ListOrdered, ClipboardCheck } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -93,6 +93,21 @@ const QueueManagementPage = () => {
       icon: "3"
     }
   ];
+  
+  const customerJourney = [
+    { icon: UserPlus, title: 'Join Queue', description: 'Remotely via app or QR code.' },
+    { icon: Clock4, title: 'Wait Anywhere', description: 'Receive real-time updates on position.' },
+    { icon: Bell, title: 'Get Notified', description: 'Alerted when turn is approaching.' },
+    { icon: UserCheck, title: 'Receive Service', description: 'Proceed to counter when called.' },
+  ];
+
+  const staffJourney = [
+    { icon: LogIn, title: 'Log In', description: 'Access the staff dashboard.' },
+    { icon: Monitor, title: 'Monitor Queues', description: 'View real-time queue status.' },
+    { icon: ListOrdered, title: 'Call Next', description: 'Call the next customer with one click.' },
+    { icon: ClipboardCheck, title: 'Complete Service', description: 'Mark service as complete and manage case notes.' },
+  ];
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -160,6 +175,7 @@ const QueueManagementPage = () => {
 
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                     <h3 className="text-xl font-bold text-foreground mb-6 font-headline text-center">Interview Pain Point Distribution</h3>
+                    <p className="text-muted-foreground leading-relaxed mb-6 text-center">The qualitative interviews with 40+ participants revealed that long wait times were the most significant pain point for customers.</p>
                     <div className="w-full h-[350px]">
                       <ResponsiveContainer>
                           <PieChart>
@@ -195,7 +211,7 @@ const QueueManagementPage = () => {
               {/* Define Stage */}
               <section id="define" className="mb-20">
                 <div className="text-center mb-12">
-                  <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
+                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
                     <Pencil className="w-5 h-5"/>
                     <span>DEFINE</span>
                   </div>
@@ -226,7 +242,7 @@ const QueueManagementPage = () => {
                             </div>
                             <div className="bg-secondary/20 rounded-lg p-6 border border-border/50">
                                 <h4 className="font-bold text-foreground mb-2 text-center">The Branch Manager</h4>
-                                <p className="text-foreground italic text-center text-sm">
+                                <p className="text-muted-foreground italic text-center text-sm">
                                     "I need to see wait times and staff performance in real-time to make sure we're meeting our service level goals."
                                 </p>
                             </div>
@@ -260,14 +276,49 @@ const QueueManagementPage = () => {
 
                     <div className="mt-12">
                       <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">System User Flow</h3>
-                      <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                        <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                       <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                        <p className="text-muted-foreground leading-relaxed mb-8 text-center">
                          I designed the architecture to support two primary user journeys: the customer's path from joining a queue to receiving service, and the staff's workflow for managing the queue and serving customers.
                         </p>
-                        <div className="rounded-lg shadow-lg overflow-hidden">
-                           {study.metrics && (
-                            <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
-                          )}
+                        <div className="grid md:grid-cols-2 gap-8">
+                          <div>
+                            <h4 className="text-lg font-bold text-primary mb-4 text-center">Customer Journey</h4>
+                            <div className="relative pl-6">
+                              <div className="absolute left-0 top-0 h-full w-0.5 bg-border -z-10" />
+                              {customerJourney.map((step, index) => (
+                                <div key={index} className="relative pb-8">
+                                  <div className="absolute -left-3.5 top-0 bg-background">
+                                    <div className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 border-2 border-primary/20">
+                                      <step.icon className="w-4 h-4 text-primary" />
+                                    </div>
+                                  </div>
+                                  <div className="pl-6">
+                                    <h5 className="font-semibold text-foreground">{step.title}</h5>
+                                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                           <div>
+                            <h4 className="text-lg font-bold text-accent mb-4 text-center">Staff Journey</h4>
+                             <div className="relative pl-6">
+                              <div className="absolute left-0 top-0 h-full w-0.5 bg-border -z-10" />
+                              {staffJourney.map((step, index) => (
+                                <div key={index} className="relative pb-8">
+                                  <div className="absolute -left-3.5 top-0 bg-background">
+                                     <div className="flex items-center justify-center w-7 h-7 rounded-full bg-accent/10 border-2 border-accent/20">
+                                      <step.icon className="w-4 h-4 text-accent" />
+                                    </div>
+                                  </div>
+                                  <div className="pl-6">
+                                    <h5 className="font-semibold text-foreground">{step.title}</h5>
+                                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -432,5 +483,7 @@ const QueueManagementPage = () => {
 };
 
 export default QueueManagementPage;
+
+    
 
     
