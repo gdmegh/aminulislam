@@ -1,7 +1,7 @@
 
 "use client"
 import React from 'react';
-import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, User, LogIn, Clock4, Bell, Coffee, Monitor, UserCheck, UserPlus, ListOrdered, ClipboardCheck, ArrowRightLeft } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, User, LogIn, Clock4, Bell, Coffee, Monitor, UserCheck, UserPlus, ListOrdered, ClipboardCheck, ArrowRightLeft, Ticket, UsersRound, Building } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -107,6 +107,24 @@ const QueueManagementPage = () => {
     { icon: ListOrdered, title: 'Call Next', description: 'Call the next customer with one click.' },
     { icon: ArrowRightLeft, title: 'Transfer Queue', description: 'Move a customer to a different service queue.' },
     { icon: ClipboardCheck, title: 'Complete Service', description: 'Mark service as complete and add case notes.' },
+  ];
+  
+  const designDecisions = [
+    {
+      icon: Ticket,
+      title: "Virtual Queuing",
+      description: "Allow customers to join a queue via a QR code or app, freeing them to wait wherever they want."
+    },
+    {
+      icon: UsersRound,
+      title: "Role-Based Dashboards",
+      description: "Staff see a simple 'call next' interface, while managers get a full analytics dashboard."
+    },
+    {
+      icon: Building,
+      title: "Multi-tenant Architecture",
+      description: "Design a scalable system where each business can customize its queues, services, and branding."
+    }
   ];
 
 
@@ -337,18 +355,20 @@ const QueueManagementPage = () => {
                   <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">The core concept was a dual-interface system: a simple, mobile-first experience for customers and a powerful, data-rich dashboard for staff and managers.</p>
                 </div>
 
-                <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                  <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Key Design Decisions</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Ideation focused on reducing customer anxiety and empowering staff.
-                  </p>
-                  <div className="bg-primary/5 rounded-lg p-6 border border-primary/10">
-                    <ul className="text-sm text-muted-foreground space-y-2">
-                      <li>• **Virtual Queuing:** Allow customers to join a queue via a QR code or app, freeing them to wait wherever they want.</li>
-                      <li>• **Role-Based Dashboards:** Staff see a simple "call next" interface, while managers get a full analytics dashboard.</li>
-                      <li>• **Multi-tenant Architecture:** Design a scalable system where each business can customize its queues, services, and branding.</li>
-                    </ul>
-                  </div>
+                <div>
+                    <h3 className="text-2xl font-bold text-foreground mb-8 font-headline text-center">Key Design Decisions</h3>
+                    <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">Ideation focused on reducing customer anxiety and empowering staff. These core principles guided the feature development and overall system architecture.</p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {designDecisions.map((decision, index) => (
+                            <div key={index} className="bg-card rounded-xl p-6 shadow-lg border border-border text-center flex flex-col items-center">
+                                <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                                    <decision.icon className="w-6 h-6 text-primary" />
+                                </div>
+                                <h4 className="font-bold text-foreground mb-2 text-lg font-headline">{decision.title}</h4>
+                                <p className="text-muted-foreground text-sm leading-relaxed">{decision.description}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
               </section>
 
@@ -370,10 +390,12 @@ const QueueManagementPage = () => {
                         An interactive prototype was developed to simulate the complete user journey, from a customer joining a queue to a staff member managing the flow.
                       </p>
                       <div className="space-y-4">
-                        <a href="https://queue.meghcreations.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline font-medium">
-                          <ExternalLink className="w-4 h-4" />
-                          View Interactive Prototype
-                        </a>
+                        <Button asChild>
+                            <a href="https://queue.meghcreations.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline font-medium">
+                                <ExternalLink className="w-4 h-4" />
+                                View Interactive Prototype
+                            </a>
+                        </Button>
                       </div>
                     </div>
                     
