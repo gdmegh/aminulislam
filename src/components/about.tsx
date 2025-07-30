@@ -91,7 +91,7 @@ export default function About() {
           <div className="lg:col-span-1 lg:sticky lg:top-24">
             <div className="rounded-lg shadow-xl overflow-hidden max-w-md mx-auto">
                 <Image 
-                    src="/images/gd.JPEG"
+                    src="/images/Aminul Islam-Resume.pdf"
                     alt="Designer at work"
                     width={600}
                     height={750}
