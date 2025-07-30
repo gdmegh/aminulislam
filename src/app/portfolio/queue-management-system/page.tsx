@@ -188,7 +188,7 @@ const QueueManagementPage = () => {
                    <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
                     <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Methodology</h3>
                     <p className="text-muted-foreground leading-relaxed text-center">
-                      Conducted observational studies and contextual interviews with over 40 staff and customers. The key qualitative findings helped map the emotional and logistical journey of waiting.
+                     Conducted observational studies and contextual interviews with over 40 staff and customers. The key qualitative findings helped map the emotional and logistical journey of waiting.
                     </p>
                   </div>
 
@@ -474,7 +474,7 @@ const QueueManagementPage = () => {
                         An interactive prototype was developed to simulate the complete user journey, from a customer joining a queue to a staff member managing the flow.
                       </p>
                       <div className="space-y-4">
-                        <Button asChild>
+                         <Button asChild>
                             <a href="https://queue.meghcreations.com/" target="_blank" rel="noopener noreferrer">
                                 <ExternalLink className="mr-2 h-4 w-4" />
                                 View Interactive Prototype
