@@ -31,7 +31,7 @@ export default function PortfolioHighlight() {
                   index % 2 === 0 ? "md:order-1" : "md:order-2"
                 }`}
               >
-                {study.slug === 'citizen-portal' ? (
+                {study.slug === 'citizen-portal' || study.slug === 'queue-management-system' ? (
                    <Image 
                     src={study.image}
                     alt={study.title}
