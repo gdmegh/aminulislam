@@ -185,7 +185,7 @@ const QueueManagementPage = () => {
                 </div>
                 
                 <div className="space-y-12">
-                  <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
+                   <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
                     <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Methodology</h3>
                     <p className="text-muted-foreground leading-relaxed text-center">
                       Conducted observational studies and contextual interviews with over 40 staff and customers. The key qualitative findings helped map the emotional and logistical journey of waiting.
@@ -303,10 +303,10 @@ const QueueManagementPage = () => {
                           <div>
                             <h4 className="text-lg font-bold text-primary mb-4 text-center">Customer Journey</h4>
                             <div className="relative pl-6">
-                              <div className="absolute left-0 top-0 h-full w-0.5 bg-border -z-10" />
+                              <div className="absolute left-[3px] top-0 h-full w-0.5 bg-border -z-10" />
                               {customerJourney.map((step, index) => (
                                 <div key={index} className="relative pb-8">
-                                  <div className="absolute -left-3.5 top-0 bg-background">
+                                  <div className="absolute -left-3 top-0">
                                     <div className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 border-2 border-primary/20">
                                       <step.icon className="w-4 h-4 text-primary" />
                                     </div>
@@ -322,10 +322,10 @@ const QueueManagementPage = () => {
                            <div>
                             <h4 className="text-lg font-bold text-accent mb-4 text-center">Staff Journey</h4>
                              <div className="relative pl-6">
-                              <div className="absolute left-0 top-0 h-full w-0.5 bg-border -z-10" />
+                              <div className="absolute left-[3px] top-0 h-full w-0.5 bg-border -z-10" />
                               {staffJourney.map((step, index) => (
                                 <div key={index} className="relative pb-8">
-                                  <div className="absolute -left-3.5 top-0 bg-background">
+                                  <div className="absolute -left-3 top-0">
                                      <div className="flex items-center justify-center w-7 h-7 rounded-full bg-accent/10 border-2 border-accent/20">
                                       <step.icon className="w-4 h-4 text-accent" />
                                     </div>
@@ -391,8 +391,8 @@ const QueueManagementPage = () => {
                       </p>
                       <div className="space-y-4">
                         <Button asChild>
-                            <a href="https://queue.meghcreations.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline font-medium">
-                                <ExternalLink className="w-4 h-4" />
+                            <a href="https://queue.meghcreations.com/" target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="mr-2 h-4 w-4" />
                                 View Interactive Prototype
                             </a>
                         </Button>
@@ -502,3 +502,5 @@ const QueueManagementPage = () => {
 };
 
 export default QueueManagementPage;
+
+    
