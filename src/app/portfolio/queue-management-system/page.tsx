@@ -1,7 +1,7 @@
 
 "use client"
 import React from 'react';
-import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, User, LogIn, Clock4, Bell, Coffee, Monitor, UserCheck, UserPlus, ListOrdered, ClipboardCheck } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Smartphone, User, LogIn, Clock4, Bell, Coffee, Monitor, UserCheck, UserPlus, ListOrdered, ClipboardCheck, ArrowRightLeft } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -105,7 +105,8 @@ const QueueManagementPage = () => {
     { icon: LogIn, title: 'Log In', description: 'Access the staff dashboard.' },
     { icon: Monitor, title: 'Monitor Queues', description: 'View real-time queue status.' },
     { icon: ListOrdered, title: 'Call Next', description: 'Call the next customer with one click.' },
-    { icon: ClipboardCheck, title: 'Complete Service', description: 'Mark service as complete and manage case notes.' },
+    { icon: ArrowRightLeft, title: 'Transfer Queue', description: 'Move a customer to a different service queue.' },
+    { icon: ClipboardCheck, title: 'Complete Service', description: 'Mark service as complete and add case notes.' },
   ];
 
 
@@ -169,7 +170,7 @@ const QueueManagementPage = () => {
                   <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
                     <h3 className="text-xl font-bold text-foreground mb-4 font-headline text-center">Research Methodology</h3>
                     <p className="text-muted-foreground leading-relaxed text-center">
-                      Conducted observational studies and contextual interviews with over 40 staff and customers. The key qualitative findings, visualized below, helped map the emotional and logistical journey of waiting.
+                      Conducted observational studies and contextual interviews with over 40 staff and customers. The key qualitative findings helped map the emotional and logistical journey of waiting.
                     </p>
                   </div>
 
