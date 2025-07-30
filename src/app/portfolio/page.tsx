@@ -54,11 +54,14 @@ export default function PortfolioPage() {
                     <h2 className="font-headline text-3xl font-bold">{study.title}</h2>
                     <p className="text-muted-foreground text-lg my-6">{study.description}</p>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-6">
                       {study.highlights && study.highlights.map((highlight, hIndex) => (
-                        <div key={hIndex} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                          <p className="text-muted-foreground">{highlight}</p>
+                         <div key={hIndex} className="flex flex-col gap-2">
+                          <div className="flex items-center gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                            <h4 className="font-semibold text-foreground">{highlight.title}</h4>
+                          </div>
+                          <p className="text-muted-foreground text-sm pl-8">{highlight.description}</p>
                         </div>
                       ))}
                     </div>
