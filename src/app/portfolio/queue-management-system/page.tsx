@@ -294,6 +294,90 @@ const QueueManagementPage = () => {
                     </div>
 
                     <div className="mt-12">
+                        <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
+                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border overflow-x-auto">
+                            <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                            To ensure security and a tailored experience, we designed a user access matrix defining the features available to each user persona across all supported platforms.
+                            </p>
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-sm text-left text-foreground">
+                                    <thead className="text-xs text-muted-foreground uppercase bg-secondary">
+                                        <tr>
+                                            <th scope="col" className="px-6 py-3 rounded-tl-lg whitespace-nowrap">Feature</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Web App</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Mobile App</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Kiosk</th>
+                                            <th scope="col" className="px-6 py-3 rounded-tr-lg whitespace-nowrap">Voice Assistant</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className="bg-card border-b border-border">
+                                            <td colSpan={5} className="px-6 py-2 font-bold text-primary">Customer</td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">Join Queue Remotely</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">View Queue Status</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">Receive Notifications</td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                        </tr>
+
+                                        <tr className="bg-card border-b border-border">
+                                            <td colSpan={5} className="px-6 py-2 font-bold text-primary">Frontline Staff</td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">Manage Station Queues</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                        </tr>
+                                        <tr className="bg-card border-b border-border">
+                                            <td className="px-6 py-4 whitespace-nowrap">Call Next Customer</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                        </tr>
+
+                                        <tr className="bg-card border-b border-border">
+                                            <td colSpan={5} className="px-6 py-2 font-bold text-primary">Branch Manager / Business Owner</td>
+                                        </tr>
+                                        <tr className="bg-card">
+                                            <td className="px-6 py-4 rounded-bl-lg whitespace-nowrap">View Analytics Dashboard</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center rounded-br-lg"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                        </tr>
+                                         <tr className="bg-card">
+                                            <td className="px-6 py-4 rounded-bl-lg whitespace-nowrap">Manage Staff & Services</td>
+                                            <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" aria-hidden="true" /><span className="sr-only">Yes</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                            <td className="px-6 py-4 text-center rounded-br-lg"><span aria-hidden="true">-</span><span className="sr-only">No</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-12">
                       <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">System User Flow</h3>
                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                         <p className="text-muted-foreground leading-relaxed mb-8 text-center">
@@ -303,15 +387,15 @@ const QueueManagementPage = () => {
                           <div>
                             <h4 className="text-lg font-bold text-primary mb-4 text-center">Customer Journey</h4>
                             <div className="relative pl-6">
-                              <div className="absolute left-[3px] top-0 h-full w-0.5 bg-border -z-10" />
+                              <div className="absolute left-[11px] top-0 h-full w-0.5 bg-border -z-10" />
                               {customerJourney.map((step, index) => (
                                 <div key={index} className="relative pb-8">
-                                  <div className="absolute -left-3 top-0">
+                                  <div className="absolute -left-0 top-0">
                                     <div className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 border-2 border-primary/20">
                                       <step.icon className="w-4 h-4 text-primary" />
                                     </div>
                                   </div>
-                                  <div className="pl-6">
+                                  <div className="pl-10">
                                     <h5 className="font-semibold text-foreground">{step.title}</h5>
                                     <p className="text-sm text-muted-foreground">{step.description}</p>
                                   </div>
@@ -322,15 +406,15 @@ const QueueManagementPage = () => {
                            <div>
                             <h4 className="text-lg font-bold text-accent mb-4 text-center">Staff Journey</h4>
                              <div className="relative pl-6">
-                              <div className="absolute left-[3px] top-0 h-full w-0.5 bg-border -z-10" />
+                              <div className="absolute left-[11px] top-0 h-full w-0.5 bg-border -z-10" />
                               {staffJourney.map((step, index) => (
                                 <div key={index} className="relative pb-8">
-                                  <div className="absolute -left-3 top-0">
+                                  <div className="absolute -left-0 top-0">
                                      <div className="flex items-center justify-center w-7 h-7 rounded-full bg-accent/10 border-2 border-accent/20">
                                       <step.icon className="w-4 h-4 text-accent" />
                                     </div>
                                   </div>
-                                  <div className="pl-6">
+                                  <div className="pl-10">
                                     <h5 className="font-semibold text-foreground">{step.title}</h5>
                                     <p className="text-sm text-muted-foreground">{step.description}</p>
                                   </div>
@@ -502,5 +586,7 @@ const QueueManagementPage = () => {
 };
 
 export default QueueManagementPage;
+
+    
 
     
