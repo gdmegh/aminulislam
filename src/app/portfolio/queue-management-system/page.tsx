@@ -367,16 +367,12 @@ const QueueManagementPage = () => {
                     <div>
                       <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Prototype Highlights</h3>
                       <p className="text-muted-foreground leading-relaxed mb-6">
-                        Prototypes focused on the core loop: a customer joining a queue, receiving updates, and being called for service by a staff member using the dashboard.
+                        An interactive prototype was developed to simulate the complete user journey, from a customer joining a queue to a staff member managing the flow.
                       </p>
                       <div className="space-y-4">
                         <a href="https://queue.meghcreations.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline font-medium">
                           <ExternalLink className="w-4 h-4" />
-                          View Customer App Prototype
-                        </a>
-                         <a href="#" className="flex items-center gap-2 text-primary hover:underline font-medium">
-                          <ExternalLink className="w-4 h-4" />
-                          View Staff Dashboard Prototype
+                          View Interactive Prototype
                         </a>
                       </div>
                     </div>
