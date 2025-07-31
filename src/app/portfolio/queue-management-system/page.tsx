@@ -295,7 +295,7 @@ const QueueManagementPage = () => {
 
                     <div className="mt-12">
                         <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
-                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border overflow-x-auto">
+                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                             <p className="text-muted-foreground leading-relaxed mb-6 text-center">
                             To ensure security and a tailored experience, we designed a user access matrix defining the features available to each user persona across all supported platforms.
                             </p>
