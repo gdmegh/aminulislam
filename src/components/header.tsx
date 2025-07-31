@@ -4,15 +4,27 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, BotMessageSquare } from "lucide-react";
+import { Menu, BotMessageSquare, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import ContactModal from "./contact-modal";
 import { usePathname } from 'next/navigation';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils";
+import { caseStudies } from "@/lib/case-studies";
+import React from "react";
+
 
 const menuItems = [
   { label: 'About', href: '/#about' },
-  { label: 'Portfolio', href: '/#portfolio' }
 ];
 
 export default function Header() {
@@ -32,18 +44,21 @@ export default function Header() {
       // Active section highlighting logic
       if (pathname === '/') {
         const sections = ['about', 'portfolio'];
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
-
+        let currentSection = '';
+        
         for (const sectionId of sections) {
           const section = document.getElementById(sectionId);
           if (section) {
-            if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
-              setActiveSection(sectionId);
-              return;
+             const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+              currentSection = sectionId;
+              break;
             }
           }
         }
-        setActiveSection('');
+        setActiveSection(currentSection);
+
       } else {
          setActiveSection(pathname.includes('/portfolio') ? 'portfolio' : '');
       }
@@ -73,6 +88,29 @@ export default function Header() {
                 <Link href={item.href}>{item.label}</Link>
             </Button>
           )}
+
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className={`text-base bg-transparent ${activeSection === 'portfolio' ? 'text-primary' : ''}`}>
+                  <Link href="/#portfolio">Portfolio</Link>
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    {caseStudies.map((study) => (
+                      <ListItem
+                        key={study.title}
+                        title={study.title}
+                        href={`/portfolio/${study.slug}`}
+                      >
+                        {study.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </nav>
 
         <div className="flex-1 flex justify-end">
@@ -110,6 +148,12 @@ export default function Header() {
                     {item.label}
                   </Link>
                 ))}
+                <Link
+                  href="/#portfolio"
+                  className={`text-lg font-medium hover:text-primary transition-colors ${activeSection === 'portfolio' ? 'text-primary' : ''}`}
+                >
+                  Portfolio
+                </Link>
                  <div className="mt-4">
                   <ContactModal>
                       <Button className="w-full">
@@ -126,3 +170,29 @@ export default function Header() {
     </header>
   );
 }
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"
