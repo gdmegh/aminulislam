@@ -8,28 +8,54 @@ import { Menu, BotMessageSquare } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import ContactModal from "./contact-modal";
+import { usePathname } from 'next/navigation';
 
 const menuItems = [
-  { label: 'Portfolio', href: '/portfolio' }
+  { label: 'About', href: '/#about' },
+  { label: 'Portfolio', href: '/#portfolio' }
 ];
 
 export default function Header() {
   const [showStickyButton, setShowStickyButton] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
+      // Sticky "Let's Talk" button logic
       if (window.scrollY > window.innerHeight * 0.9) {
         setShowStickyButton(true);
       } else {
         setShowStickyButton(false);
       }
+
+      // Active section highlighting logic
+      if (pathname === '/') {
+        const sections = ['about', 'portfolio'];
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+        for (const sectionId of sections) {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
+              setActiveSection(sectionId);
+              return;
+            }
+          }
+        }
+        setActiveSection('');
+      } else {
+         setActiveSection(pathname.includes('/portfolio') ? 'portfolio' : '');
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Run on mount to set initial state
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -43,7 +69,7 @@ export default function Header() {
         
         <nav className="hidden md:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {menuItems.map((item) =>
-            <Button key={item.label} variant="ghost" asChild className="text-base">
+            <Button key={item.label} variant="ghost" asChild className={`text-base ${activeSection === item.href.substring(2) ? 'text-primary' : ''}`}>
                 <Link href={item.href}>{item.label}</Link>
             </Button>
           )}
@@ -79,19 +105,19 @@ export default function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-lg font-medium hover:text-primary transition-colors"
+                    className={`text-lg font-medium hover:text-primary transition-colors ${activeSection === item.href.substring(2) ? 'text-primary' : ''}`}
                   >
                     {item.label}
                   </Link>
                 ))}
-                 {showStickyButton && (
-                     <ContactModal>
-                        <Button className="mt-4">
-                            Let's Talk
-                            <BotMessageSquare className="ml-2 h-5 w-5" />
-                        </Button>
-                    </ContactModal>
-                 )}
+                 <div className="mt-4">
+                  <ContactModal>
+                      <Button className="w-full">
+                          Let's Talk
+                          <BotMessageSquare className="ml-2 h-5 w-5" />
+                      </Button>
+                  </ContactModal>
+                 </div>
               </nav>
             </SheetContent>
           </Sheet>

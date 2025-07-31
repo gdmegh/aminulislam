@@ -50,14 +50,14 @@ export default function PortfolioPage() {
                         }`}
                     >
                         {study.slug === 'citizen-portal' || study.slug === 'queue-management-system' ? (
-                          <Image 
-                          src="/images/quefeatures.jpeg"
-                          alt={study.title}
-                              width={800}
-                              height={600}
-                              role="img"
-                              data-ai-hint={study.hint}
-                              className="rounded-lg shadow-xl"
+                           <Image 
+                            src={study.image}
+                            alt={study.title}
+                            width={800}
+                            height={600}
+                            role="img"
+                            data-ai-hint={study.hint}
+                            className="rounded-lg shadow-xl"
                           />
                         ) : study.metrics ? (
                         <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
