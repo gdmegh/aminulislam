@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -8,7 +7,7 @@ import { Input } from './ui/input';
 import { ScrollArea } from './ui/scroll-area';
 import { X, CornerDownLeft, Loader2, Maximize, Minimize } from 'lucide-react';
 import { useChatbot } from '@/hooks/use-chatbot';
-import { chat } from '@/ai/flows/chat-flow';
+import { chat, type ChatInput } from '@/ai/flows/chat-flow';
 
 interface Message {
   text: string;
@@ -20,7 +19,7 @@ const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [position, setPosition] = useState({ x: 50, y: 50 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isMaximized, setIsMaximized] = useState(false);
@@ -35,9 +34,9 @@ const Chatbot: React.FC = () => {
   }, [isOpen]);
   
   useEffect(() => {
-    if (scrollAreaRef.current) {
-        // @ts-ignore
-        scrollAreaRef.current.scrollTo(0, scrollAreaRef.current.scrollHeight);
+    const scrollable = (scrollAreaRef.current?.childNodes[0] as HTMLDivElement);
+    if (scrollable) {
+      scrollable.scrollTo(0, scrollable.scrollHeight);
     }
   }, [messages])
 
@@ -47,11 +46,12 @@ const Chatbot: React.FC = () => {
 
     const newMessages: Message[] = [...messages, { text: input, sender: 'user' }];
     setMessages(newMessages);
+    const userInput = input;
     setInput('');
     setIsLoading(true);
 
     try {
-      const response = await chat({ message: input });
+      const response = await chat({ message: userInput });
       setMessages([...newMessages, { text: response.message, sender: 'bot' }]);
     } catch (error) {
       console.error("Error chatting with AI:", error);
@@ -62,12 +62,15 @@ const Chatbot: React.FC = () => {
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isMaximized) return;
+    if (isMaximized || !(e.target as HTMLElement).classList.contains('cursor-grab')) return;
     setIsDragging(true);
-    setDragStart({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y
-    });
+    if (chatbotRef.current) {
+        const rect = chatbotRef.current.getBoundingClientRect();
+        setDragStart({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        });
+    }
   };
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -102,7 +105,7 @@ const Chatbot: React.FC = () => {
   return (
     <div
       ref={chatbotRef}
-      className={`fixed bottom-5 right-5 bg-card border border-border rounded-lg shadow-2xl flex flex-col transition-all duration-300 ease-in-out z-50 ${isMaximized ? 'w-full h-full top-0 left-0 bottom-0 right-0 rounded-none' : 'w-[400px] h-[600px]'}`}
+      className={`fixed bg-card border border-border rounded-lg shadow-2xl flex flex-col transition-all duration-300 ease-in-out z-50 ${isMaximized ? 'w-full h-full top-0 left-0 bottom-0 right-0 rounded-none' : 'w-[400px] h-[600px] bottom-5 right-5'}`}
       style={!isMaximized ? { transform: `translate(${position.x}px, ${position.y}px)` } : {}}
     >
       <div
