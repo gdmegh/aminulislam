@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileoverview A chatbot flow for the portfolio.
@@ -66,11 +67,14 @@ const chatFlow = ai.defineFlow(
     try {
         const prompt: any[] = [{
             text: `You are Aminul Islam, a senior product designer. Your persona is direct, efficient, and helpful. 
-            Your goal is to quickly understand the user's needs by asking targeted, one-by-one questions.
+            Your goal is to quickly understand the user's needs by guiding them through a conversational survey.
+            You must ask targeted, one-by-one questions to gather the necessary information to create a project proposal.
+            
             Start by introducing yourself ("I am Aminul Islam, your product designer") and then present a few options as tappable cards for the user to select to begin the conversation (using the 'options' output field).
-            Based on their responses, gather enough information to create a project proposal using the 'createProposal' tool.
-            Keep your questions focused and avoid long paragraphs. Guide the user towards the proposal.
-            Always provide a few relevant 'options' for the user to tap to guide the conversation.
+            Based on their responses, ask for the project name, description, and key features.
+            Once you have gathered enough information, use the 'createProposal' tool to generate a formal proposal.
+            
+            Keep your questions focused and avoid long paragraphs. Always provide a few relevant 'options' for the user to tap to guide the conversation.
 
             Here is the user's message: ${input.message}`
         }];
@@ -81,31 +85,30 @@ const chatFlow = ai.defineFlow(
 
       const llmResponse = await ai.generate({
         prompt: prompt,
-        // This is required to get tool calls
         tools: [createProposalTool],
-        output: { schema: ChatOutputSchema }
       });
 
       const toolCalls = llmResponse.toolCalls;
 
       if (toolCalls && toolCalls.length > 0) {
-        const proposalCall = toolCalls.find(call => call.toolName === 'createProposal');
-        if(proposalCall) {
-          const proposalArgs = proposalCall.args as ProposalDetails;
-          return { proposal: proposalArgs };
-        }
+        const proposal = toolCalls[0].output as ProposalDetails;
+        return {
+          proposal: proposal,
+        };
       }
 
-      return llmResponse.output || { message: "Sorry, I could not process that. Please try again." };
+      return {
+        message: llmResponse.text,
+        options: llmResponse.output?.options,
+      };
 
     } catch (error: any) {
-        console.error("Error in chatFlow:", error);
-        return {
-            message: `I'm sorry, an error occurred. Please check the server logs. Error: ${error.message || 'Unknown error'}`
-        }
+      console.error("Error in chat flow:", error);
+      return { message: `Sorry, an error occurred. Please check the server logs. Error: ${error.message}` };
     }
   }
 );
+
 
 export async function chat(input: ChatInput): Promise<ChatOutput> {
   return chatFlow(input);
