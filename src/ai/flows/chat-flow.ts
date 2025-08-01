@@ -24,15 +24,23 @@ const chatFlow = ai.defineFlow(
     outputSchema: chatOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: `You are GDMegh, a helpful AI assistant for Aminul Islam's portfolio website. 
-               Your persona should be professional, friendly, and knowledgeable about Aminul's work.
-               Here is the user's message: ${input.message}`,
-    });
+    try {
+      const llmResponse = await ai.generate({
+        prompt: `You are GDMegh, a helpful AI assistant for Aminul Islam's portfolio website. 
+                 Your persona should be professional, friendly, and knowledgeable about Aminul's work.
+                 Here is the user's message: ${input.message}`,
+      });
 
-    return {
-      message: llmResponse.text,
-    };
+      return {
+        message: llmResponse.text,
+      };
+    } catch (error: any) {
+        console.error("Error in chatFlow:", error);
+        // Return a specific error message to the user interface for debugging.
+        return {
+            message: `I'm sorry, an error occurred. Please check the server logs. [Vercel] Error: ${error.message || 'Unknown error'}`
+        }
+    }
   }
 );
 
