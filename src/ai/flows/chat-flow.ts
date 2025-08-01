@@ -81,11 +81,13 @@ const chatFlow = ai.defineFlow(
 
       const llmResponse = await ai.generate({
         prompt: prompt,
+        // This is required to get tool calls
+        tools: [createProposalTool],
       });
 
-      const toolCalls = llmResponse.toolCalls();
+      const toolCalls = llmResponse.toolCalls;
 
-      if (toolCalls.length > 0) {
+      if (toolCalls && toolCalls.length > 0) {
         const proposalCall = toolCalls.find(call => call.toolName === 'createProposal');
         if(proposalCall) {
           const proposalArgs = proposalCall.args as ProposalDetails;
