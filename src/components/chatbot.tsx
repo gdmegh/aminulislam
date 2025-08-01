@@ -15,13 +15,14 @@ import ProposalCard from './proposal-card';
 interface Message {
   text?: string;
   proposal?: ProposalDetails;
+  options?: string[];
   sender: 'user' | 'bot';
   audioUrl?: string;
   isSpeaking?: boolean;
 }
 
 const Chatbot: React.FC = () => {
-  const { isOpen, closeChatbot } = useChatbot();
+  const { isOpen, closeChatbot, openChatbot } = useChatbot();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -39,10 +40,29 @@ const Chatbot: React.FC = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (isOpen) {
-      setMessages([{ text: "I am Aminul Islam, your product designer. Please choose an option below to start our discussion, or type your own message.", sender: 'bot' }]);
+    if (isOpen && messages.length === 0) {
+      // Send an initial message to the bot to get the conversation started
+      const sendInitialMessage = async () => {
+        setIsLoading(true);
+        try {
+          const response = await chat({ message: "Hello" });
+          const botMessage: Message = {
+            sender: 'bot',
+            text: response.message,
+            proposal: response.proposal,
+            options: response.options
+          };
+          setMessages([botMessage]);
+        } catch (error) {
+          console.error("Error fetching initial message:", error);
+          setMessages([{ text: "Sorry, I'm having trouble connecting. Please try again later.", sender: 'bot' }]);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+      sendInitialMessage();
     }
-  }, [isOpen]);
+  }, [isOpen, messages.length]);
   
   useEffect(() => {
     const scrollable = (scrollAreaRef.current?.childNodes[0] as HTMLDivElement);
@@ -63,14 +83,14 @@ const Chatbot: React.FC = () => {
     }
   };
 
-  const handleSendMessage = async (e: React.FormEvent, predefinedMessage?: string) => {
-    e.preventDefault();
+  const handleSendMessage = async (e: React.FormEvent | null, predefinedMessage?: string) => {
+    e?.preventDefault();
     const messageToSend = predefinedMessage || input;
     if ((!messageToSend.trim() && !attachment) || isLoading) return;
 
     const userMessage: Message = { text: messageToSend, sender: 'user' };
     const newMessages: Message[] = [...messages, userMessage];
-    setMessages(newMessages);
+    setMessages(newMessages.map(m => ({ ...m, options: undefined }))); // Hide options after user replies
 
     const chatInputPayload: ChatInput = { message: messageToSend };
     if (attachment) {
@@ -87,6 +107,7 @@ const Chatbot: React.FC = () => {
         sender: 'bot',
         text: response.message,
         proposal: response.proposal,
+        options: response.options
       };
       setMessages([...newMessages, botMessage]);
     } catch (error) {
@@ -218,16 +239,33 @@ const Chatbot: React.FC = () => {
       <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
         <div className="space-y-4">
           {messages.map((msg, index) => (
-            <div key={index} className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {msg.sender === 'bot' && <Image src="/images/profile2.png" alt="Bot" width={24} height={24} className="rounded-full self-start" />}
-              <div className={`rounded-lg px-3 py-2 max-w-[85%] text-sm ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                {msg.text && <p>{msg.text}</p>}
-                {msg.proposal && <ProposalCard proposal={msg.proposal} />}
+            <div key={index}>
+              <div className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                {msg.sender === 'bot' && <Image src="/images/profile2.png" alt="Bot" width={24} height={24} className="rounded-full self-start" />}
+                <div className={`rounded-lg px-3 py-2 max-w-[85%] text-sm ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+                  {msg.text && <p>{msg.text}</p>}
+                  {msg.proposal && <ProposalCard proposal={msg.proposal} />}
+                </div>
+                {msg.sender === 'bot' && msg.text && (
+                  <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => handlePlayAudio(index)} disabled={msg.isSpeaking}>
+                    <Volume2 className={`w-4 h-4 ${msg.isSpeaking ? 'text-primary animate-pulse' : ''}`} />
+                  </Button>
+                )}
               </div>
-              {msg.sender === 'bot' && msg.text && (
-                <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => handlePlayAudio(index)} disabled={msg.isSpeaking}>
-                  <Volume2 className={`w-4 h-4 ${msg.isSpeaking ? 'text-primary animate-pulse' : ''}`} />
-                </Button>
+              {msg.sender === 'bot' && msg.options && msg.options.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-2 ml-8">
+                  {msg.options.map((option, i) => (
+                    <Button 
+                      key={i} 
+                      variant="outline" 
+                      size="sm"
+                      className="h-auto py-1.5 px-3"
+                      onClick={() => handleSendMessage(null, option)}
+                    >
+                      {option}
+                    </Button>
+                  ))}
+                </div>
               )}
             </div>
           ))}

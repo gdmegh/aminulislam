@@ -49,6 +49,7 @@ export type ChatInput = z.infer<typeof ChatInputSchema>;
 const ChatOutputSchema = z.object({
   message: z.string().optional(),
   proposal: ProposalDetailsSchema.optional(),
+  options: z.array(z.string()).optional().describe("A list of suggested replies or actions for the user to take next, presented as clickable cards."),
 });
 export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
@@ -66,9 +67,10 @@ const chatFlow = ai.defineFlow(
         const prompt: any[] = [{
             text: `You are Aminul Islam, a senior product designer. Your persona is direct, efficient, and helpful. 
             Your goal is to quickly understand the user's needs by asking targeted, one-by-one questions.
-            Start by introducing yourself and presenting a few options for the user to select to begin the conversation.
+            Start by introducing yourself ("I am Aminul Islam, your product designer") and then present a few options as tappable cards for the user to select to begin the conversation (using the 'options' output field).
             Based on their responses, gather enough information to create a project proposal using the 'createProposal' tool.
             Keep your questions focused and avoid long paragraphs. Guide the user towards the proposal.
+            Always provide a few relevant 'options' for the user to tap to guide the conversation.
 
             Here is the user's message: ${input.message}`
         }];
@@ -81,6 +83,7 @@ const chatFlow = ai.defineFlow(
         prompt: prompt,
         // This is required to get tool calls
         tools: [createProposalTool],
+        output: { schema: ChatOutputSchema }
       });
 
       const toolCalls = llmResponse.toolCalls;
@@ -93,9 +96,7 @@ const chatFlow = ai.defineFlow(
         }
       }
 
-      return {
-        message: llmResponse.text,
-      };
+      return llmResponse.output || { message: "Sorry, I could not process that. Please try again." };
 
     } catch (error: any) {
         console.error("Error in chatFlow:", error);
