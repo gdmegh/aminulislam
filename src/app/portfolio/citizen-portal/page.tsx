@@ -9,6 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
 import { notFound } from 'next/navigation';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const chartData = [
   { name: 'Processing Time', 'Reduction': 40 },
@@ -134,9 +135,19 @@ const CaseStudyPage = () => {
 
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-              
-              {/* Empathize Stage */}
-              <section id="empathize" className="mb-20">
+          <Tabs defaultValue="empathize" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 mb-12 h-auto flex-wrap">
+              <TabsTrigger value="empathize">Empathize</TabsTrigger>
+              <TabsTrigger value="define">Define</TabsTrigger>
+              <TabsTrigger value="ideate">Ideate</TabsTrigger>
+              <TabsTrigger value="prototype">Prototype</TabsTrigger>
+              <TabsTrigger value="test">Test</TabsTrigger>
+              <TabsTrigger value="impact">Impact</TabsTrigger>
+              <TabsTrigger value="next">Next Steps</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="empathize">
+              <section id="empathize">
                 <div className="text-center mb-12">
                    <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
                     <Users2 className="w-5 h-5"/>
@@ -172,9 +183,10 @@ const CaseStudyPage = () => {
 
                 </div>
               </section>
+            </TabsContent>
 
-              {/* Define Stage */}
-              <section id="define" className="mb-20">
+            <TabsContent value="define">
+              <section id="define">
                 <div className="text-center mb-12">
                   <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
                     <Pencil className="w-5 h-5"/>
@@ -365,9 +377,10 @@ const CaseStudyPage = () => {
                     </div>
                 </div>
               </section>
+            </TabsContent>
 
-              {/* Ideate Stage */}
-              <section id="ideate" className="mb-20">
+            <TabsContent value="ideate">
+              <section id="ideate">
                  <div className="text-center mb-12">
                    <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
                     <Bot className="w-5 h-5"/>
@@ -394,9 +407,10 @@ const CaseStudyPage = () => {
                   </div>
                 </div>
               </section>
+            </TabsContent>
 
-              {/* Prototype Stage */}
-              <section id="prototype" className="mb-20">
+            <TabsContent value="prototype">
+              <section id="prototype">
                 <div className="text-center mb-12">
                    <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
                     <Search className="w-5 h-5"/>
@@ -443,10 +457,10 @@ const CaseStudyPage = () => {
                     </div>
                 </div>
               </section>
+            </TabsContent>
 
-
-              {/* Test Stage */}
-              <section id="test" className="mb-20">
+            <TabsContent value="test">
+              <section id="test">
                 <div className="text-center mb-12">
                    <div className="inline-flex items-center gap-3 bg-primary/10 text-primary font-bold py-2 px-4 rounded-full text-sm mb-4">
                     <CheckCircle className="w-5 h-5"/>
@@ -474,9 +488,10 @@ const CaseStudyPage = () => {
                   </div>
                 </div>
               </section>
+            </TabsContent>
 
-              {/* Impact & Results */}
-              <section id="impact" className="mb-20">
+            <TabsContent value="impact">
+              <section id="impact">
                 <h2 className="text-3xl font-bold text-foreground mb-8 font-headline text-center">Impact & Results</h2>
                 <div className="grid lg:grid-cols-2 gap-12 mb-12 items-center">
                   <div className="bg-green-500/10 rounded-2xl p-8 border border-green-500/20">
@@ -519,9 +534,10 @@ const CaseStudyPage = () => {
                     </div>
                 </div>
               </section>
-
-              {/* Next Steps */}
-              <section id="next" className="mb-20">
+            </TabsContent>
+            
+            <TabsContent value="next">
+              <section id="next">
                 <h2 className="text-3xl font-bold text-foreground mb-8 font-headline text-center">Next Steps</h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {[
@@ -551,6 +567,8 @@ const CaseStudyPage = () => {
                   ))}
                 </div>
               </section>
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
       </main>
