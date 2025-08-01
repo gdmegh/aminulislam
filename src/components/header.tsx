@@ -4,10 +4,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, BotMessageSquare, ChevronDown } from "lucide-react";
+import { Menu, BotMessageSquare } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import ContactModal from "./contact-modal";
 import { usePathname } from 'next/navigation';
 import {
   NavigationMenu,
@@ -16,11 +15,11 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils";
 import { caseStudies } from "@/lib/case-studies";
 import React from "react";
+import { useChatbot } from "@/hooks/use-chatbot";
 
 
 const menuItems = [
@@ -31,6 +30,7 @@ export default function Header() {
   const [showStickyButton, setShowStickyButton] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const pathname = usePathname();
+  const { toggleChatbot } = useChatbot();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -116,12 +116,10 @@ export default function Header() {
         <div className="flex-1 flex justify-end">
             <div className="hidden md:block">
             {showStickyButton && (
-                <ContactModal>
-                    <Button>
-                        Let's Talk
-                        <BotMessageSquare className="ml-2 h-5 w-5" />
-                    </Button>
-                </ContactModal>
+                <Button onClick={toggleChatbot}>
+                    Let's Talk
+                    <BotMessageSquare className="ml-2 h-5 w-5" />
+                </Button>
             )}
             </div>
         </div>
@@ -155,12 +153,10 @@ export default function Header() {
                   Portfolio
                 </Link>
                  <div className="mt-4">
-                  <ContactModal>
-                      <Button className="w-full">
-                          Let's Talk
-                          <BotMessageSquare className="ml-2 h-5 w-5" />
-                      </Button>
-                  </ContactModal>
+                  <Button className="w-full" onClick={toggleChatbot}>
+                      Let's Talk
+                      <BotMessageSquare className="ml-2 h-5 w-5" />
+                  </Button>
                  </div>
               </nav>
             </SheetContent>
