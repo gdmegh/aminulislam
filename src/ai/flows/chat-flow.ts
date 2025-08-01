@@ -5,9 +5,11 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 
-// Define schemas at the top level.
 const chatInputSchema = z.object({
   message: z.string(),
+  attachmentDataUri: z.string().optional().describe(
+    "A file attached by the user, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
+  ),
 });
 export type ChatInput = z.infer<typeof chatInputSchema>;
 
@@ -16,7 +18,6 @@ const chatOutputSchema = z.object({
 });
 export type ChatOutput = z.infer<typeof chatOutputSchema>;
 
-// Define the flow at the top level.
 const chatFlow = ai.defineFlow(
   {
     name: 'chatFlow',
@@ -25,10 +26,18 @@ const chatFlow = ai.defineFlow(
   },
   async (input) => {
     try {
-      const llmResponse = await ai.generate({
-        prompt: `You are GDMegh, a helpful AI assistant for Aminul Islam's portfolio website. 
+        const prompt: any[] = [{
+            text: `You are GDMegh, a helpful AI assistant for Aminul Islam's portfolio website. 
                  Your persona should be professional, friendly, and knowledgeable about Aminul's work.
-                 Here is the user's message: ${input.message}`,
+                 Here is the user's message: ${input.message}`
+        }];
+
+        if (input.attachmentDataUri) {
+            prompt.push({ media: { url: input.attachmentDataUri } });
+        }
+
+      const llmResponse = await ai.generate({
+        prompt: prompt,
       });
 
       return {
@@ -44,7 +53,6 @@ const chatFlow = ai.defineFlow(
   }
 );
 
-// The exported server action simply invokes the defined flow.
 export async function chat(input: ChatInput): Promise<ChatOutput> {
   return chatFlow(input);
 }

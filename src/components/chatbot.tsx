@@ -5,13 +5,16 @@ import Image from 'next/image';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { ScrollArea } from './ui/scroll-area';
-import { X, CornerDownLeft, Loader2, Maximize, Minimize } from 'lucide-react';
+import { X, CornerDownLeft, Loader2, Maximize, Minimize, Paperclip, Volume2, FileImage } from 'lucide-react';
 import { useChatbot } from '@/hooks/use-chatbot';
 import { chat, type ChatInput } from '@/ai/flows/chat-flow';
+import { tts, type TtsInput } from '@/ai/flows/tts-flow';
 
 interface Message {
   text: string;
   sender: 'user' | 'bot';
+  audioUrl?: string;
+  isSpeaking?: boolean;
 }
 
 const Chatbot: React.FC = () => {
@@ -23,13 +26,16 @@ const Chatbot: React.FC = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isMaximized, setIsMaximized] = useState(false);
+  const [attachment, setAttachment] = useState<{ dataUri: string; name: string; type: string } | null>(null);
 
   const chatbotRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (isOpen) {
-      setMessages([{ text: "Hello! I'm GDMegh, Aminul's AI assistant. How can I help you today?", sender: 'bot' }]);
+      setMessages([{ text: "Hello! I'm GDMegh, Aminul's AI assistant. How can I help you today? You can also attach files for me to analyze.", sender: 'bot' }]);
     }
   }, [isOpen]);
   
@@ -38,20 +44,39 @@ const Chatbot: React.FC = () => {
     if (scrollable) {
       scrollable.scrollTo(0, scrollable.scrollHeight);
     }
-  }, [messages])
+  }, [messages]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (loadEvent) => {
+        const dataUri = loadEvent.target?.result as string;
+        setAttachment({ dataUri, name: file.name, type: file.type });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading) return;
+    if ((!input.trim() && !attachment) || isLoading) return;
 
-    const newMessages: Message[] = [...messages, { text: input, sender: 'user' }];
+    const userMessage: Message = { text: input, sender: 'user' };
+    const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages);
-    const userInput = input;
+
+    const chatInputPayload: ChatInput = { message: input };
+    if (attachment) {
+        chatInputPayload.attachmentDataUri = attachment.dataUri;
+    }
+
     setInput('');
+    setAttachment(null);
     setIsLoading(true);
 
     try {
-      const response = await chat({ message: userInput });
+      const response = await chat(chatInputPayload);
       setMessages([...newMessages, { text: response.message, sender: 'bot' }]);
     } catch (error) {
       console.error("Error chatting with AI:", error);
@@ -60,6 +85,42 @@ const Chatbot: React.FC = () => {
       setIsLoading(false);
     }
   };
+  
+  const handlePlayAudio = async (index: number) => {
+    const message = messages[index];
+    if (message.isSpeaking && audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        setMessages(messages.map((m, i) => i === index ? { ...m, isSpeaking: false } : m));
+        return;
+    }
+
+    if (message.audioUrl) {
+      playAudio(message.audioUrl, index);
+    } else {
+      try {
+        const audioResponse = await tts({ text: message.text });
+        if(audioResponse.audioDataUri) {
+          setMessages(messages.map((m, i) => i === index ? { ...m, audioUrl: audioResponse.audioDataUri } : m));
+          playAudio(audioResponse.audioDataUri, index);
+        }
+      } catch (error) {
+        console.error("Error with TTS:", error);
+      }
+    }
+  };
+
+  const playAudio = (url: string, index: number) => {
+    if (audioRef.current) {
+        audioRef.current.src = url;
+        audioRef.current.play();
+        setMessages(messages.map((m, i) => ({ ...m, isSpeaking: i === index })));
+        audioRef.current.onended = () => {
+            setMessages(currentMessages => currentMessages.map((m, i) => i === index ? { ...m, isSpeaking: false } : m));
+        };
+    }
+  }
+
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isMaximized || !(e.target as HTMLElement).classList.contains('cursor-grab')) return;
@@ -129,10 +190,15 @@ const Chatbot: React.FC = () => {
         <div className="space-y-4">
           {messages.map((msg, index) => (
             <div key={index} className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {msg.sender === 'bot' && <Image src="/images/profile2.png" alt="Bot" width={24} height={24} className="rounded-full" />}
+              {msg.sender === 'bot' && <Image src="/images/profile2.png" alt="Bot" width={24} height={24} className="rounded-full self-start" />}
               <div className={`rounded-lg px-3 py-2 max-w-[80%] text-sm ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
                 {msg.text}
               </div>
+              {msg.sender === 'bot' && (
+                <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => handlePlayAudio(index)} disabled={msg.isSpeaking}>
+                  <Volume2 className={`w-4 h-4 ${msg.isSpeaking ? 'text-primary animate-pulse' : ''}`} />
+                </Button>
+              )}
             </div>
           ))}
           {isLoading && (
@@ -146,7 +212,25 @@ const Chatbot: React.FC = () => {
         </div>
       </ScrollArea>
       <div className="p-3 border-t border-border">
+         {attachment && (
+            <div className="mb-2 flex items-center gap-2 p-2 rounded-md bg-muted text-sm">
+                {attachment.type.startsWith('image/') ? (
+                    <Image src={attachment.dataUri} alt={attachment.name} width={24} height={24} className="rounded-sm"/>
+                ) : (
+                    <FileImage className="w-6 h-6 flex-shrink-0" />
+                )}
+                <span className="truncate flex-1">{attachment.name}</span>
+                <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setAttachment(null)}>
+                    <X className="w-4 h-4" />
+                </Button>
+            </div>
+        )}
         <form onSubmit={handleSendMessage} className="flex items-center gap-2">
+           <Button type="button" variant="ghost" size="icon" onClick={() => fileInputRef.current?.click()}>
+                <Paperclip className="w-4 h-4" />
+                <span className="sr-only">Attach file</span>
+            </Button>
+            <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" />
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -154,11 +238,12 @@ const Chatbot: React.FC = () => {
             className="flex-1"
             disabled={isLoading}
           />
-          <Button type="submit" size="icon" disabled={isLoading}>
+          <Button type="submit" size="icon" disabled={isLoading || (!input.trim() && !attachment)}>
             <CornerDownLeft className="w-4 h-4" />
           </Button>
         </form>
       </div>
+      <audio ref={audioRef} className="hidden" />
     </div>
   );
 };
