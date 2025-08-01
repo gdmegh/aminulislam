@@ -5,10 +5,11 @@ import Image from 'next/image';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { ScrollArea } from './ui/scroll-area';
-import { X, CornerDownLeft, Loader2, Maximize, Minimize, Paperclip, Volume2, FileImage } from 'lucide-react';
+import { X, CornerDownLeft, Loader2, Maximize, Minimize, Paperclip, Volume2, FileImage, Mic, MicOff } from 'lucide-react';
 import { useChatbot } from '@/hooks/use-chatbot';
 import { chat, type ChatInput } from '@/ai/flows/chat-flow';
 import { tts, type TtsInput } from '@/ai/flows/tts-flow';
+import { useToast } from '@/hooks/use-toast';
 
 interface Message {
   text: string;
@@ -27,11 +28,13 @@ const Chatbot: React.FC = () => {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isMaximized, setIsMaximized] = useState(false);
   const [attachment, setAttachment] = useState<{ dataUri: string; name: string; type: string } | null>(null);
+  const [isRecording, setIsRecording] = useState(false);
 
   const chatbotRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (isOpen) {
@@ -146,6 +149,22 @@ const Chatbot: React.FC = () => {
     setIsDragging(false);
   };
   
+  const handleMicToggle = async () => {
+    if (isRecording) {
+      setIsRecording(false);
+      // In a real implementation, you would stop recording here.
+    } else {
+       toast({
+        variant: "destructive",
+        title: "Feature Not Available",
+        description: "Speech-to-text functionality is not yet implemented.",
+      });
+      // This is a placeholder for starting the recording
+      // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      // setIsRecording(true);
+    }
+  };
+  
   useEffect(() => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
@@ -226,18 +245,22 @@ const Chatbot: React.FC = () => {
             </div>
         )}
         <form onSubmit={handleSendMessage} className="flex items-center gap-2">
-           <Button type="button" variant="ghost" size="icon" onClick={() => fileInputRef.current?.click()}>
-                <Paperclip className="w-4 h-4" />
-                <span className="sr-only">Attach file</span>
-            </Button>
-            <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" />
-          <Input
+           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask me anything..."
             className="flex-1"
             disabled={isLoading}
           />
+          <Button type="button" variant="ghost" size="icon" onClick={() => fileInputRef.current?.click()}>
+              <Paperclip className="w-4 h-4" />
+              <span className="sr-only">Attach file</span>
+          </Button>
+          <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" />
+          <Button type="button" variant={isRecording ? 'destructive' : 'ghost'} size="icon" onClick={handleMicToggle}>
+              {isRecording ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+              <span className="sr-only">{isRecording ? 'Stop recording' : 'Start recording'}</span>
+          </Button>
           <Button type="submit" size="icon" disabled={isLoading || (!input.trim() && !attachment)}>
             <CornerDownLeft className="w-4 h-4" />
           </Button>
