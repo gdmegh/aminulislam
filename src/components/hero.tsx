@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -26,9 +25,6 @@ export default function Hero() {
             <Button size="lg" className="px-10 py-6 text-lg" onClick={toggleChatbot}>
               Let's Talk
               <BotMessageSquare className="ml-2 h-5 w-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="px-10 py-6 text-lg" onClick={toggleChatbot}>
-              Get Offer
             </Button>
           </div>
         </div>
