@@ -49,7 +49,7 @@ export type ChatInput = z.infer<typeof ChatInputSchema>;
 
 const ChatOutputSchema = z.object({
   message: z.string().optional(),
-  proposal: ProposalDetailsSchema.optional(),
+  proposal: ProposalDetailsSchema.optional().nullable(),
   options: z.array(z.string()).optional().describe("A list of suggested replies or actions for the user to take next, presented as clickable cards."),
 });
 export type ChatOutput = z.infer<typeof ChatOutputSchema>;
