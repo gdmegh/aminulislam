@@ -6,17 +6,18 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 
-const chatInputSchema = z.object({
-  message: z.string(),
-});
-
-const chatOutputSchema = z.object({
-  message: z.string(),
-});
-
 export async function chat(
   input: z.infer<typeof chatInputSchema>
 ): Promise<z.infer<typeof chatOutputSchema>> {
+
+  const chatInputSchema = z.object({
+    message: z.string(),
+  });
+
+  const chatOutputSchema = z.object({
+    message: z.string(),
+  });
+
   const chatFlow = ai.defineFlow(
     {
       name: 'chatFlow',
@@ -39,3 +40,13 @@ export async function chat(
   
   return chatFlow(input);
 }
+
+// We define the schemas again outside the function scope 
+// so we can export their types without violating 'use server'.
+const chatInputSchema = z.object({
+  message: z.string(),
+});
+
+const chatOutputSchema = z.object({
+  message: z.string(),
+});
