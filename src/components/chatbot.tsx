@@ -40,7 +40,7 @@ const Chatbot: React.FC = () => {
 
   useEffect(() => {
     if (isOpen) {
-      setMessages([{ text: "Hello! I'm GDMegh, Aminul's AI assistant. Let's discuss your project idea. How can I help you build it?", sender: 'bot' }]);
+      setMessages([{ text: "I am Aminul Islam, your product designer. Please choose an option below to start our discussion, or type your own message.", sender: 'bot' }]);
     }
   }, [isOpen]);
   
@@ -63,15 +63,16 @@ const Chatbot: React.FC = () => {
     }
   };
 
-  const handleSendMessage = async (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent, predefinedMessage?: string) => {
     e.preventDefault();
-    if ((!input.trim() && !attachment) || isLoading) return;
+    const messageToSend = predefinedMessage || input;
+    if ((!messageToSend.trim() && !attachment) || isLoading) return;
 
-    const userMessage: Message = { text: input, sender: 'user' };
+    const userMessage: Message = { text: messageToSend, sender: 'user' };
     const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages);
 
-    const chatInputPayload: ChatInput = { message: input };
+    const chatInputPayload: ChatInput = { message: messageToSend };
     if (attachment) {
         chatInputPayload.attachmentDataUri = attachment.dataUri;
     }
@@ -203,7 +204,7 @@ const Chatbot: React.FC = () => {
       >
         <div className="flex items-center gap-2">
           <Image src="/images/profile2.png" alt="GDMegh" width={32} height={32} className="rounded-full" />
-          <h3 className="font-bold text-foreground">GDMegh</h3>
+          <h3 className="font-bold text-foreground">Aminul Islam</h3>
         </div>
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setIsMaximized(!isMaximized)}>
@@ -254,7 +255,7 @@ const Chatbot: React.FC = () => {
                 </Button>
             </div>
         )}
-        <form onSubmit={handleSendMessage} className="flex items-center gap-2">
+        <form onSubmit={(e) => handleSendMessage(e)} className="flex items-center gap-2">
            <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}

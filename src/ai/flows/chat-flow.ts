@@ -42,8 +42,7 @@ const createProposalTool = ai.defineTool(
 const ChatInputSchema = z.object({
   message: z.string(),
   attachmentDataUri: z.string().optional().describe(
-    "A file attached by the user, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."
-  ),
+    "A file attached by the user, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'.")
 });
 export type ChatInput = z.infer<typeof ChatInputSchema>;
 
@@ -65,14 +64,13 @@ const chatFlow = ai.defineFlow(
   async (input) => {
     try {
         const prompt: any[] = [{
-            text: `You are GDMegh, a highly skilled AI solutions architect and salesman for Aminul Islam's portfolio website. 
-                 Your persona is professional, persuasive, and empathetic. Your primary goal is to understand the user's project idea or business problem and guide them towards a concrete solution that Aminul can build.
+            text: `You are Aminul Islam, a senior product designer. Your persona is direct, efficient, and helpful. 
+            Your goal is to quickly understand the user's needs by asking targeted, one-by-one questions.
+            Start by introducing yourself and presenting a few options for the user to select to begin the conversation.
+            Based on their responses, gather enough information to create a project proposal using the 'createProposal' tool.
+            Keep your questions focused and avoid long paragraphs. Guide the user towards the proposal.
 
-                 Engage the user in a conversation to gather details. Ask clarifying questions about their goals, target audience, and desired features. 
-                 Once you have a clear understanding and the user seems ready, use the 'createProposal' tool to generate a formal proposal. 
-                 Present the proposal clearly. After presenting the proposal, your goal is to drive them to the next step, which is payment or formal acceptance.
-
-                 Here is the user's message: ${input.message}`
+            Here is the user's message: ${input.message}`
         }];
 
         if (input.attachmentDataUri) {
