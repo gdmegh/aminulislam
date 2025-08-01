@@ -54,39 +54,42 @@ const ChatOutputSchema = z.object({
 });
 export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
+const chatFlowPrompt = ai.definePrompt(
+  {
+    name: 'chatFlowPrompt',
+    input: { schema: ChatInputSchema },
+    output: { schema: ChatOutputSchema },
+    tools: [createProposalTool],
+    prompt: `You are Aminul Islam, a senior product designer. Your persona is direct, efficient, and helpful.
+    Your goal is to quickly understand the user's needs by guiding them through a conversational survey.
+    You MUST ask targeted, one-by-one questions to gather the necessary information to create a project proposal.
+
+    If this is the first message from the user, you MUST start the conversation with the exact phrase: "I am Aminul Islam, your product designer. To get started, please select one of the following options:" and provide the following options as tappable cards: "Discuss a new project idea", "Refine an existing project", "Get a proposal for a past discussion".
+
+    Based on their response, acknowledge their choice and then begin asking for the project name, description, and key features.
+    Once you have gathered enough information, use the 'createProposal' tool to generate a formal proposal.
+
+    Keep your questions focused and avoid long paragraphs. Always provide a few relevant 'options' as tappable cards for the user to guide the conversation.
+
+    Here is the user's message: {{{message}}}
+    {{#if attachmentDataUri}}
+    Here is an attachment from the user:
+    {{media url=attachmentDataUri}}
+    {{/if}}
+    `,
+  }
+)
+
 
 const chatFlow = ai.defineFlow(
   {
     name: 'chatFlow',
     inputSchema: ChatInputSchema,
     outputSchema: ChatOutputSchema,
-    // Add the tool to the flow's context
-    tools: [createProposalTool],
   },
   async (input) => {
     try {
-        const prompt: any[] = [{
-            text: `You are Aminul Islam, a senior product designer. Your persona is direct, efficient, and helpful. 
-            Your goal is to quickly understand the user's needs by guiding them through a conversational survey.
-            You must ask targeted, one-by-one questions to gather the necessary information to create a project proposal.
-            
-            Start by introducing yourself ("I am Aminul Islam, your product designer") and then present a few options as tappable cards for the user to select to begin the conversation (using the 'options' output field).
-            Based on their responses, ask for the project name, description, and key features.
-            Once you have gathered enough information, use the 'createProposal' tool to generate a formal proposal.
-            
-            Keep your questions focused and avoid long paragraphs. Always provide a few relevant 'options' for the user to tap to guide the conversation.
-
-            Here is the user's message: ${input.message}`
-        }];
-
-        if (input.attachmentDataUri) {
-            prompt.push({ media: { url: input.attachmentDataUri } });
-        }
-
-      const llmResponse = await ai.generate({
-        prompt: prompt,
-        tools: [createProposalTool],
-      });
+      const llmResponse = await chatFlowPrompt(input);
 
       const toolCalls = llmResponse.toolCalls;
 

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -22,7 +23,7 @@ interface Message {
 }
 
 const Chatbot: React.FC = () => {
-  const { isOpen, closeChatbot, openChatbot } = useChatbot();
+  const { isOpen, closeChatbot } = useChatbot();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -41,11 +42,10 @@ const Chatbot: React.FC = () => {
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      // Send an initial message to the bot to get the conversation started
       const sendInitialMessage = async () => {
         setIsLoading(true);
         try {
-          const response = await chat({ message: "Hello" });
+          const response = await chat({ message: "Hello, this is the first message." });
           const botMessage: Message = {
             sender: 'bot',
             text: response.message,
@@ -90,7 +90,7 @@ const Chatbot: React.FC = () => {
 
     const userMessage: Message = { text: messageToSend, sender: 'user' };
     const newMessages: Message[] = [...messages, userMessage];
-    setMessages(newMessages.map(m => ({ ...m, options: undefined }))); // Hide options after user replies
+    setMessages(newMessages.map(m => ({ ...m, options: undefined }))); 
 
     const chatInputPayload: ChatInput = { message: messageToSend };
     if (attachment) {
@@ -253,17 +253,15 @@ const Chatbot: React.FC = () => {
                 )}
               </div>
               {msg.sender === 'bot' && msg.options && msg.options.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-2 ml-8">
+                <div className="flex flex-col items-start gap-2 mt-2 ml-8">
                   {msg.options.map((option, i) => (
-                    <Button 
+                    <button 
                       key={i} 
-                      variant="outline" 
-                      size="sm"
-                      className="h-auto py-1.5 px-3"
+                      className="w-full text-left p-3 rounded-lg bg-muted hover:bg-primary/10 border border-border hover:border-primary transition-all duration-200"
                       onClick={() => handleSendMessage(null, option)}
                     >
-                      {option}
-                    </Button>
+                      <span className="font-medium text-sm">{option}</span>
+                    </button>
                   ))}
                 </div>
               )}
