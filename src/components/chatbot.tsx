@@ -7,12 +7,14 @@ import { Input } from './ui/input';
 import { ScrollArea } from './ui/scroll-area';
 import { X, CornerDownLeft, Loader2, Maximize, Minimize, Paperclip, Volume2, FileImage, Mic, MicOff } from 'lucide-react';
 import { useChatbot } from '@/hooks/use-chatbot';
-import { chat, type ChatInput } from '@/ai/flows/chat-flow';
+import { chat, type ChatInput, type ProposalDetails } from '@/ai/flows/chat-flow';
 import { tts, type TtsInput } from '@/ai/flows/tts-flow';
 import { useToast } from '@/hooks/use-toast';
+import ProposalCard from './proposal-card';
 
 interface Message {
-  text: string;
+  text?: string;
+  proposal?: ProposalDetails;
   sender: 'user' | 'bot';
   audioUrl?: string;
   isSpeaking?: boolean;
@@ -38,7 +40,7 @@ const Chatbot: React.FC = () => {
 
   useEffect(() => {
     if (isOpen) {
-      setMessages([{ text: "Hello! I'm GDMegh, Aminul's AI assistant. How can I help you today? You can also attach files for me to analyze.", sender: 'bot' }]);
+      setMessages([{ text: "Hello! I'm GDMegh, Aminul's AI assistant. Let's discuss your project idea. How can I help you build it?", sender: 'bot' }]);
     }
   }, [isOpen]);
   
@@ -80,7 +82,12 @@ const Chatbot: React.FC = () => {
 
     try {
       const response = await chat(chatInputPayload);
-      setMessages([...newMessages, { text: response.message, sender: 'bot' }]);
+      const botMessage: Message = {
+        sender: 'bot',
+        text: response.message,
+        proposal: response.proposal,
+      };
+      setMessages([...newMessages, botMessage]);
     } catch (error) {
       console.error("Error chatting with AI:", error);
       setMessages([...newMessages, { text: "Sorry, I'm having trouble connecting. Please try again later.", sender: 'bot' }]);
@@ -91,6 +98,8 @@ const Chatbot: React.FC = () => {
   
   const handlePlayAudio = async (index: number) => {
     const message = messages[index];
+    if (!message.text) return;
+
     if (message.isSpeaking && audioRef.current) {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
@@ -210,10 +219,11 @@ const Chatbot: React.FC = () => {
           {messages.map((msg, index) => (
             <div key={index} className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
               {msg.sender === 'bot' && <Image src="/images/profile2.png" alt="Bot" width={24} height={24} className="rounded-full self-start" />}
-              <div className={`rounded-lg px-3 py-2 max-w-[80%] text-sm ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                {msg.text}
+              <div className={`rounded-lg px-3 py-2 max-w-[85%] text-sm ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+                {msg.text && <p>{msg.text}</p>}
+                {msg.proposal && <ProposalCard proposal={msg.proposal} />}
               </div>
-              {msg.sender === 'bot' && (
+              {msg.sender === 'bot' && msg.text && (
                 <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => handlePlayAudio(index)} disabled={msg.isSpeaking}>
                   <Volume2 className={`w-4 h-4 ${msg.isSpeaking ? 'text-primary animate-pulse' : ''}`} />
                 </Button>
@@ -248,7 +258,7 @@ const Chatbot: React.FC = () => {
            <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask me anything..."
+            placeholder="Describe your project idea..."
             className="flex-1"
             disabled={isLoading}
           />
