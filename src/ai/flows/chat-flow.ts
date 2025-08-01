@@ -90,6 +90,11 @@ const chatFlow = ai.defineFlow(
   async (input) => {
     try {
       const llmResponse = await chatFlowPrompt(input);
+      const output = llmResponse.output;
+
+      if (!output) {
+        throw new Error("No output from LLM.");
+      }
 
       const toolCalls = llmResponse.toolCalls;
 
@@ -101,8 +106,8 @@ const chatFlow = ai.defineFlow(
       }
 
       return {
-        message: llmResponse.text,
-        options: llmResponse.output?.options,
+        message: output.message,
+        options: output.options,
       };
 
     } catch (error: any) {
