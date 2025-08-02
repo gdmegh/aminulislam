@@ -301,19 +301,19 @@ const CaseStudyPage = () => {
 
                     <div className="mt-12">
                         <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
-                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border overflow-x-auto">
+                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                             <p className="text-muted-foreground leading-relaxed mb-6 text-center">
                             To ensure security and proper functionality, we designed a user access matrix that defined the permissions and capabilities for each user persona. This matrix guided the development of role-based access control within the system.
                             </p>
                             <div className="overflow-x-auto">
-                                <table className="w-full text-sm text-left text-foreground">
+                                <table className="w-full text-sm text-left text-foreground min-w-[600px]">
                                     <thead className="text-xs text-muted-foreground uppercase bg-secondary">
                                         <tr>
                                             <th scope="col" className="px-6 py-3 rounded-tl-lg whitespace-nowrap">Feature</th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Web</th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Mobile</th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">Voice Assistant</th>
-                                            <th scope="col" className="px-6 py-3 rounded-tr-lg whitespace-nowrap">Call Center</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap text-center">Web</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap text-center">Mobile</th>
+                                            <th scope="col" className="px-6 py-3 whitespace-nowrap text-center">Voice Assistant</th>
+                                            <th scope="col" className="px-6 py-3 rounded-tr-lg whitespace-nowrap text-center">Call Center</th>
                                         </tr>
                                     </thead>
                                     <tbody>

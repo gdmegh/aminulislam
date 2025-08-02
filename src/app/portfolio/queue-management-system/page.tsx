@@ -295,7 +295,7 @@ const QueueManagementPage = () => {
 
                     <div className="mt-12">
                       <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
-                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border overflow-hidden">
+                        <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
                             <p className="text-muted-foreground leading-relaxed mb-6 text-center">
                             To ensure security and proper functionality across all platforms, we designed a user access matrix defining permissions for each user type.
                             </p>
@@ -303,31 +303,31 @@ const QueueManagementPage = () => {
                                 <table className="w-full min-w-[600px] text-sm text-left text-foreground">
                                     <thead className="text-xs text-muted-foreground uppercase bg-secondary">
                                         <tr>
-                                            <th scope="col" className="px-6 py-3 rounded-tl-lg">Feature</th>
-                                            <th scope="col" className="px-6 py-3 text-center">Web</th>
-                                            <th scope="col" className="px-6 py-3 text-center">Mobile</th>
-                                            <th scope="col" className="px-6 py-3 text-center">Kiosk</th>
-                                            <th scope="col" className="px-6 py-3 text-center rounded-tr-lg">Voice Assistant</th>
+                                            <th scope="col" className="px-6 py-3 rounded-tl-lg whitespace-nowrap">Feature</th>
+                                            <th scope="col" className="px-6 py-3 text-center whitespace-nowrap">Web</th>
+                                            <th scope="col" className="px-6 py-3 text-center whitespace-nowrap">Mobile</th>
+                                            <th scope="col" className="px-6 py-3 text-center whitespace-nowrap">Kiosk</th>
+                                            <th scope="col" className="px-6 py-3 text-center rounded-tr-lg whitespace-nowrap">Voice Assistant</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr className="bg-card border-b border-border"><td colSpan={5} className="px-6 py-2 font-bold text-primary">Customer</td></tr>
                                         <tr className="bg-card border-b border-border">
-                                            <td className="px-6 py-4">Join Queue Remotely</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">Join Queue Remotely</td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><span className="text-muted-foreground">-</span></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                         </tr>
                                         <tr className="bg-card border-b border-border">
-                                            <td className="px-6 py-4">Join Queue via QR</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">Join Queue via QR</td>
                                             <td className="px-6 py-4 text-center"><span className="text-muted-foreground">-</span></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><span className="text-muted-foreground">-</span></td>
                                         </tr>
                                          <tr className="bg-card border-b border-border">
-                                            <td className="px-6 py-4">View Queue Status</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">View Queue Status</td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
@@ -336,14 +336,14 @@ const QueueManagementPage = () => {
 
                                         <tr className="bg-card border-b border-border"><td colSpan={5} className="px-6 py-2 font-bold text-primary">Frontline Staff</td></tr>
                                         <tr className="bg-card border-b border-border">
-                                            <td className="px-6 py-4">Manage Own Queue</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">Manage Own Queue</td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><span className="text-muted-foreground">-</span></td>
                                         </tr>
                                         <tr className="bg-card border-b border-border">
-                                            <td className="px-6 py-4">Call Next Customer</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">Call Next Customer</td>
                                              <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
@@ -352,14 +352,14 @@ const QueueManagementPage = () => {
 
                                         <tr className="bg-card border-b border-border"><td colSpan={5} className="px-6 py-2 font-bold text-primary">Branch Manager / Business Owner</td></tr>
                                         <tr className="bg-card border-b border-border">
-                                            <td className="px-6 py-4">View All Queues</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">View All Queues</td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><span className="text-muted-foreground">-</span></td>
                                             <td className="px-6 py-4 text-center"><span className="text-muted-foreground">-</span></td>
                                         </tr>
                                         <tr className="bg-card">
-                                            <td className="px-6 py-4 rounded-bl-lg">Access Analytics</td>
+                                            <td className="px-6 py-4 rounded-bl-lg whitespace-nowrap">Access Analytics</td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-green-500 inline-block" /></td>
                                             <td className="px-6 py-4 text-center"><span className="text-muted-foreground">-</span></td>
