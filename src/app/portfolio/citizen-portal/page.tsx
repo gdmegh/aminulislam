@@ -260,42 +260,38 @@ const CaseStudyPage = () => {
                   
                   <div className="mt-12">
                     <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
-                     <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                    <p className="text-muted-foreground leading-relaxed mb-6 text-center">
                         To ensure security and role clarity, a detailed access matrix was designed. This defines what each user type can see and do within the platform.
                     </p>
                     <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                        <table className="w-full text-sm text-left">
-                            <thead className="text-xs text-muted-foreground uppercase bg-secondary hidden md:table-header-group">
-                                <tr>
-                                    <th className="px-6 py-3">Feature</th>
-                                    <th className="px-6 py-3 text-center">Citizen</th>
-                                    <th className="px-6 py-3 text-center">Service Provider</th>
-                                    <th className="px-6 py-3 text-center">Ministry Admin</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-border">
-                                {accessMatrixData.map((row, index) => (
-                                <tr key={index} className="flex flex-col md:table-row py-4 md:py-0">
-                                    <td data-label="Feature" className="px-6 py-2 md:py-4 font-medium text-foreground whitespace-nowrap before:content-[attr(data-label)] before:font-bold before:text-muted-foreground before:block md:before:hidden before:mb-1">{row.feature}</td>
-                                    <td data-label="Citizen" className="px-6 py-2 md:py-4 text-left md:text-center before:content-[attr(data-label)] before:font-bold before:text-muted-foreground before:block md:before:hidden before:mb-1">
-                                        <div className="flex justify-end md:justify-center">
-                                            {row.citizen ? <CheckSquare className="w-5 h-5 text-green-500" /> : <XSquare className="w-5 h-5 text-destructive" />}
-                                        </div>
-                                    </td>
-                                    <td data-label="Service Provider" className="px-6 py-2 md:py-4 text-left md:text-center before:content-[attr(data-label)] before:font-bold before:text-muted-foreground before:block md:before:hidden before:mb-1">
-                                        <div className="flex justify-end md:justify-center">
-                                            {row.provider ? <CheckSquare className="w-5 h-5 text-green-500" /> : <XSquare className="w-5 h-5 text-destructive" />}
-                                        </div>
-                                    </td>
-                                    <td data-label="Ministry Admin" className="px-6 py-2 md:py-4 text-left md:text-center before:content-[attr(data-label)] before:font-bold before:text-muted-foreground before:block md:before:hidden before:mb-1">
-                                        <div className="flex justify-end md:justify-center">
-                                            {row.ministry ? <CheckSquare className="w-5 h-5 text-green-500" /> : <XSquare className="w-5 h-5 text-destructive" />}
-                                        </div>
-                                    </td>
-                                </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <div className="overflow-x-auto">
+                            <table className="w-full min-w-[600px] text-sm text-left">
+                                <thead className="text-xs text-muted-foreground uppercase bg-secondary">
+                                    <tr>
+                                        <th className="px-6 py-3 rounded-tl-lg">Feature</th>
+                                        <th className="px-6 py-3 text-center">Citizen</th>
+                                        <th className="px-6 py-3 text-center">Service Provider</th>
+                                        <th className="px-6 py-3 text-center rounded-tr-lg">Ministry Admin</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-border">
+                                    {accessMatrixData.map((row, index) => (
+                                    <tr key={index}>
+                                        <td className="px-6 py-4 font-medium text-foreground whitespace-nowrap">{row.feature}</td>
+                                        <td className="px-6 py-4 text-center">
+                                            {row.citizen ? <CheckSquare className="w-5 h-5 text-green-500 mx-auto" /> : <XSquare className="w-5 h-5 text-destructive mx-auto" />}
+                                        </td>
+                                        <td className="px-6 py-4 text-center">
+                                            {row.provider ? <CheckSquare className="w-5 h-5 text-green-500 mx-auto" /> : <XSquare className="w-5 h-5 text-destructive mx-auto" />}
+                                        </td>
+                                        <td className="px-6 py-4 text-center">
+                                            {row.ministry ? <CheckSquare className="w-5 h-5 text-green-500 mx-auto" /> : <XSquare className="w-5 h-5 text-destructive mx-auto" />}
+                                        </td>
+                                    </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                   </div>
 
@@ -531,5 +527,7 @@ const CaseStudyPage = () => {
 
 export default CaseStudyPage;
 
+
+    
 
     
