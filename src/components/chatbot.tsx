@@ -271,7 +271,10 @@ const Chatbot: React.FC = () => {
             <div className="flex items-end gap-2 justify-start">
               <Image src="/images/profile2.png" alt="Bot" width={24} height={24} className="rounded-full" />
               <div className="rounded-lg px-3 py-2 bg-muted">
-                <Loader2 className="w-5 h-5 animate-spin" />
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Thinking...</span>
+                </div>
               </div>
             </div>
           )}
@@ -319,3 +322,5 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
+
+    
