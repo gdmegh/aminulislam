@@ -1,7 +1,7 @@
 
 "use client"
 import React from 'react';
-import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, ShieldCheck } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, ShieldCheck, CheckSquare, XSquare } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -64,6 +64,39 @@ const CaseStudyPage = () => {
         "User wants to navigate through services on both the web & apps"
       ]
     }
+  ];
+  
+  const accessMatrixData = [
+    {
+      role: 'Service Recipient (Citizen)',
+      permissions: [
+        { feature: 'View Services', access: true },
+        { feature: 'Submit Applications', access: true },
+        { feature: 'Track Application Status', access: true },
+        { feature: 'Manage Profile', access: true },
+        { feature: 'View Admin Dashboard', access: false },
+      ],
+    },
+    {
+      role: 'Service Provider (Admin)',
+      permissions: [
+        { feature: 'Manage Service Listings', access: true },
+        { feature: 'Process Applications', access: true },
+        { feature: 'Communicate with Applicants', access: true },
+        { feature: 'View Analytics', access: true },
+        { feature: 'Change System Settings', access: false },
+      ],
+    },
+    {
+      role: 'Ministry Admin (Super Admin)',
+      permissions: [
+        { feature: 'Oversee All Services', access: true },
+        { feature: 'Manage Provider Accounts', access: true },
+        { feature: 'Access Full System Analytics', access: true },
+        { feature: 'Configure System Settings', access: true },
+        { feature: 'Process Individual Applications', access: false },
+      ],
+    },
   ];
 
   const accessibilityFeatures = [
@@ -242,6 +275,34 @@ const CaseStudyPage = () => {
                           </div>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                  
+                  <div className="mt-12">
+                    <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
+                     <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                        To ensure security and role clarity, a detailed access matrix was designed. This defines what each user type can see and do within the platform.
+                    </p>
+                    <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                        <div className="grid md:grid-cols-3 gap-8">
+                        {accessMatrixData.map((roleData) => (
+                            <div key={roleData.role} className="bg-primary/5 p-6 rounded-lg border border-primary/10">
+                            <h4 className="font-bold text-foreground mb-4 text-center font-headline">{roleData.role}</h4>
+                            <ul className="space-y-3">
+                                {roleData.permissions.map((perm) => (
+                                <li key={perm.feature} className="flex items-center justify-between text-sm">
+                                    <span className="text-muted-foreground">{perm.feature}</span>
+                                    {perm.access ? (
+                                    <CheckSquare className="w-5 h-5 text-green-500" />
+                                    ) : (
+                                    <XSquare className="w-5 h-5 text-destructive" />
+                                    )}
+                                </li>
+                                ))}
+                            </ul>
+                            </div>
+                        ))}
+                        </div>
                     </div>
                   </div>
 
