@@ -287,8 +287,8 @@ const CaseStudyPage = () => {
 
                   <div className="mt-12">
                       <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Access Matrix</h3>
-                      <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
-                          <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                      <div className="bg-card rounded-2xl p-4 md:p-8 shadow-xl border border-border">
+                          <p className="text-muted-foreground leading-relaxed mb-6 text-center px-4">
                           To ensure security and proper functionality, we designed a user access matrix that defined the permissions and capabilities for each user persona. This matrix guided the development of role-based access control within the system.
                           </p>
                           <div className="overflow-x-auto">
