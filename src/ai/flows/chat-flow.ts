@@ -108,6 +108,7 @@ const chatFlow = ai.defineFlow(
       return {
         message: output.message,
         options: output.options,
+        proposal: output.proposal,
       };
 
     } catch (error: any) {

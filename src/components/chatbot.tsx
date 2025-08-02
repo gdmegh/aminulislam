@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -273,7 +272,7 @@ const Chatbot: React.FC = () => {
               <div className="rounded-lg px-3 py-2 bg-muted">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    <span>Thinking...</span>
+                    <span>Just a moment...</span>
                 </div>
               </div>
             </div>
@@ -322,5 +321,3 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
-
-    
