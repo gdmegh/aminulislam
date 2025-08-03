@@ -13,6 +13,7 @@ export default function Hero() {
     <section 
       className="relative h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
     >
+      <div className="absolute inset-0 bg-background" />
       <MazeBackground />
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       <div className="container mx-auto px-4 z-10">

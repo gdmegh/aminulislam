@@ -1,7 +1,7 @@
-
 import { Award, Briefcase, Download, Lightbulb } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import MazeBackground from "./maze-background";
 
 const timelineData = [
   {
@@ -33,8 +33,12 @@ const certificationData = [
 
 export default function About() {
   return (
-    <section id="about" className="py-12">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-12 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <MazeBackground />
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="lg:col-span-1">
             <div className="max-w-4xl mb-12">
