@@ -4,7 +4,7 @@ import Image from "next/image";
 import DynamicText from "./dynamic-text";
 import { Button } from "./ui/button";
 import { ArrowDown, BotMessageSquare } from "lucide-react";
-import BinaryRainBackground from "./binary-rain-background";
+import MazeBackground from "./maze-background";
 import { useChatbot } from "@/hooks/use-chatbot";
 
 export default function Hero() {
@@ -13,7 +13,7 @@ export default function Hero() {
     <section 
       className="relative h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
     >
-      <BinaryRainBackground />
+      <MazeBackground />
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
