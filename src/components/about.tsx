@@ -33,8 +33,8 @@ const certificationData = [
 
 export default function About() {
   return (
-    <section id="about" className="py-12 relative overflow-hidden">
-      <div className="absolute inset-0">
+    <section id="about" className="py-12 relative overflow-hidden bg-background">
+      <div className="absolute inset-0 z-0">
         <MazeBackground />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
       </div>

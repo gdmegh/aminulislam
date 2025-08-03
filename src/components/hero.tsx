@@ -14,8 +14,9 @@ export default function Hero() {
       className="relative h-[90vh] min-h-[700px] flex items-center justify-center text-center overflow-hidden"
     >
       <div className="absolute inset-0 bg-background" />
-      <MazeBackground />
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      </div>
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-2">I'm</p>
