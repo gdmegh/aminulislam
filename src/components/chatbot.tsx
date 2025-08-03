@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -44,7 +45,8 @@ const Chatbot: React.FC = () => {
       const sendInitialMessage = async () => {
         setIsLoading(true);
         try {
-          const response = await chat({ message: "Hello, this is the first message." });
+          // Pass an empty history for the first message
+          const response = await chat({ message: "Hello", history: [] });
           const botMessage: Message = {
             sender: 'bot',
             text: response.message,
@@ -91,7 +93,17 @@ const Chatbot: React.FC = () => {
     const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages.map(m => ({ ...m, options: undefined }))); 
 
-    const chatInputPayload: ChatInput = { message: messageToSend };
+    // Prepare history for the AI
+    const history = messages.map(msg => ({
+        role: msg.sender === 'user' ? 'user' as const : 'model' as const,
+        content: [{ text: msg.text || '' }]
+    }));
+
+    const chatInputPayload: ChatInput = { 
+        message: messageToSend,
+        history: history,
+     };
+
     if (attachment) {
         chatInputPayload.attachmentDataUri = attachment.dataUri;
     }

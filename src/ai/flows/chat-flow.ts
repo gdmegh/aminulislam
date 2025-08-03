@@ -40,8 +40,16 @@ const createProposalTool = ai.defineTool(
 
 
 // Define Zod schemas for the main chat flow input and output
+const HistoryMessageSchema = z.object({
+    role: z.enum(['user', 'model']),
+    content: z.array(z.object({
+        text: z.string().optional(),
+    })),
+});
+
 const ChatInputSchema = z.object({
   message: z.string(),
+  history: z.array(HistoryMessageSchema).optional(),
   attachmentDataUri: z.string().optional().describe(
     "A file attached by the user, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'.")
 });
@@ -64,14 +72,14 @@ const chatFlowPrompt = ai.definePrompt(
     Your goal is to quickly understand the user's needs by guiding them through a conversational survey.
     You MUST ask targeted, one-by-one questions to gather the necessary information to create a project proposal.
 
-    If this is the first message from the user, you MUST start the conversation with the exact phrase: "I am Aminul Islam, your product designer. To get started, please select one of the following options:" and provide the following options as tappable cards: "Discuss a new project idea", "Refine an existing project", "Get a proposal for a past discussion".
+    If this is the first message from the user (history is empty), you MUST start the conversation with the exact phrase: "I am Aminul Islam, your product designer. To get started, please select one of the following options:" and provide the following options as tappable cards: "Discuss a new project idea", "Refine an existing project", "Get a proposal for a past discussion".
 
     Based on their response, acknowledge their choice and then begin asking for the project name, description, and key features.
     Once you have gathered enough information, use the 'createProposal' tool to generate a formal proposal.
 
     Keep your questions focused and avoid long paragraphs. Always provide a few relevant 'options' as tappable cards for the user to guide the conversation.
-
-    Here is the user's message: {{{message}}}
+    
+    The user's latest message is: {{{message}}}
     {{#if attachmentDataUri}}
     Here is an attachment from the user:
     {{media url=attachmentDataUri}}
@@ -89,7 +97,7 @@ const chatFlow = ai.defineFlow(
   },
   async (input) => {
     try {
-      const llmResponse = await chatFlowPrompt(input);
+      const llmResponse = await chatFlowPrompt(input, { history: input.history });
       const output = llmResponse.output;
 
       if (!output) {
