@@ -17,7 +17,7 @@ export const caseStudies = [
     title: "Queue Management System SaaS",
     slug: "queue-management-system",
     description: "A cloud-based SaaS platform designed to streamline customer flow and reduce wait times for businesses across various industries, from healthcare to retail.",
-    image: "/images/quefeatures.jpeg",
+    image: "/images/queue-management-feature.png",
     hint: "queue management",
     metrics: [
       { month: 'Jan', waitTime: 60 },
