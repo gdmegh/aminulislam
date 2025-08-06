@@ -1,6 +1,5 @@
 
 import { Button } from "@/components/ui/button";
-import { CheckCircle2 } from "lucide-react";
 import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies';
 import ProjectImpactChart from '@/components/project-impact-chart';
@@ -49,7 +48,7 @@ export default function PortfolioPage() {
                         index % 2 === 0 ? "md:order-1" : "md:order-2"
                         }`}
                     >
-                        {study.slug === 'citizen-portal' || study.slug === 'queue-management-system' ? (
+                         {study.image.startsWith('/') ? (
                            <Image 
                             src={study.image}
                             alt={study.title}
@@ -60,8 +59,16 @@ export default function PortfolioPage() {
                             className="rounded-lg shadow-xl"
                           />
                         ) : study.metrics ? (
-                        <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
-                        ) : null}
+                          <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
+                        ) : <Image 
+                            src={study.image}
+                            alt={study.title}
+                            width={800}
+                            height={600}
+                            role="img"
+                            data-ai-hint={study.hint}
+                            className="rounded-lg shadow-xl"
+                          />}
                     </div>
                     <div
                         className={`flex flex-col ${
@@ -72,7 +79,7 @@ export default function PortfolioPage() {
                         <p className="text-muted-foreground text-lg my-6">{study.description}</p>
                         
                         <div className="flex">
-                            <Button asChild variant="outline">
+                            <Button asChild>
                             <Link href={`/portfolio/${study.slug}`}>View Case Study</Link>
                             </Button>
                         </div>

@@ -119,9 +119,15 @@ const CourtManagementPage = () => {
               </div>
             </div>
             <div className="relative">
-                {study.metrics && (
-                    <ProjectImpactChart data={study.metrics} chartType={study.chartType} />
-                )}
+                <Image 
+                    src={study.image}
+                    alt={study.title}
+                    width={800}
+                    height={600}
+                    role="img"
+                    data-ai-hint={study.hint}
+                    className="rounded-lg shadow-xl"
+                />
             </div>
           </div>
         </div>
@@ -398,5 +404,3 @@ const CourtManagementPage = () => {
 };
 
 export default CourtManagementPage;
-
-    
