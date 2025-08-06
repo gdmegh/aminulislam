@@ -33,7 +33,7 @@ export const caseStudies = [
     title: "Complaint, Case and Court Management System",
     slug: "court-management-system",
     description: "A comprehensive system to digitize and streamline court proceedings, from case filing and scheduling, to verdict delivery and records management.",
-    image: "/images/case.jpg",
+    image: "/images/case.png",
     hint: "court management system",
     metrics: [
         { name: 'Case Processing', value: 50 },
@@ -47,7 +47,7 @@ export const caseStudies = [
     slug: "integrated-billing-system",
     description: "A multi-tenant SaaS platform to automate the entire billing lifecycle, from invoicing and subscriptions to payment processing and revenue recognition.",
     image: "/images/billing.jpg",
-    hint: "billing system",
+    hint: "saas billing",
     metrics: [
       { quarter: 'Q1', revenue: 2000 },
       { quarter: 'Q2', revenue: 2500 },
