@@ -120,7 +120,7 @@ const CourtManagementPage = () => {
             </div>
             <div className="relative">
                 <Image 
-                    src={study.image}
+                    src="/images/case.png"
                     alt={study.title}
                     width={800}
                     height={600}
