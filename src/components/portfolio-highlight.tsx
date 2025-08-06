@@ -54,7 +54,7 @@ export default function PortfolioHighlight() {
                 <p className="text-muted-foreground text-lg my-6">{study.description}</p>
                 
                 <div className="flex">
-                    <Button asChild className="w-full" variant="outline">
+                    <Button asChild variant="outline">
                        <Link href={`/portfolio/${study.slug}`}>View Case Study</Link>
                     </Button>
                 </div>
