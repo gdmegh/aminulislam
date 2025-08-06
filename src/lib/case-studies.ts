@@ -46,8 +46,8 @@ export const caseStudies = [
     title: "Integrated Billing System SaaS",
     slug: "integrated-billing-system",
     description: "A multi-tenant SaaS platform to automate the entire billing lifecycle, from invoicing and subscriptions to payment processing and revenue recognition.",
-    image: "/images/integrated-billing-system.jpg",
-    hint: "billing dashboard",
+    image: "/images/billing.jpg",
+    hint: "billing system",
     metrics: [
       { quarter: 'Q1', revenue: 2000 },
       { quarter: 'Q2', revenue: 2500 },
