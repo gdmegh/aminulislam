@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-2">I'm</p>
           <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-balance">
-            Aminul Islam<br /><DynamicText />
+            Aminul Islam Megh<br /><DynamicText />
           </h1>
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
             <Button size="lg" className="px-10 py-6 text-lg" onClick={toggleChatbot}>
