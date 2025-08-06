@@ -1,7 +1,7 @@
 
 'use server';
 /**
- * @fileoverview A chatbot flow for the portfolio.
+ * @fileoverview A chatbot flow for generating software development proposals.
  */
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
@@ -9,14 +9,14 @@ import { z } from 'zod';
 
 // Define Zod schemas for the tool
 const ProposalDetailsSchema = z.object({
-  projectName: z.string().describe("A catchy and descriptive name for the project."),
-  description: z.string().describe("A detailed summary of the project and the solution being proposed."),
+  projectName: z.string().describe("A catchy and descriptive name for the software project."),
+  description: z.string().describe("A detailed summary of the software project and the problem it solves."),
   features: z.array(z.object({
-    name: z.string().describe("The name of the feature."),
-    description: z.string().describe("A brief description of what this feature does.")
-  })).describe("A list of key features for the proposed solution."),
-  timeline: z.string().describe("An estimated timeline for project completion (e.g., '6-8 weeks')."),
-  manMonths: z.number().describe("The estimated effort in man-months."),
+    name: z.string().describe("The name of the software feature."),
+    description: z.string().describe("A brief technical description of what this feature does and its requirements.")
+  })).describe("A list of key features for the proposed software."),
+  timeline: z.string().describe("An estimated timeline for project completion (e.g., '3-4 months')."),
+  manMonths: z.number().describe("The estimated effort in man-months for development."),
   price: z.number().describe("The estimated total price for the project. This can be a starting point for negotiation."),
   negotiable: z.boolean().describe("Indicates if the price is negotiable.")
 });
@@ -25,15 +25,14 @@ export type ProposalDetails = z.infer<typeof ProposalDetailsSchema>;
 
 const createProposalTool = ai.defineTool(
   {
-    name: 'createProposal',
-    description: 'Creates a formal project proposal when enough details about the user\'s idea have been gathered. Use this when the user shows interest in moving forward with their project idea.',
+    name: 'createSoftwareProposal',
+    description: 'Creates a formal software project proposal once enough technical and business requirements have been gathered from the user. Use this tool when the user is ready to proceed.',
     inputSchema: ProposalDetailsSchema,
     outputSchema: ProposalDetailsSchema,
   },
   async (input) => {
-    // In a real-world scenario, this could save the proposal to a database.
-    // For now, it just structures and returns the data.
-    console.log("Proposal created:", input);
+    // In a real-world scenario, this would save the proposal to a CRM or database.
+    console.log("Software Proposal created:", input);
     return input;
   }
 );
@@ -51,7 +50,7 @@ const ChatInputSchema = z.object({
   message: z.string(),
   history: z.array(HistoryMessageSchema).optional(),
   attachmentDataUri: z.string().optional().describe(
-    "A file attached by the user, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'.")
+    "A file attached by the user (e.g., requirements document, wireframe), as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'.")
 });
 export type ChatInput = z.infer<typeof ChatInputSchema>;
 
@@ -68,21 +67,21 @@ const chatFlowPrompt = ai.definePrompt(
     input: { schema: ChatInputSchema },
     output: { schema: ChatOutputSchema },
     tools: [createProposalTool],
-    prompt: `You are Aminul Islam, a senior product designer. Your persona is direct, efficient, and helpful.
-    Your goal is to quickly understand the user's needs by guiding them through a conversational survey.
-    You MUST ask targeted, one-by-one questions to gather the necessary information to create a project proposal.
+    prompt: `You are a highly skilled business development representative for a top-tier software development agency. Your name is Aminul.
+    Your primary goal is to understand a potential client's software needs and guide them towards a formal proposal. You are professional, efficient, and technically knowledgeable.
 
-    If this is the first message from the user (history is empty), you MUST start the conversation with the exact phrase: "I am Aminul Islam, your product designer. To get started, please select one of the following options:" and provide the following options as tappable cards: "Discuss a new project idea", "Refine an existing project", "Get a proposal for a past discussion".
+    If this is the first message from the user (history is empty), you MUST start the conversation with the exact phrase: "Welcome! I'm Aminul, your guide to building exceptional software. To begin, please select an option:" and provide the following options as tappable cards: "Build a new software project", "Upgrade an existing system", "Get a quote for my idea".
 
-    Based on their response, acknowledge their choice and then begin asking for the project name, description, and key features.
-    Once you have gathered enough information, use the 'createProposal' tool to generate a formal proposal.
+    Based on their initial choice, begin a structured conversation to gather requirements. Ask clear, one-by-one questions to understand the project's goals, scope, and key features.
+    
+    Once you have gathered sufficient details (project name, description, and at least 3-4 key features with their descriptions), use the 'createSoftwareProposal' tool to generate a formal proposal for the user.
 
-    Keep your questions focused and avoid long paragraphs. Always provide a few relevant 'options' as tappable cards for the user to guide the conversation.
+    Always provide a few relevant 'options' as tappable cards to steer the conversation effectively towards the goal of creating a proposal.
     
     The user's latest message is: {{{message}}}
     {{#if attachmentDataUri}}
-    Here is an attachment from the user:
-    {{media url=attachmentDataUri}}
+    The user has attached a file for context. Use it to inform your questions and proposal.
+    Attachment: {{media url=attachmentDataUri}}
     {{/if}}
     `,
   }
@@ -104,7 +103,7 @@ const chatFlow = ai.defineFlow(
         throw new Error("No output from LLM.");
       }
 
-      const toolCalls = llmResponse.toolCalls;
+      const toolCalls = ll.response.toolCalls;
 
       if (toolCalls && toolCalls.length > 0) {
         const proposal = toolCalls[0].output as ProposalDetails;
