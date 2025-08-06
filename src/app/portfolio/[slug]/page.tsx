@@ -13,7 +13,6 @@ import { Clock, Users, Target } from 'lucide-react';
 // Re-using the citizen portal page for all case studies for now.
 // We can create specific layouts later if needed.
 import CitizenPortalPage from '../citizen-portal/page';
-import ComplaintManagementPage from '../complaint-management-system/page';
 import QueueManagementPage from '../queue-management-system/page';
 import CourtManagementPage from '../court-management-system/page';
 import IntegratedBillingSystemPage from '../integrated-billing-system/page';
@@ -29,10 +28,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   // if the slug matches, otherwise we show a generic layout.
   if (study.slug === 'citizen-portal') {
     return <CitizenPortalPage />;
-  }
-
-  if (study.slug === 'complaint-management-system') {
-    return <ComplaintManagementPage />;
   }
 
   if (study.slug === 'queue-management-system') {

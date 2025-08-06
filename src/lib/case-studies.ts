@@ -20,25 +20,6 @@ export const caseStudies = [
     chartType: 'bar',
   },
   {
-    title: "Complaint Management with Case Management & Referral Stakeholders",
-    slug: "complaint-management-system",
-    description: "A comprehensive platform for managing complaints, with features for case management and seamless integration with referral stakeholders.",
-    image: "https://placehold.co/800x600.png",
-    hint: "dashboard analytics",
-    highlights: [
-      { title: "Stakeholder Integration", description: "Designed secure workflows for seamless collaboration with external referral partners." },
-      { title: "End-to-End Case Management", description: "Built a complete system for tracking complaints from submission to resolution." },
-      { title: "UX Research & System Design", description: "Mapped complex user journeys to create an intuitive and efficient system architecture." },
-      { title: "Secure Data & Referral Handling", description: "Implemented robust security measures to protect sensitive complaint and user data." }
-    ],
-    metrics: [
-      { name: 'Resolution Time', value: 35 },
-      { name: 'Case Escalations', value: 40 },
-      { name: 'Admin Efficiency', value: 60 },
-    ],
-    chartType: 'pie',
-  },
-  {
     title: "Queue Management System SaaS",
     slug: "queue-management-system",
     description: "A cloud-based SaaS platform designed to streamline customer flow and reduce wait times for businesses across various industries, from healthcare to retail.",
