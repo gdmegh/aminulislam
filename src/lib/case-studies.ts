@@ -33,7 +33,7 @@ export const caseStudies = [
     title: "Complaint, Case and Court Management System",
     slug: "court-management-system",
     description: "A comprehensive system to digitize and streamline court proceedings, from case filing and scheduling, to verdict delivery and records management.",
-    image: "/images/complaint-case-court-management-system.png",
+    image: "/images/billing.jpg",
     hint: "court management system",
     metrics: [
         { name: 'Case Processing', value: 50 },
