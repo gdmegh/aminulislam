@@ -29,6 +29,7 @@ const menuItems = [
 export default function Header() {
   const [showStickyButton, setShowStickyButton] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [isHovered, setIsHovered] = useState(false);
   const pathname = usePathname();
   const { toggleChatbot } = useChatbot();
 
@@ -76,9 +77,27 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between relative">
         <div className="flex-1 flex justify-start">
-            <Link href="/" className="flex items-center gap-2 whitespace-nowrap">
+            <Link 
+              href="/" 
+              className="flex items-center gap-2 whitespace-nowrap"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
                 <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" role="img" />
-                <span className={`font-headline text-xl font-bold transition-opacity duration-300`}>Aminul Islam</span>
+                 <div className="relative overflow-hidden h-6">
+                    <span className={cn(
+                      "font-headline text-xl font-bold transition-all duration-300 ease-in-out absolute",
+                      isHovered ? "-top-full opacity-0" : "top-0 opacity-100"
+                    )}>
+                      Aminul Islam
+                    </span>
+                    <span className={cn(
+                      "font-headline text-xl font-bold transition-all duration-300 ease-in-out absolute",
+                       isHovered ? "top-0 opacity-100" : "top-full opacity-0"
+                    )}>
+                      AI<span className="text-primary">.</span>Megh
+                    </span>
+                </div>
             </Link>
         </div>
         
