@@ -13,7 +13,7 @@ const timelineData = [
   {
     icon: Briefcase,
     year: "2015 - 2019",
-    title: "UX Designer @ nazdaqTechnologies Inc.",
+    title: "Web/Graphic Designer @ nazdaqTechnologies Inc.",
     description: "Designed and launched several high-impact features for a suite of B2B SaaS applications, focusing on data visualization and user workflow optimization.",
   },
 ];
@@ -33,17 +33,17 @@ const certificationData = [
 
 export default function About() {
   return (
-    <section id="about" className="py-12 relative overflow-hidden bg-background">
+    <section id="about" className="relative overflow-hidden bg-background py-12">
       <div className="absolute inset-0 z-0">
         <MazeBackground />
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
       </div>
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
           <div className="lg:col-span-1">
             <div className="max-w-4xl mb-12">
-              <h2 className="font-headline text-4xl sm:text-5xl font-bold text-primary">My Career Journey</h2>
-              <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
+              <h2 className="font-headline text-4xl font-bold text-primary sm:text-5xl">My Career Journey</h2>
+              <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
                 A passionate designer with a decade of experience crafting intuitive, beautiful, and impactful digital experiences. Here is a brief overview of my journey.
               </p>
             </div>
@@ -53,13 +53,13 @@ export default function About() {
                 {timelineData.map((item, index) => (
                 <div key={index} className="relative pl-12 pb-8">
                     <div className="absolute left-0 top-0">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 border border-primary/20">
-                        <item.icon className="w-4 h-4 text-primary" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 border border-primary/20">
+                        <item.icon className="h-4 w-4 text-primary" />
                     </div>
                     </div>
                     <div className="pl-4">
-                    <p className="text-sm text-primary font-semibold">{item.year}</p>
-                    <h3 className="font-headline text-xl font-semibold mt-1">{item.title}</h3>
+                    <p className="text-sm font-semibold text-primary">{item.year}</p>
+                    <h3 className="font-headline mt-1 text-xl font-semibold">{item.title}</h3>
                     <p className="mt-2 text-muted-foreground">{item.description}</p>
                     </div>
                 </div>
@@ -67,12 +67,12 @@ export default function About() {
             </div>
 
             <div className="mt-8">
-                <h3 className="font-headline text-3xl font-bold mb-8">Certificates & Specializations</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <h3 className="font-headline mb-8 text-3xl font-bold">Certificates & Specializations</h3>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                     {certificationData.map((cert, index) => (
-                        <div key={index} className="bg-card p-6 rounded-lg shadow-md flex items-center gap-4 border border-primary/10">
-                            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 flex-shrink-0">
-                                <cert.icon className="w-6 h-6 text-primary" />
+                        <div key={index} className="flex items-center gap-4 rounded-lg border border-primary/10 bg-card p-6 shadow-md">
+                            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                                <cert.icon className="h-6 w-6 text-primary" />
                             </div>
                             <div>
                                 <h4 className="font-headline text-lg font-semibold">{cert.title}</h4>
@@ -92,8 +92,8 @@ export default function About() {
                 </Button>
             </div>
           </div>
-          <div className="lg:col-span-1 lg:sticky lg:top-24">
-            <div className="rounded-lg shadow-xl overflow-hidden max-w-md mx-auto">
+          <div className="lg:sticky lg:top-24 lg:col-span-1">
+            <div className="mx-auto max-w-md overflow-hidden rounded-lg shadow-xl">
                 <Image 
                     src="/images/gd.JPEG"
                     alt="Designer at work"
@@ -101,7 +101,7 @@ export default function About() {
                     height={750}
                     role="img"
                     data-ai-hint="designer working"
-                    className="w-full h-auto object-cover"
+                    className="h-auto w-full object-cover"
                 />
             </div>
           </div>
