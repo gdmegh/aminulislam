@@ -7,7 +7,7 @@ const timelineData = [
   {
     icon: Briefcase,
     year: "2019 - Present",
-    title: "UI/UX Specialist product designer @ Dream71 Bangladesh Ltd.",
+    title: "UI/UX Specialist, Product Designer @ Dream71 Bangladesh Ltd.",
     description: "Leading design for flagship products, mentoring a team of designers, and spearheading the development of our cross-platform design system.",
   },
   {
