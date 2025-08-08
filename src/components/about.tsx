@@ -7,7 +7,7 @@ const timelineData = [
   {
     icon: Briefcase,
     year: "2019 - Present",
-    title: "Lead Product Designer @ Dream71 Bangladesh Ltd.",
+    title: "UI/UX Specialist product designer @ Dream71 Bangladesh Ltd.",
     description: "Leading design for flagship products, mentoring a team of designers, and spearheading the development of our cross-platform design system.",
   },
   {
@@ -84,7 +84,7 @@ export default function About() {
             </div>
 
             <div className="mt-12">
-                 <Button asChild className="w-full">
+                 <Button asChild>
                     <a href="/images/Aminul Islam-Resume.pdf" download>
                         <Download className="mr-2 h-4 w-4" />
                         Download Resume
