@@ -58,6 +58,6 @@ export const caseStudies = [
       { quarter: 'Q4', revenue: 4100 },
     ],
     chartType: 'area',
-    prototypeLink: "https://www.figma.com/proto/RM9b7fC64NDfQvW1x5eJ5f/Complaint%2C-Case-and-Court-Management-System?type=design&node-id=1-2&t=h7rQZ8f7g5s2bJ3g-1&scaling=min-zoom&page-id=0%3A1&mode=design",
+    prototypeLink: "https://www.figma.com/design/0vLT85Ubv0eRqZyLszhyIm?node-id=3-2",
   },
 ];
