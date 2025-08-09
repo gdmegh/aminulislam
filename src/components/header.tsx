@@ -23,7 +23,7 @@ import { useChatbot } from "@/hooks/use-chatbot";
 
 
 const menuItems = [
-  { label: 'About', href: '/#about' },
+  { label: 'About', href: '/about' },
 ];
 
 export default function Header() {
@@ -43,26 +43,30 @@ export default function Header() {
       }
 
       // Active section highlighting logic
-      if (pathname === '/') {
-        const sections = ['about', 'portfolio'];
-        let currentSection = '';
-        
-        for (const sectionId of sections) {
-          const section = document.getElementById(sectionId);
-          if (section) {
-             const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
-              currentSection = sectionId;
-              break;
+      const currentPath = pathname;
+        if (currentPath === '/') {
+            const sections = ['about', 'portfolio'];
+            let currentSection = '';
+            
+            for (const sectionId of sections) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                        currentSection = sectionId;
+                        break;
+                    }
+                }
             }
-          }
+            setActiveSection(currentSection);
+        } else if (currentPath.startsWith('/about')) {
+            setActiveSection('about');
+        } else if (currentPath.startsWith('/portfolio')) {
+            setActiveSection('portfolio');
+        } else {
+            setActiveSection('');
         }
-        setActiveSection(currentSection);
-
-      } else {
-         setActiveSection(pathname.includes('/portfolio') ? 'portfolio' : '');
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -103,7 +107,7 @@ export default function Header() {
         
         <nav className="hidden md:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {menuItems.map((item) =>
-            <Button key={item.label} variant="ghost" asChild className={`text-base ${activeSection === item.href.substring(2) ? 'text-primary' : ''}`}>
+            <Button key={item.label} variant="ghost" asChild className={`text-base ${activeSection === item.label.toLowerCase() ? 'text-primary' : ''}`}>
                 <Link href={item.href}>{item.label}</Link>
             </Button>
           )}
@@ -160,7 +164,7 @@ export default function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`text-lg font-medium hover:text-primary transition-colors ${activeSection === item.href.substring(2) ? 'text-primary' : ''}`}
+                    className={`text-lg font-medium hover:text-primary transition-colors ${activeSection === item.label.toLowerCase() ? 'text-primary' : ''}`}
                   >
                     {item.label}
                   </Link>
