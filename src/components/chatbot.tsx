@@ -236,7 +236,7 @@ const Chatbot: React.FC = () => {
       >
         <div className="flex items-center gap-2">
           <Image src="/images/profile2.png" alt="GDMegh" width={32} height={32} className="rounded-full" />
-          <h3 className="font-bold text-foreground">Aminul Islam</h3>
+          <h3 className="font-bold text-foreground">AI Megh</h3>
         </div>
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setIsMaximized(!isMaximized)}>
