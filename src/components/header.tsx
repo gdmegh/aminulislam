@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, BotMessageSquare } from "lucide-react";
+import { Menu, BotMessageSquare, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from 'next/navigation';
@@ -113,6 +113,18 @@ export default function Header() {
                         {study.description}
                       </ListItem>
                     ))}
+                     <li className="md:col-span-2">
+                        <NavigationMenuLink asChild>
+                           <Link
+                            href="/portfolio"
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md items-center text-center group"
+                          >
+                           <div className="flex items-center justify-center text-lg font-medium text-primary group-hover:text-primary/90">
+                              See All Projects <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                            </div>
+                           </Link>
+                        </NavigationMenuLink>
+                    </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
