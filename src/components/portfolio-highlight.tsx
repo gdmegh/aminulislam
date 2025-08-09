@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies';
 import ProjectImpactChart from './project-impact-chart';
 import Image from "next/image";
+import { ExternalLink } from "lucide-react";
 
 export default function PortfolioHighlight() {
   if (!caseStudies || caseStudies.length === 0) {
@@ -60,10 +61,18 @@ export default function PortfolioHighlight() {
                 <h3 className="font-headline text-3xl font-bold">{study.title}</h3>
                 <p className="text-muted-foreground text-lg my-6">{study.description}</p>
                 
-                <div className="flex">
+                <div className="flex flex-wrap gap-4">
                     <Button asChild>
                        <Link href={`/portfolio/${study.slug}`}>View Case Study</Link>
                     </Button>
+                    {study.prototypeLink && (
+                      <Button variant="outline" asChild>
+                        <Link href={study.prototypeLink} target="_blank">
+                          View Prototype
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    )}
                 </div>
               </div>
             </div>

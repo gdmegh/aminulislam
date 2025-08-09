@@ -12,6 +12,7 @@ export const caseStudies = [
       { name: 'Adoption Rate', 'Increase': 75 },
     ],
     chartType: 'bar',
+    prototypeLink: "https://www.figma.com/proto/erF4_lWk2S2aF4t6x8G8t5/MoCHTA-IDSDP?type=design&node-id=1-2&t=h7rQZ8f7g5s2bJ3g-1&scaling=min-zoom&page-id=0%3A1&mode=design",
   },
   {
     title: "Queue Management System SaaS",
@@ -28,6 +29,7 @@ export const caseStudies = [
       { month: 'Jun', waitTime: 35 },
     ],
     chartType: 'line',
+    prototypeLink: "https://queue.meghcreations.com/",
   },
   {
     title: "Complaint, Case and Court Management System",
@@ -41,6 +43,7 @@ export const caseStudies = [
         { name: 'Doc Retrieval', value: 80 },
     ],
     chartType: 'bar',
+    prototypeLink: "https://www.figma.com/proto/RM9b7fC64NDfQvW1x5eJ5f/Complaint%2C-Case-and-Court-Management-System?type=design&node-id=1-2&t=h7rQZ8f7g5s2bJ3g-1&scaling=min-zoom&page-id=0%3A1&mode=design",
   },
   {
     title: "Integrated Billing System SaaS",
@@ -55,5 +58,6 @@ export const caseStudies = [
       { quarter: 'Q4', revenue: 4100 },
     ],
     chartType: 'area',
+    prototypeLink: "https://www.figma.com/proto/RM9b7fC64NDfQvW1x5eJ5f/Complaint%2C-Case-and-Court-Management-System?type=design&node-id=1-2&t=h7rQZ8f7g5s2bJ3g-1&scaling=min-zoom&page-id=0%3A1&mode=design",
   },
 ];
