@@ -84,24 +84,11 @@ export default function Header() {
             <Link 
               href="/" 
               className="flex items-center gap-2 whitespace-nowrap"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
             >
                 <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" role="img" />
-                 <div className="relative overflow-hidden h-6">
-                    <span className={cn(
-                      "font-headline text-xl font-bold transition-all duration-300 ease-in-out absolute",
-                      isHovered ? "-top-full opacity-0" : "top-0 opacity-100"
-                    )}>
-                      Aminul Islam
-                    </span>
-                    <span className={cn(
-                      "font-headline text-xl font-bold transition-all duration-300 ease-in-out absolute",
-                       isHovered ? "top-0 opacity-100" : "top-full opacity-0"
-                    )}>
-                      AI<span className="text-primary">.</span>Megh
-                    </span>
-                </div>
+                <span className="font-headline text-xl font-bold">
+                  AI<span className="text-primary">.</span>Megh
+                </span>
             </Link>
         </div>
         
