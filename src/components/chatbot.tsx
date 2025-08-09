@@ -197,9 +197,9 @@ const Chatbot: React.FC = () => {
       // In a real implementation, you would stop recording here.
     } else {
        toast({
-        variant: "destructive",
-        title: "Feature Not Available",
-        description: "Speech-to-text functionality is not yet implemented.",
+        variant: "default",
+        title: "Coming Soon!",
+        description: "Speech-to-text functionality is not yet implemented, but we're working on it.",
       });
       // This is a placeholder for starting the recording
       // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
