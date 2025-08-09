@@ -12,7 +12,7 @@ export const caseStudies = [
       { name: 'Adoption Rate', 'Increase': 75 },
     ],
     chartType: 'bar',
-    prototypeLink: "https://www.figma.com/proto/erF4_lWk2S2aF4t6x8G8t5/MoCHTA-IDSDP?type=design&node-id=1-2&t=h7rQZ8f7g5s2bJ3g-1&scaling=min-zoom&page-id=0%3A1&mode=design",
+    prototypeLink: "https://www.figma.com/proto/pJSlC3TuvjntdmCl1P8Odw?node-id=1110-416",
   },
   {
     title: "Queue Management System SaaS",
