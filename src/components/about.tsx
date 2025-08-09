@@ -1,3 +1,4 @@
+
 import { ArrowRight, Download } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
@@ -13,19 +14,6 @@ export default function About() {
       </div>
       <div className="container relative z-10 mx-auto px-4">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          <div className="lg:col-span-1">
-             <div className="mx-auto max-w-md overflow-hidden rounded-lg shadow-2xl transition-all duration-300 hover:shadow-primary/20">
-                <Image 
-                    src="/images/gd.JPEG"
-                    alt="Aminul Islam, Product Designer"
-                    width={600}
-                    height={750}
-                    role="img"
-                    data-ai-hint="designer working"
-                    className="h-auto w-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-            </div>
-          </div>
           <div className="lg:col-span-1">
             <div className="max-w-4xl mb-12">
               <h2 className="font-headline text-4xl font-bold text-primary sm:text-5xl">A Journey Through Design and Continuous Learning</h2>
@@ -46,6 +34,19 @@ export default function About() {
                         Download Resume
                     </a>
                 </Button>
+            </div>
+          </div>
+          <div className="lg:col-span-1">
+             <div className="mx-auto max-w-md overflow-hidden rounded-lg shadow-2xl transition-all duration-300 hover:shadow-primary/20">
+                <Image 
+                    src="/images/gd.JPEG"
+                    alt="Aminul Islam, Product Designer"
+                    width={600}
+                    height={750}
+                    role="img"
+                    data-ai-hint="designer working"
+                    className="h-auto w-full object-cover transition-transform duration-300 hover:scale-105"
+                />
             </div>
           </div>
         </div>
