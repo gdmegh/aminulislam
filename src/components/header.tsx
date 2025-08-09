@@ -86,9 +86,6 @@ export default function Header() {
               className="flex items-center gap-2 whitespace-nowrap"
             >
                 <Image src="/images/profile2.png" alt="Aminul Islam" width={32} height={32} className="h-8 w-8 rounded-full" role="img" />
-                <span className="font-headline text-xl font-bold">
-                  AI<span className="text-primary">.</span>Megh
-                </span>
             </Link>
         </div>
         
