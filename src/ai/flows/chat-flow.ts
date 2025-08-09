@@ -103,7 +103,7 @@ const chatFlow = ai.defineFlow(
         throw new Error("No output from LLM.");
       }
 
-      const toolCalls = ll.response.toolCalls;
+      const toolCalls = llmResponse.toolCalls;
 
       if (toolCalls && toolCalls.length > 0) {
         const proposal = toolCalls[0].output as ProposalDetails;
