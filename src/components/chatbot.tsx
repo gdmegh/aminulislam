@@ -8,7 +8,7 @@ import { Input } from './ui/input';
 import { ScrollArea } from './ui/scroll-area';
 import { X, CornerDownLeft, Loader2, Maximize, Minimize, Paperclip, Volume2, FileImage, Mic, MicOff } from 'lucide-react';
 import { useChatbot } from '@/hooks/use-chatbot';
-import { chat, type ChatInput, type ProposalDetails } from '@/ai/flows/chat-flow';
+import { chat, type ChatInput, type ChatOutput, type ProposalDetails } from '@/ai/flows/chat-flow';
 import { tts, type TtsInput } from '@/ai/flows/tts-flow';
 import { stt } from '@/ai/flows/stt-flow';
 import { useToast } from '@/hooks/use-toast';
@@ -49,7 +49,6 @@ const Chatbot: React.FC = () => {
       const sendInitialMessage = async () => {
         setIsLoading(true);
         try {
-          // Pass an empty history for the first message
           const response = await chat({ message: "Hello", history: [] });
           const botMessage: Message = {
             sender: 'bot',
@@ -104,8 +103,7 @@ const Chatbot: React.FC = () => {
     const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages.map(m => ({ ...m, options: undefined }))); 
 
-    // Prepare history for the AI
-    const history = messages.map(msg => ({
+    const history = newMessages.filter(m => m.text).map(msg => ({
         role: msg.sender === 'user' ? 'user' as const : 'model' as const,
         content: [{ text: msg.text || '' }]
     }));
@@ -134,7 +132,8 @@ const Chatbot: React.FC = () => {
       setMessages([...newMessages, botMessage]);
     } catch (error) {
       console.error("Error chatting with AI:", error);
-      setMessages([...newMessages, { text: "Sorry, I'm having trouble connecting. Please try again later.", sender: 'bot' }]);
+      const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+      setMessages([...newMessages, { text: `Sorry, an error occurred: ${errorMessage}`, sender: 'bot' }]);
     } finally {
       setIsLoading(false);
     }
@@ -147,21 +146,37 @@ const Chatbot: React.FC = () => {
     if (message.isSpeaking && audioRef.current) {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
-        setMessages(messages.map((m, i) => i === index ? { ...m, isSpeaking: false } : m));
+        setMessages(currentMessages => currentMessages.map((m, i) => i === index ? { ...m, isSpeaking: false } : m));
         return;
     }
+
+    // Stop any other audio that might be playing
+    if (audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        setMessages(currentMessages => currentMessages.map(m => ({ ...m, isSpeaking: false })));
+    }
+
 
     if (message.audioUrl) {
       playAudio(message.audioUrl, index);
     } else {
+      setIsLoading(true);
       try {
         const audioResponse = await tts({ text: message.text });
         if(audioResponse.audioDataUri) {
-          setMessages(messages.map((m, i) => i === index ? { ...m, audioUrl: audioResponse.audioDataUri } : m));
+          setMessages(currentMessages => currentMessages.map((m, i) => i === index ? { ...m, audioUrl: audioResponse.audioDataUri } : m));
           playAudio(audioResponse.audioDataUri, index);
         }
       } catch (error) {
         console.error("Error with TTS:", error);
+         toast({
+            variant: "destructive",
+            title: "Text-to-Speech Error",
+            description: "Could not generate audio for this message.",
+        });
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -169,8 +184,8 @@ const Chatbot: React.FC = () => {
   const playAudio = (url: string, index: number) => {
     if (audioRef.current) {
         audioRef.current.src = url;
-        audioRef.current.play();
-        setMessages(messages.map((m, i) => ({ ...m, isSpeaking: i === index })));
+        audioRef.current.play().catch(e => console.error("Error playing audio:", e));
+        setMessages(currentMessages => currentMessages.map((m, i) => ({ ...m, isSpeaking: i === index })));
         audioRef.current.onended = () => {
             setMessages(currentMessages => currentMessages.map((m, i) => i === index ? { ...m, isSpeaking: false } : m));
         };
@@ -226,7 +241,6 @@ const Chatbot: React.FC = () => {
             try {
               const { transcription } = await stt({ audioDataUri: base64Audio });
               if (transcription) {
-                // Once we get the text, we send it to the chatbot as a regular message
                 await handleSendMessage(null, transcription);
               } else {
                 toast({
@@ -246,7 +260,6 @@ const Chatbot: React.FC = () => {
               setIsLoading(false);
             }
           };
-           // Clean up the stream
           stream.getTracks().forEach(track => track.stop());
         };
 
@@ -307,19 +320,31 @@ const Chatbot: React.FC = () => {
         <div className="space-y-4">
           {messages.map((msg, index) => (
             <div key={index}>
-              <div className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div className={`group flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                 {msg.sender === 'user' && msg.text && (
+                  <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => handlePlayAudio(index)} disabled={isLoading || msg.isSpeaking}>
+                    <Volume2 className={`w-4 h-4 ${msg.isSpeaking ? 'text-primary animate-pulse' : ''}`} />
+                  </Button>
+                )}
                 {msg.sender === 'bot' && <Image src="/images/profile2.png" alt="Bot" width={24} height={24} className="rounded-full self-start" />}
                 <div className={`rounded-lg px-3 py-2 max-w-[85%] text-sm ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
                   
-                   {msg.attachmentPreview && msg.attachmentPreview.type.startsWith('image/') && (
+                   {msg.attachmentPreview && (
                     <div className="mb-2">
-                      <Image 
-                        src={msg.attachmentPreview.dataUri} 
-                        alt={msg.attachmentPreview.name} 
-                        width={200} 
-                        height={200}
-                        className="rounded-md object-cover"
-                      />
+                      {msg.attachmentPreview.type.startsWith('image/') ? (
+                         <Image 
+                          src={msg.attachmentPreview.dataUri} 
+                          alt={msg.attachmentPreview.name} 
+                          width={200} 
+                          height={200}
+                          className="rounded-md object-cover"
+                        />
+                      ) : (
+                        <div className="flex items-center gap-2 p-2 rounded-md bg-background/50 text-sm">
+                            <FileImage className="w-6 h-6 flex-shrink-0" />
+                            <span className="truncate flex-1">{msg.attachmentPreview.name}</span>
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -327,7 +352,7 @@ const Chatbot: React.FC = () => {
                   {msg.proposal && <ProposalCard proposal={msg.proposal} />}
                 </div>
                 {msg.sender === 'bot' && msg.text && (
-                  <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => handlePlayAudio(index)} disabled={msg.isSpeaking}>
+                  <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => handlePlayAudio(index)} disabled={isLoading || msg.isSpeaking}>
                     <Volume2 className={`w-4 h-4 ${msg.isSpeaking ? 'text-primary animate-pulse' : ''}`} />
                   </Button>
                 )}
