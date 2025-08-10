@@ -3,3 +3,4 @@
 import './flows/chat-flow';
 import './flows/test-flow';
 import './flows/tts-flow';
+import './flows/stt-flow';

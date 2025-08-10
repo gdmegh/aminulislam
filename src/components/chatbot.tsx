@@ -10,6 +10,7 @@ import { X, CornerDownLeft, Loader2, Maximize, Minimize, Paperclip, Volume2, Fil
 import { useChatbot } from '@/hooks/use-chatbot';
 import { chat, type ChatInput, type ProposalDetails } from '@/ai/flows/chat-flow';
 import { tts, type TtsInput } from '@/ai/flows/tts-flow';
+import { stt } from '@/ai/flows/stt-flow';
 import { useToast } from '@/hooks/use-toast';
 import ProposalCard from './proposal-card';
 
@@ -208,24 +209,42 @@ const Chatbot: React.FC = () => {
     } else {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorderRef.current = new MediaRecorder(stream);
+        mediaRecorderRef.current = new MediaRecorder(stream, { mimeType: 'audio/webm' });
         audioChunksRef.current = [];
 
         mediaRecorderRef.current.ondataavailable = (event) => {
           audioChunksRef.current.push(event.data);
         };
 
-        mediaRecorderRef.current.onstop = () => {
-          const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+        mediaRecorderRef.current.onstop = async () => {
+          const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
           const reader = new FileReader();
           reader.readAsDataURL(audioBlob);
-          reader.onloadend = () => {
+          reader.onloadend = async () => {
             const base64Audio = reader.result as string;
-            // TODO: Implement speech-to-text flow and send 'base64Audio'
-            toast({
-              title: "Recording Stopped",
-              description: "Speech-to-text functionality is not yet implemented.",
-            });
+            setIsLoading(true);
+            try {
+              const { transcription } = await stt({ audioDataUri: base64Audio });
+              if (transcription) {
+                // Once we get the text, we send it to the chatbot as a regular message
+                await handleSendMessage(null, transcription);
+              } else {
+                toast({
+                  variant: "destructive",
+                  title: "Transcription Failed",
+                  description: "Could not understand the audio. Please try again.",
+                });
+              }
+            } catch (err) {
+               console.error("Error with speech-to-text:", err);
+               toast({
+                  variant: "destructive",
+                  title: "Transcription Error",
+                  description: "An error occurred during transcription.",
+                });
+            } finally {
+              setIsLoading(false);
+            }
           };
            // Clean up the stream
           stream.getTracks().forEach(track => track.stop());
