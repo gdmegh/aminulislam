@@ -33,6 +33,8 @@ const Chatbot: React.FC = () => {
   const [isMaximized, setIsMaximized] = useState(false);
   const [attachment, setAttachment] = useState<{ dataUri: string; name: string; type: string } | null>(null);
   const [isRecording, setIsRecording] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioChunksRef = useRef<Blob[]>([]);
 
   const chatbotRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
@@ -196,17 +198,44 @@ const Chatbot: React.FC = () => {
   
   const handleMicToggle = async () => {
     if (isRecording) {
+      mediaRecorderRef.current?.stop();
       setIsRecording(false);
-      // In a real implementation, you would stop recording here.
     } else {
-       toast({
-        variant: "default",
-        title: "Coming Soon!",
-        description: "Speech-to-text functionality is not yet implemented, but we're working on it.",
-      });
-      // This is a placeholder for starting the recording
-      // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      // setIsRecording(true);
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorderRef.current = new MediaRecorder(stream);
+        audioChunksRef.current = [];
+
+        mediaRecorderRef.current.ondataavailable = (event) => {
+          audioChunksRef.current.push(event.data);
+        };
+
+        mediaRecorderRef.current.onstop = () => {
+          const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+          const reader = new FileReader();
+          reader.readAsDataURL(audioBlob);
+          reader.onloadend = () => {
+            const base64Audio = reader.result as string;
+            // TODO: Implement speech-to-text flow and send 'base64Audio'
+            toast({
+              title: "Recording Stopped",
+              description: "Speech-to-text functionality is not yet implemented.",
+            });
+          };
+           // Clean up the stream
+          stream.getTracks().forEach(track => track.stop());
+        };
+
+        mediaRecorderRef.current.start();
+        setIsRecording(true);
+      } catch (err) {
+        console.error("Error accessing microphone:", err);
+        toast({
+          variant: "destructive",
+          title: "Microphone Access Denied",
+          description: "Please enable microphone permissions in your browser settings.",
+        });
+      }
     }
   };
   
@@ -336,5 +365,3 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
-
-    
