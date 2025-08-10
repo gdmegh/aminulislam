@@ -20,6 +20,7 @@ interface Message {
   sender: 'user' | 'bot';
   audioUrl?: string;
   isSpeaking?: boolean;
+  attachmentPreview?: { dataUri: string; name: string; type: string };
 }
 
 const Chatbot: React.FC = () => {
@@ -94,7 +95,11 @@ const Chatbot: React.FC = () => {
     const messageToSend = predefinedMessage || input;
     if ((!messageToSend.trim() && !attachment) || isLoading) return;
 
-    const userMessage: Message = { text: messageToSend, sender: 'user' };
+    const userMessage: Message = { 
+      text: messageToSend, 
+      sender: 'user',
+      attachmentPreview: attachment ? { ...attachment } : undefined
+    };
     const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages.map(m => ({ ...m, options: undefined }))); 
 
@@ -286,6 +291,19 @@ const Chatbot: React.FC = () => {
               <div className={`flex items-end gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                 {msg.sender === 'bot' && <Image src="/images/profile2.png" alt="Bot" width={24} height={24} className="rounded-full self-start" />}
                 <div className={`rounded-lg px-3 py-2 max-w-[85%] text-sm ${msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+                  
+                   {msg.attachmentPreview && msg.attachmentPreview.type.startsWith('image/') && (
+                    <div className="mb-2">
+                      <Image 
+                        src={msg.attachmentPreview.dataUri} 
+                        alt={msg.attachmentPreview.name} 
+                        width={200} 
+                        height={200}
+                        className="rounded-md object-cover"
+                      />
+                    </div>
+                  )}
+
                   {msg.text && <p>{msg.text}</p>}
                   {msg.proposal && <ProposalCard proposal={msg.proposal} />}
                 </div>
