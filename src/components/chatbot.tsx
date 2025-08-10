@@ -66,11 +66,14 @@ const Chatbot: React.FC = () => {
   }, [isOpen, messages.length]);
   
   useEffect(() => {
-    const scrollable = (scrollAreaRef.current?.childNodes[0] as HTMLDivElement);
-    if (scrollable) {
-      scrollable.scrollTo(0, scrollable.scrollHeight);
+    if (scrollAreaRef.current) {
+        const viewport = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]');
+        if (viewport) {
+            viewport.scrollTo({ top: viewport.scrollHeight, behavior: 'smooth' });
+        }
     }
-  }, [messages]);
+  }, [messages, isLoading]);
+
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -333,3 +336,5 @@ const Chatbot: React.FC = () => {
 };
 
 export default Chatbot;
+
+    
