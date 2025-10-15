@@ -16,6 +16,7 @@ import CitizenPortalPage from '../citizen-portal/page';
 import QueueManagementPage from '../queue-management-system/page';
 import CourtManagementPage from '../court-management-system/page';
 import IntegratedBillingSystemPage from '../integrated-billing-system/page';
+import NGOABPage from '../ngoab-digital-service-system/page';
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
   const study = caseStudies.find(cs => cs.slug === params.slug);
@@ -40,6 +41,10 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
   if (study.slug === 'integrated-billing-system') {
     return <IntegratedBillingSystemPage />;
+  }
+
+  if (study.slug === 'ngoab-digital-service-system') {
+    return <NGOABPage />;
   }
 
   // Generic Case Study Page Layout
