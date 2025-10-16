@@ -265,6 +265,27 @@ const NGOABPage = () => {
                         </div>
                     </div>
                   </div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">User Journey Map</h3>
+                    <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                      <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                        Mapping the user journey was critical to visualize the experience of an NGO representative, from initial project proposal submission to final fund clearance, identifying key touchpoints for digital transformation.
+                      </p>
+                      <div className="rounded-lg shadow-lg overflow-hidden">
+                        <Image 
+                            src="/images/User-Journey-Map-Template-2.jpg"
+                            alt="User Journey Map for NGOAB" 
+                            width={1200} 
+                            height={400} 
+                            role="img"
+                            data-ai-hint="user journey map"
+                            className="w-full h-auto object-cover" 
+                        />
+                      </div>
+                    </div>
+                  </div>
+
               </div>
             </section>
 
