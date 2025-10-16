@@ -1,4 +1,3 @@
-
 "use client"
 import React from 'react';
 import { Users, Clock, Target, CheckCircle, ExternalLink, TrendingUp, Search, Pencil, Users2, Bot, FileText, Landmark, Handshake, Filter, FileSignature, CheckSquare, XSquare } from 'lucide-react';
@@ -286,6 +285,26 @@ const NGOABPage = () => {
                     </div>
                   </div>
 
+                  <div className="mt-12">
+                    <h3 className="text-2xl font-bold text-foreground my-8 font-headline text-center">Information Architecture</h3>
+                    <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">
+                      <p className="text-muted-foreground leading-relaxed mb-6 text-center">
+                        A well-defined information architecture was crucial for creating an intuitive and scalable platform. It organized the content and services logically, ensuring users could easily navigate the system and find what they need.
+                      </p>
+                      <div className="rounded-lg shadow-lg overflow-hidden">
+                        <Image 
+                            src="https://picsum.photos/seed/ia-ngoab/1200/800"
+                            alt="Information Architecture Diagram for NGOAB" 
+                            width={1200} 
+                            height={800} 
+                            role="img"
+                            data-ai-hint="information architecture diagram"
+                            className="w-full h-auto object-cover" 
+                        />
+                      </div>
+                    </div>
+                  </div>
+
               </div>
             </section>
 
@@ -438,5 +457,3 @@ const NGOABPage = () => {
 };
 
 export default NGOABPage;
-
-    
