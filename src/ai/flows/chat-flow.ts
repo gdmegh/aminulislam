@@ -65,6 +65,7 @@ export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 const chatFlowPrompt = ai.definePrompt(
   {
     name: 'chatFlowPrompt',
+    model: 'googleai/gemini-1.5-flash-latest',
     input: { schema: ChatInputSchema },
     output: { schema: ChatOutputSchema },
     tools: [createProposalTool],
