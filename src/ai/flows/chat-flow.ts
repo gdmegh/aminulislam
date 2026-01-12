@@ -5,6 +5,7 @@
  */
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
+import { googleAI } from '@genkit-ai/googleai';
 
 
 // Define Zod schemas for the tool
@@ -67,7 +68,7 @@ const chatFlowPrompt = ai.definePrompt(
     input: { schema: ChatInputSchema },
     output: { schema: ChatOutputSchema },
     tools: [createProposalTool],
-    model: 'googleai/gemini-pro',
+    model: googleAI.model('gemini-pro'),
     prompt: `You are a highly skilled business development representative and AI assistant for a top-tier software development agency. Your name is AI Megh.
     Your primary goal is to understand a potential client's software needs and guide them towards a formal proposal. You also serve as a helpful resource for general questions. You are professional, efficient, and technically knowledgeable.
 
