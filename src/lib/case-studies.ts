@@ -64,7 +64,7 @@ export const caseStudies = [
     title: "NGOAB Digital Service System Redesign",
     slug: "ngoab-digital-service-system",
     description: "Led the UX redesign for the NGO Affairs Bureau's digital services, aiming to enhance efficiency, transparency, and accountability for over 2,600 NGOs in Bangladesh under a UNDP-supported project.",
-    image: "https://picsum.photos/seed/ngoab/800/600",
+    image: "/images/ngo-placeholder.jpg",
     hint: "ngo management government",
     metrics: [
       { name: 'Fund Clearance Time', 'Reduction': 50 },
