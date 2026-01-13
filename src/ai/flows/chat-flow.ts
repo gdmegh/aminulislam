@@ -37,6 +37,38 @@ const createProposalTool = ai.defineTool(
   }
 );
 
+const bertAnalyzeTextTool = ai.defineTool(
+  {
+      name: 'bertAnalyzeText',
+      description: 'Analyzes user text to determine their intent using a BERT-based NLP model. Use this to understand what the user wants (e.g., get a quote, analyze an image, general question).',
+      inputSchema: z.object({ text: z.string() }),
+      outputSchema: z.object({
+          intent: z.enum(['GetQuote', 'AnalyzeImage', 'GeneralInquiry', 'BuildProject', 'UpgradeSystem', 'Unknown']),
+          confidence: z.number(),
+      }),
+  },
+  async ({ text }) => {
+      // This is a MOCK implementation.
+      // In a real application, this would call a Firebase Cloud Function
+      // which then calls the BERT API on Google Cloud Run.
+      console.log(`Analyzing text with BERT (mock): "${text}"`);
+      const lowerText = text.toLowerCase();
+      if (lowerText.includes('quote') || lowerText.includes('price') || lowerText.includes('cost')) {
+          return { intent: 'GetQuote', confidence: 0.95 };
+      }
+      if (lowerText.includes('image') || lowerText.includes('photo') || lowerText.includes('picture')) {
+          return { intent: 'AnalyzeImage', confidence: 0.98 };
+      }
+      if (lowerText.includes('project') || lowerText.includes('build') || lowerText.includes('develop')) {
+        return { intent: 'BuildProject', confidence: 0.92 };
+      }
+       if (lowerText.includes('upgrade') || lowerText.includes('update') || lowerText.includes('existing')) {
+        return { intent: 'UpgradeSystem', confidence: 0.93 };
+      }
+      return { intent: 'GeneralInquiry', confidence: 0.8 };
+  }
+);
+
 
 // Define Zod schemas for the main chat flow input and output
 const HistoryMessageSchema = z.object({
@@ -67,17 +99,20 @@ const chatFlowPrompt = ai.definePrompt(
     model: 'googleai/gemini-1.5-flash-latest',
     input: { schema: ChatInputSchema },
     output: { schema: ChatOutputSchema },
-    tools: [createProposalTool],
+    tools: [createProposalTool, bertAnalyzeTextTool],
     prompt: `You are a highly skilled business development representative and AI assistant for a top-tier software development agency. Your name is AI Megh.
     Your primary goal is to understand a potential client's software needs and guide them towards a formal proposal. You also serve as a helpful resource for general questions. You are professional, efficient, and technically knowledgeable.
 
-    If this is the first message from the user (history is empty), you MUST start the conversation with the exact phrase: "Greetings! from AI Megh, your guide to building exceptional software. To begin, please select an option:" and provide the following options as tappable cards: "Build a new software project", "Upgrade an existing system", "Get a quote for my idea", "Analyze an image", "General Q&A".
+    If this is the first message from the user (history is empty), you MUST start the conversation with the exact phrase: "Greetings! I'm AI Megh, your guide to building exceptional software. How can I help you today? You can ask me to build a project, get a quote, analyze an image, or just ask a general question."
 
-    - If the user's message clearly indicates interest in one of the first three options, begin a structured conversation to gather requirements. Ask clear, one-by-one questions to understand the project's goals, scope, and key features. Once you have gathered sufficient details (project name, description, and at least 3-4 key features with their descriptions), use the 'createSoftwareProposal' tool to generate a formal proposal.
-    - If the user selects "Analyze an image", prompt them to upload an image. If an image is provided in the input, analyze it and describe what you see.
-    - If the user selects "General Q&A" or asks a question that does not fit the other categories, engage in a helpful, conversational manner. Answer their questions to the best of your ability.
+    For every user message, you MUST first use the 'bertAnalyzeText' tool to understand the user's intent.
     
-    Always provide a few relevant 'options' as tappable cards to steer the conversation effectively. If the user's input is unclear, provide the main options again to guide them.
+    - Based on the intent from the 'bertAnalyzeText' tool:
+    - If the intent is 'BuildProject', 'UpgradeSystem', or 'GetQuote', begin a structured conversation to gather requirements. Ask clear, one-by-one questions to understand the project's goals, scope, and key features. Once you have gathered sufficient details (project name, description, and at least 3-4 key features with their descriptions), use the 'createSoftwareProposal' tool to generate a formal proposal.
+    - If the intent is 'AnalyzeImage', prompt them to upload an image if one isn't already provided. If an image is provided in the input, analyze it and describe what you see.
+    - If the intent is 'GeneralInquiry' or 'Unknown', engage in a helpful, conversational manner. Answer their questions to the best of your ability.
+    
+    Always provide a few relevant 'options' as tappable cards to steer the conversation effectively.
     
     The user's latest message is: {{{message}}}
     {{#if attachmentDataUri}}
@@ -101,16 +136,17 @@ const chatFlow = ai.defineFlow(
       const output = llmResponse.output;
 
       if (!output) {
-        throw new Error("No output from LLM.");
-      }
-
-      const toolCalls = llmResponse.toolCalls;
-
-      if (toolCalls && toolCalls.length > 0) {
-        const proposal = toolCalls[0].output as ProposalDetails;
-        return {
-          proposal: proposal,
-        };
+        // If there's no direct output, check for tool calls
+        const toolCalls = llmResponse.toolCalls;
+        if (toolCalls && toolCalls.length > 0) {
+            const proposalToolCall = toolCalls.find(call => call.toolName === 'createSoftwareProposal');
+            if (proposalToolCall) {
+                const proposal = proposalToolCall.output as ProposalDetails;
+                return { proposal };
+            }
+        }
+        // If no output and no recognized tool call, throw error
+        throw new Error("No output or actionable tool call from LLM.");
       }
 
       return {
