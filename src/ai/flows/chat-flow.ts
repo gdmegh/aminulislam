@@ -133,18 +133,16 @@ const chatFlow = ai.defineFlow(
   async (input) => {
     try {
       const llmResponse = await chatFlowPrompt(input, { history: input.history });
-      const output = llmResponse.output;
+      const output = llmResponse.output();
 
       if (!output) {
         // If there's no direct output, check for tool calls
-        const toolCalls = llmResponse.toolCalls;
-        if (toolCalls && toolCalls.length > 0) {
-            const proposalToolCall = toolCalls.find(call => call.toolName === 'createSoftwareProposal');
-            if (proposalToolCall) {
-                const proposal = proposalToolCall.output as ProposalDetails;
-                return { proposal };
-            }
+        for (const toolResponse of llmResponse.toolResponses) {
+          if (toolResponse.toolName === 'createSoftwareProposal') {
+            return { proposal: toolResponse.output as ProposalDetails };
+          }
         }
+        
         // If no output and no recognized tool call, throw error
         throw new Error("No output or actionable tool call from LLM.");
       }
