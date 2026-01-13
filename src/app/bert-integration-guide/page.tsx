@@ -120,6 +120,11 @@ exports.processTextWithBERT = functions.https.onCall(async (data, context) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: userText })
     });
+    
+    if (!apiResponse.ok) {
+        throw new functions.https.HttpsError('internal', \`BERT API responded with status: \${apiResponse.status}\`);
+    }
+
     const predictions = await apiResponse.json();
 
     // 6. Process the prediction
@@ -166,3 +171,5 @@ exports.processTextWithBERT = functions.https.onCall(async (data, context) => {
     </div>
   );
 }
+
+    
