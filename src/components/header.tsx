@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -24,6 +23,7 @@ import { useChatbot } from "@/hooks/use-chatbot";
 
 const menuItems = [
   { label: 'About', href: '/about' },
+  { label: 'BERT Guide', href: '/bert-integration-guide' },
 ];
 
 export default function Header() {
@@ -64,6 +64,8 @@ export default function Header() {
             setActiveSection('about');
         } else if (currentPath.startsWith('/portfolio')) {
             setActiveSection('portfolio');
+        } else if (currentPath.startsWith('/bert-integration-guide')) {
+            setActiveSection('bert-guide');
         } else {
             setActiveSection('');
         }
@@ -91,7 +93,7 @@ export default function Header() {
         
         <nav className="hidden md:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           {menuItems.map((item) =>
-            <Button key={item.label} variant="ghost" asChild className={`text-base ${activeSection === item.label.toLowerCase() ? 'text-primary' : ''}`}>
+            <Button key={item.label} variant="ghost" asChild className={`text-base ${activeSection === item.label.toLowerCase().replace(' ', '-') ? 'text-primary' : ''}`}>
                 <Link href={item.href}>{item.label}</Link>
             </Button>
           )}
@@ -160,7 +162,7 @@ export default function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`text-lg font-medium hover:text-primary transition-colors ${activeSection === item.label.toLowerCase() ? 'text-primary' : ''}`}
+                    className={`text-lg font-medium hover:text-primary transition-colors ${activeSection === item.label.toLowerCase().replace(' ', '-') ? 'text-primary' : ''}`}
                   >
                     {item.label}
                   </Link>
