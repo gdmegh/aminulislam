@@ -128,7 +128,7 @@ const NGOABPage = () => {
             </div>
             <div className="relative">
                 <Image 
-                    src={study.image}
+                    src="/images/NGOAB_PNG.png"
                     alt={study.title}
                     width={800}
                     height={600}
@@ -293,7 +293,7 @@ const NGOABPage = () => {
                       </p>
                       <div className="rounded-lg shadow-lg overflow-hidden">
                         <Image 
-                            src="https://picsum.photos/seed/ia-ngoab/1200/800"
+                            src="/images/NGOAB_PNG.png"
                             alt="Information Architecture Diagram for NGOAB" 
                             width={1200} 
                             height={800} 
