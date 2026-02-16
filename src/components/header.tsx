@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -23,7 +24,6 @@ import { useChatbot } from "@/hooks/use-chatbot";
 
 const menuItems = [
   { label: 'About', href: '/about' },
-  { label: 'BERT Guide', href: '/bert-integration-guide' },
 ];
 
 export default function Header() {
@@ -64,8 +64,6 @@ export default function Header() {
             setActiveSection('about');
         } else if (currentPath.startsWith('/portfolio')) {
             setActiveSection('portfolio');
-        } else if (currentPath.startsWith('/bert-integration-guide')) {
-            setActiveSection('bert-guide');
         } else {
             setActiveSection('');
         }
