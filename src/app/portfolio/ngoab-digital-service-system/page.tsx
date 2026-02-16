@@ -7,6 +7,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import Image from 'next/image';
 import { caseStudies } from '@/lib/case-studies';
 import { notFound } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 
 const chartData = [
   { name: 'Fund Clearance Time', 'Reduction': 50 },
@@ -352,10 +353,14 @@ const NGOABPage = () => {
                       Prototypes simulated the end-to-end workflow, from an NGO submitting a new project proposal to an NGOAB official reviewing and approving the fund release.
                     </p>
                     <div className="space-y-4">
-                      <a href="#" className="flex items-center gap-2 text-primary hover:underline font-medium">
-                        <ExternalLink className="w-4 h-4" />
-                        View Interactive Prototype
-                      </a>
+                      {study.prototypeLink && study.prototypeLink !== "#" && (
+                        <Button asChild>
+                            <a href={study.prototypeLink} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="mr-2 h-4 w-4" />
+                                View Interactive Prototype
+                            </a>
+                        </Button>
+                      )}
                     </div>
                   </div>
                   <div className="bg-card rounded-2xl p-8 shadow-xl border border-border">

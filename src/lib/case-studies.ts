@@ -72,6 +72,6 @@ export const caseStudies = [
       { name: 'User Satisfaction', 'Increase': 70 },
     ],
     chartType: 'bar',
-    prototypeLink: "#",
+    prototypeLink: "https://www.figma.com/proto/y6OYjJrfnSEzbuSfX2zeMS/UNDP-BGD?node-id=1037-5140&p=f&t=ItR9ENryP1M3aLMp-1&scaling=min-zoom&content-scaling=fixed&page-id=529%3A6096&starting-point-node-id=1027%3A2583&show-proto-sidebar=1",
   },
 ];
